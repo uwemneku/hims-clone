@@ -1,4 +1,10 @@
-import { StyleSheet, useWindowDimensions, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import React, { useEffect } from "react";
 import Animated, {
   cancelAnimation,
@@ -9,15 +15,20 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import Color from "../../constants/colors";
+import { images } from "../../../assets";
 
 interface Props {
   /**
    * @default 'left'
    */
   animationDirection?: "left" | "right";
+  images: [string, string];
 }
 
-const InfiniteScrollWrapper = ({ animationDirection = "left" }: Props) => {
+const InfiniteScrollWrapper = ({
+  animationDirection = "left",
+  images,
+}: Props) => {
   const { width } = useWindowDimensions();
   const isLeft = animationDirection === "left";
   const initialValue = isLeft ? 0 : -width;
@@ -28,7 +39,7 @@ const InfiniteScrollWrapper = ({ animationDirection = "left" }: Props) => {
   useEffect(() => {
     left.value = initialValue; // reset animation when orientation changed
     left.value = withRepeat(
-      withTiming(animateTo, { duration: 5000, easing: Easing.linear }),
+      withTiming(animateTo, { duration: 10000, easing: Easing.linear }),
       -1,
       false
     );
@@ -40,18 +51,24 @@ const InfiniteScrollWrapper = ({ animationDirection = "left" }: Props) => {
   return (
     <View style={{ width }}>
       <Animated.View style={[styles.animatedContainer, animatedStyle]}>
-        <Content />
-        <Content />
+        <Content images={images} />
+        <Content images={images} />
       </Animated.View>
     </View>
   );
 };
 
-const Content = () => {
+const Content = ({ images: image }: Pick<Props, "images">) => {
   return (
     <View style={styles.item}>
-      {[Color.lightGray, Color.white].map((color) => (
-        <View key={color} style={[styles.ball, { backgroundColor: color }]} />
+      {[Color.lightGray, Color.white].map((color, i) => (
+        <View key={color} style={[styles.ball, { backgroundColor: color }]}>
+          <Image
+            source={image?.[i] || images._3dDoctor}
+            resizeMode="cover"
+            style={styles.image}
+          />
+        </View>
       ))}
     </View>
   );
@@ -74,5 +91,10 @@ const styles = StyleSheet.create({
     width: "45%",
     height: 300,
     borderRadius: 20,
+    overflow: "hidden",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
   },
 });
