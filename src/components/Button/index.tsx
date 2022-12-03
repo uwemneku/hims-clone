@@ -6,9 +6,13 @@ import {
   TextStyle,
 } from "react-native";
 import React, { ComponentProps } from "react";
+import AppText from "../Text";
 
 interface Props extends Omit<ComponentProps<typeof TouchableOpacity>, "style"> {
   label: string;
+  /**
+   * @default "filled"
+   */
   variant?: "filled" | "outlined";
   color?: string;
   style?: {
@@ -32,21 +36,22 @@ const Button = ({
 }: Props) => {
   const textColor = variant === "filled" ? "black" : "white";
   const backgroundColor = variant === "filled" ? color : "transparent";
+  const borderWidth = variant === "filled" ? 0 : 2;
   return (
     <TouchableOpacity
       style={[
         styles.container,
-        { borderColor: color, backgroundColor },
+        { borderColor: color, backgroundColor, borderWidth },
         style?.button,
       ]}
       {...props}
     >
-      <Text
+      <AppText
         testID="button_text"
-        style={[styles.text, { color: textColor }, style?.text]}
+        style={{ ...styles.text, color: textColor, ...style?.text }}
       >
         {label}
-      </Text>
+      </AppText>
     </TouchableOpacity>
   );
 };
