@@ -1,4 +1,4 @@
-A clone of HIMS mobile application
+A clone of HIMS mobile application using [Mobbin](https://mobbin.com/apps/hims-ios-c234e7b0-5f25-42c5-8ab2-ba6af5c872b5/558bf838-735f-4ab6-a132-5df6e33313c5/screens) as a guide for the screens
 
 Credits
 ## Animations
