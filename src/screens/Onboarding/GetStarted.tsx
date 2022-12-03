@@ -5,13 +5,19 @@ import Color from "../../constants/colors";
 import Divider from "../../components/Dividers";
 import { OnboardingStackParamList } from "../../types/Navigation";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import InfiniteScrollWrapper from "../../components/infiniteScroll/Wrapper";
 type Props = NativeStackScreenProps<OnboardingStackParamList, "GetStarted">;
 const GetStarted = ({ navigation, route }: Props) => {
   const handleButtonPress = (screen: keyof OnboardingStackParamList) => () =>
     navigation.navigate(screen);
   return (
-    <View>
-      <Text>Get your personalized treatment Plan</Text>
+    <View style={styles.container}>
+      <InfiniteScrollWrapper />
+      <Divider />
+      <InfiniteScrollWrapper animationDirection="right" />
+      <Divider />
+      <InfiniteScrollWrapper />
+      <Text>Get your personalized trent Plan</Text>
       <Button
         label="Get started"
         onPress={handleButtonPress("SetState")}
@@ -30,4 +36,9 @@ const GetStarted = ({ navigation, route }: Props) => {
 
 export default GetStarted;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Color.black,
+    justifyContent: "center",
+  },
+});
