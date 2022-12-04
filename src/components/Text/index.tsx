@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextStyle, View } from "react-native";
+import { Text, TextStyle } from "react-native";
 import React, { ComponentProps } from "react";
 import AppFonts from "../../constants/fonts";
 import Color from "../../constants/colors";
@@ -10,7 +10,7 @@ interface Props extends ComponentProps<typeof Text> {
   size?: "h1" | "h2" | "subTitle" | "body";
 }
 const AppText = ({
-  fontWeight = "sofia_bold",
+  fontWeight = "sofia_regular",
   color = Color.black,
   style,
   size = "body",
@@ -36,9 +36,7 @@ const AppText = ({
 const sizes: { [key in Required<Props>["size"]]: number } = {
   body: 16,
   h1: 30,
-  h2: 18,
+  h2: 22,
   subTitle: 10,
 };
 export default AppText;
-
-const styles = StyleSheet.create({});

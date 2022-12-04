@@ -69,7 +69,7 @@ const GetStarted = ({ navigation, route }: Props) => {
           <Button
             label="Get Started"
             color="white"
-            onPress={handleButtonPress("GetStarted")}
+            onPress={handleButtonPress("SetState")}
           />
           <Divider />
           <Button

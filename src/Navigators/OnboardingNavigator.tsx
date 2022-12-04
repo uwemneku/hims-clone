@@ -2,10 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { OnboardingStackParamList } from "../types/Navigation";
-import { GetStartedScreen } from "../screens/Onboarding";
+import { GetStartedScreen, SetStateScreen } from "../screens/Onboarding";
 import Color from "../constants/colors";
 
-const { Navigator, Screen } =
+const { Navigator, Screen, Group } =
   createNativeStackNavigator<OnboardingStackParamList>();
 
 const OnboardingNavigator = () => {
@@ -18,6 +18,9 @@ const OnboardingNavigator = () => {
       initialRouteName="GetStarted"
     >
       <Screen name="GetStarted" component={GetStartedScreen} />
+      <Group screenOptions={{ header: () => <View /> }}>
+        <Screen name="SetState" component={SetStateScreen} />
+      </Group>
     </Navigator>
   );
 };
