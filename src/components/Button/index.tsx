@@ -6,7 +6,7 @@ import {
   TextStyle,
 } from "react-native";
 import React, { ComponentProps } from "react";
-import AppText from "../Text";
+import BaseText from "../Text";
 
 interface Props extends Omit<ComponentProps<typeof TouchableOpacity>, "style"> {
   label: string;
@@ -46,12 +46,12 @@ const Button = ({
       ]}
       {...props}
     >
-      <AppText
+      <BaseText
         testID="button_text"
         style={{ ...styles.text, color: textColor, ...style?.text }}
       >
         {label}
-      </AppText>
+      </BaseText>
     </TouchableOpacity>
   );
 };

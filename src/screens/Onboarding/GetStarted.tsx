@@ -6,7 +6,7 @@ import Divider from "../../components/Dividers";
 import { OnboardingStackParamList } from "../../types/Navigation";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import InfiniteScrollWrapper from "../../components/infiniteScroll/Wrapper";
-import AppText from "../../components/Text";
+import BaseText from "../../components/Text";
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
@@ -47,16 +47,16 @@ const GetStarted = ({ navigation, route }: Props) => {
         <InfiniteScrollWrapper images={[images.boy_doctor, images._3dDoctor]} />
       </View>
       <Animated.View style={[styles._container, animatedContainerStyle]}>
-        <AppText
+        <BaseText
           fontWeight="sofia_curly"
           color={Color.white}
           align="center"
           style={{ fontSize: 50 }}
         >
           hims
-        </AppText>
+        </BaseText>
         <Animated.View>
-          <AppText
+          <BaseText
             align="center"
             size="h1"
             fontWeight="sofia_medium"
@@ -64,7 +64,7 @@ const GetStarted = ({ navigation, route }: Props) => {
             style={styles.title}
           >
             Get your personalized treatment plan
-          </AppText>
+          </BaseText>
           <Divider size="l" />
           <Button
             label="Get Started"

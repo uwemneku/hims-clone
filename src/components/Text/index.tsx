@@ -9,7 +9,7 @@ interface Props extends ComponentProps<typeof Text> {
   align?: TextStyle["textAlign"];
   size?: "h1" | "h2" | "subTitle" | "body";
 }
-const AppText = ({
+const BaseText = ({
   fontWeight = "sofia_regular",
   color = Color.black,
   style,
@@ -39,4 +39,4 @@ const sizes: { [key in Required<Props>["size"]]: number } = {
   h2: 22,
   subTitle: 10,
 };
-export default AppText;
+export default BaseText;

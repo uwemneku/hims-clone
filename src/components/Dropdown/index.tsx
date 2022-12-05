@@ -7,7 +7,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from "react-native-reanimated";
-import AppText from "../Text";
+import BaseText from "../Text";
 import Color from "../../constants/colors";
 type onScroll = ComponentProps<typeof Animated.ScrollView>["onScroll"];
 const ITEM_HEIGHT = 50;
@@ -41,9 +41,9 @@ const PerspectiveScroll = () => {
         "Illinois",
       ].map((_, i) => (
         <ScrollItem index={i} scrollOffset={scrollOffset} key={i}>
-          <AppText size="h2" align="center">
+          <BaseText size="h2" align="center">
             {_}
-          </AppText>
+          </BaseText>
         </ScrollItem>
       ))}
       <View style={{ height: ITEM_HEIGHT * 1 }} />
