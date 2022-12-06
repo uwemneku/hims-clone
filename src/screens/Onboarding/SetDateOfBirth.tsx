@@ -8,9 +8,20 @@ import { OnboardingStackParamList } from "../../types/Navigation";
 
 type Props = NativeStackScreenProps<OnboardingStackParamList, "SetState">;
 
-const SetState = ({ navigation, route }: Props) => {
+const SetState = ({ navigation }: Props) => {
   const [DOB, setDOB] = useState("");
-  const displayedText = DOB.replace(/ /g, "");
+  const displayedText = DOB.replace(/ |[\D]|/g, "").replace(
+    /([\d]{2})-?([\d]{1,2})?-?([\d]{1,4})?/g,
+    (_, p1, p2, p3) => {
+      return `${p1}${p2 ? `-${p2}` : ""}${p3 ? `-${p3}` : ""}`; // This allows the code to match dates of birth in the format dd, dd-mm, or dd-mm-yyyy.
+    }
+  );
+
+  // Text format is correct when displayed text text is not empty and matches the format of MM-DD-YYYY or when the text input is empty
+  const isTextFormatCorrect =
+    (Boolean(displayedText.match(/[\d]{2}-[\d]{2}-[\d]{4}/g)) &&
+      displayedText.length > 0) ||
+    displayedText.length === 0;
 
   const handleButtonClick = () => {
     navigation.navigate("SetDateOfBirth");
@@ -21,7 +32,10 @@ const SetState = ({ navigation, route }: Props) => {
       <BaseTextInput
         value={displayedText}
         onChangeText={setDOB}
+        isError={!isTextFormatCorrect}
         placeholder="Date of Birth (MM-DD-YYYY)"
+        keyboardType="number-pad"
+        maxLength={10}
       />
       <Button
         onPress={handleButtonClick}
