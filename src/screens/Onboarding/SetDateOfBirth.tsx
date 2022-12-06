@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import BaseTextInput from "../../components/TextInput/BaseTextInput";
 import Button from "../../components/Button";
 import Color from "../../constants/colors";
@@ -9,12 +9,20 @@ import { OnboardingStackParamList } from "../../types/Navigation";
 type Props = NativeStackScreenProps<OnboardingStackParamList, "SetState">;
 
 const SetState = ({ navigation, route }: Props) => {
+  const [DOB, setDOB] = useState("");
+  const displayedText = DOB.replace(/ /g, "");
+
   const handleButtonClick = () => {
     navigation.navigate("SetDateOfBirth");
   };
+
   return (
     <View style={{ padding: 20 }}>
-      <BaseTextInput placeholder="Select text" />
+      <BaseTextInput
+        value={displayedText}
+        onChangeText={setDOB}
+        placeholder="Date of Birth (MM-DD-YYYY)"
+      />
       <Button
         onPress={handleButtonClick}
         label="hello"
