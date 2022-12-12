@@ -9,6 +9,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
+import BaseText from "../Text";
 
 const HEIGHT = 60;
 const BORDER_WIDTH = 2;
@@ -30,6 +31,7 @@ interface Props extends ComponentProps<typeof TextInput> {
   leftAdornment?: JSX.Element;
   rightAdornment?: JSX.Element;
   isError?: boolean;
+  helperText?: string;
 }
 
 const BaseTextInput = ({
@@ -42,6 +44,8 @@ const BaseTextInput = ({
   onFocus,
   onBlur,
   isError,
+  helperText,
+  value,
   ...props
 }: Props) => {
   const placeholderLayoutChangeCount = useRef(0);
@@ -72,6 +76,11 @@ const BaseTextInput = ({
     calculatedPlaceholderTopValue.current =
       (HEIGHT + BORDER_WIDTH * 2) / 2 - e.nativeEvent.layout.height / 2.5;
     placeholderTop.value = calculatedPlaceholderTopValue.current;
+
+    // Animate the placeholder oif textInput has an initial value
+    // this is done here so the that accurate middle placement calculated before moving the placeholder to the top
+    if (value) animatePlaceholder(5);
+
     placeholderLayoutChangeCount.current++;
   };
 
@@ -101,36 +110,52 @@ const BaseTextInput = ({
   );
 
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          paddingLeft,
-          paddingRight,
-          borderColor,
-        },
-      ]}
-    >
-      {leftAdornment}
-      <View style={styles.container_inner}>
-        {placeholder && (
-          <Animated.Text
-            style={[styles.placeholder, animatedPlaceholderStyle]}
-            onLayout={handleTextLayout}
-          >
-            {placeholder}
-          </Animated.Text>
-        )}
-        <TextInput
-          onFocus={handleTextInputFocus}
-          onChangeText={handleTextInputChange}
-          onBlur={handleTextInputBlur}
-          style={[styles.textInput, style]}
-          {...props}
-        />
+    <>
+      <View
+        style={[
+          styles.container,
+          {
+            paddingLeft,
+            paddingRight,
+            borderColor,
+          },
+        ]}
+      >
+        {leftAdornment}
+        <View style={styles.container_inner}>
+          {placeholder && (
+            <Animated.Text
+              style={[styles.placeholder, animatedPlaceholderStyle]}
+              onLayout={handleTextLayout}
+            >
+              {placeholder}
+            </Animated.Text>
+          )}
+          <TextInput
+            onFocus={handleTextInputFocus}
+            onChangeText={handleTextInputChange}
+            onBlur={handleTextInputBlur}
+            style={[styles.textInput, style]}
+            value={value}
+            {...props}
+          />
+        </View>
+        {rightAdornment}
       </View>
-      {rightAdornment}
-    </View>
+      {helperText && (
+        <BaseText
+          style={[
+            styles.helperText,
+            { color: isError ? Color.red : Color.gray },
+          ]}
+          fontWeight="sofia_medium"
+          size="small"
+          color={Color.gray}
+        >
+          {helperText}
+        </BaseText>
+      )}
+    </>
   );
 };
 
@@ -161,5 +186,9 @@ const styles = StyleSheet.create({
     height: "100%",
     padding: 10,
     fontFamily: "sofia_regular",
+  },
+  helperText: {
+    marginTop: 8,
+    marginLeft: 8,
   },
 });

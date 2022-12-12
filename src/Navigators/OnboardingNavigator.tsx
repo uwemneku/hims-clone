@@ -7,6 +7,7 @@ import {
 import { OnboardingStackParamList } from "../types/Navigation";
 import {
   GetStartedScreen,
+  LoginScreen,
   SetDateOfBirthScreen,
   SetStateScreen,
 } from "../screens/Onboarding";
@@ -37,6 +38,7 @@ const OnboardingNavigator = () => {
         <Screen name="SetDateOfBirth" component={SetDateOfBirthScreen} />
         <Screen name="SetState" component={SetStateScreen} />
       </Group>
+      <Screen name="Login" component={LoginScreen} />
     </Navigator>
   );
 };
@@ -62,6 +64,7 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: Color.white,
     padding: 10,
+    paddingVertical: 20,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",

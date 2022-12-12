@@ -1,13 +1,13 @@
-import { Text, TextStyle } from "react-native";
+import { StyleProp, Text, TextStyle } from "react-native";
 import React, { ComponentProps } from "react";
 import AppFonts from "../../constants/fonts";
 import Color from "../../constants/colors";
 interface Props extends ComponentProps<typeof Text> {
   fontWeight?: keyof typeof AppFonts;
   color?: string;
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
   align?: TextStyle["textAlign"];
-  size?: "h1" | "h2" | "subTitle" | "body";
+  size?: keyof typeof sizes;
 }
 const BaseText = ({
   fontWeight = "sofia_regular",
@@ -17,6 +17,7 @@ const BaseText = ({
   align = "left",
   ...props
 }: Props) => {
+  const isStyleArray = Array.isArray(style);
   return (
     <Text
       style={[
@@ -26,17 +27,19 @@ const BaseText = ({
           fontSize: sizes[size],
           textAlign: align,
         },
-        style,
+        ...(isStyleArray ? style : []),
+        !isStyleArray ? style : {},
       ]}
       {...props}
     />
   );
 };
 
-const sizes: { [key in Required<Props>["size"]]: number } = {
+const sizes = {
   body: 16,
   h1: 30,
   h2: 22,
+  small: 14,
   subTitle: 10,
-};
+} as const;
 export default BaseText;
