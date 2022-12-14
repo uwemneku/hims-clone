@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import DropDown from "../../components/Dropdown";
 
 const Login = () => {
   return (
-    <View>
-      <Text>Login</Text>
+    <View style={{ margin: 10 }}>
+      <DropDown />
     </View>
   );
 };

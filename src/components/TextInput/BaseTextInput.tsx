@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   container_inner: {
-    width: "100%",
+    flex: 1,
     height: "100%",
     position: "relative",
   },
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     color: Color.lightGray,
   },
   textInput: {
-    width: "100%",
+    flex: 1,
     height: "100%",
     padding: 10,
     fontFamily: "sofia_regular",

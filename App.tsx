@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { StyleSheet, View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppFonts from "./src/constants/fonts";
 import AppNavigator from "./src/Navigators/AppNavigator";
@@ -16,11 +17,13 @@ export default function App() {
     return null;
   }
   return (
-    <NavigationContainer>
-      <SafeAreaView style={styles.container}>
-        <AppNavigator />
-      </SafeAreaView>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <SafeAreaView style={styles.container}>
+          <AppNavigator />
+        </SafeAreaView>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 
