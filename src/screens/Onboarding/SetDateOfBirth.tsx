@@ -11,10 +11,9 @@ import BaseText from "../../components/Text";
 type Props = NativeStackScreenProps<OnboardingStackParamList, "SetDateOfBirth">;
 const maxYear = new Date().getFullYear() - 18;
 const _helperText = "Must be up to 18 years old";
-console.log(maxYear);
 
 const SetState = ({ navigation }: Props) => {
-  const [DOB, setDOB] = useState("");
+  const [DOB, setDOB] = useState("12");
   const [errorText, setErrorText] = useState("");
   const displayedText = DOB.replace(/ |[\D]|/g, "").replace(
     /([\d]{2})-?([\d]{1,2})?-?([\d]{1,4})?/g,
@@ -44,7 +43,7 @@ const SetState = ({ navigation }: Props) => {
   const isError = !isTextFormatCorrect || Boolean(errorText);
 
   const handleButtonClick = () => {
-    navigation.goBack();
+    navigation.navigate("SignUp");
   };
 
   return (

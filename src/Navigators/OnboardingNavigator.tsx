@@ -10,6 +10,7 @@ import {
   LoginScreen,
   SetDateOfBirthScreen,
   SetStateScreen,
+  SignUpScreen,
 } from "../screens/Onboarding";
 import Color from "../constants/colors";
 import BaseText from "../components/Text";
@@ -39,6 +40,7 @@ const OnboardingNavigator = () => {
         <Screen name="SetState" component={SetStateScreen} />
       </Group>
       <Screen name="Login" component={LoginScreen} />
+      <Screen name="SignUp" component={SignUpScreen} />
     </Navigator>
   );
 };

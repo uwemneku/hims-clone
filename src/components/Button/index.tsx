@@ -7,6 +7,8 @@ import {
 } from "react-native";
 import React, { ComponentProps } from "react";
 import BaseText from "../Text";
+import Color from "../../constants/colors";
+import { getAccessibleColor } from "../../utils/inex";
 
 interface Props extends Omit<ComponentProps<typeof TouchableOpacity>, "style"> {
   label: string;
@@ -30,11 +32,11 @@ interface Props extends Omit<ComponentProps<typeof TouchableOpacity>, "style"> {
 const Button = ({
   label,
   variant = "filled",
-  color,
+  color = Color.black,
   style,
   ...props
 }: Props) => {
-  const textColor = variant === "filled" ? "black" : "white";
+  const textColor = variant === "filled" ? getAccessibleColor(color) : "white";
   const backgroundColor = variant === "filled" ? color : "transparent";
   const borderWidth = variant === "filled" ? 0 : 2;
   return (

@@ -33,6 +33,8 @@ interface Props extends ComponentProps<typeof TextInput> {
   isError?: boolean;
   helperText?: string;
 }
+let isFirstRender = false;
+const SMALL_FONT_SIZE = 5;
 
 const BaseTextInput = ({
   style,
@@ -66,7 +68,7 @@ const BaseTextInput = ({
 
   // animate placeholder to the top when text input is focused
   const handleTextInputFocus: textInputProps["onFocus"] = (e) => {
-    animatePlaceholder(5);
+    animatePlaceholder(SMALL_FONT_SIZE);
     if (onFocus) onFocus(e);
   };
 
@@ -77,9 +79,9 @@ const BaseTextInput = ({
       (HEIGHT + BORDER_WIDTH * 2) / 2 - e.nativeEvent.layout.height / 2.5;
     placeholderTop.value = calculatedPlaceholderTopValue.current;
 
-    // Animate the placeholder oif textInput has an initial value
-    // this is done here so the that accurate middle placement calculated before moving the placeholder to the top
-    if (value) animatePlaceholder(5);
+    // Animate the placeholder if textInput has an initial value
+    // this is done here so the that accurate middle placement is calculated before moving the placeholder to the top
+    if (value) animatePlaceholder(SMALL_FONT_SIZE);
 
     placeholderLayoutChangeCount.current++;
   };
@@ -96,6 +98,11 @@ const BaseTextInput = ({
     if (onBlur) onBlur(e);
   };
 
+  if (isFirstRender && value) {
+    animatePlaceholder(SMALL_FONT_SIZE);
+  }
+
+  isFirstRender = true;
   const animatedPlaceholderStyle = useAnimatedStyle(
     () => ({
       paddingTop: placeholderTop.value,
@@ -166,7 +173,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: HEIGHT,
     borderWidth: BORDER_WIDTH,
-
     flexDirection: "row",
     alignItems: "center",
   },

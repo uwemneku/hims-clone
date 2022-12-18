@@ -68,7 +68,7 @@ const GetStarted = ({ navigation, route }: Props) => {
           <Divider size="l" />
           <Button
             label="Get Started"
-            color="white"
+            color={Color.white}
             onPress={handleButtonPress("SetState")}
           />
           <Divider />
@@ -76,7 +76,7 @@ const GetStarted = ({ navigation, route }: Props) => {
             onPress={handleButtonPress("Login")}
             label="Login"
             variant="outlined"
-            color="white"
+            color={Color.white}
           />
         </Animated.View>
       </Animated.View>
