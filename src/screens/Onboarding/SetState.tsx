@@ -1,12 +1,5 @@
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-import BaseTextInput from "../../components/TextInput/BaseTextInput";
 import Button from "../../components/Button";
 import Color from "../../constants/colors";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -14,6 +7,7 @@ import { OnboardingStackParamList } from "../../types/Navigation";
 import BaseText from "../../components/Text";
 import DropDown from "../../components/Dropdown";
 import Divider from "../../components/Dividers";
+import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
 
 type Props = NativeStackScreenProps<OnboardingStackParamList, "SetState">;
 
@@ -40,7 +34,7 @@ const SetState = ({ navigation, route }: Props) => {
     );
   }
   return (
-    <View style={{ padding: 20 }}>
+    <ScreenWithHeading screenTitle="Get Started">
       <BaseText size="h1">Where do you currently call home ?</BaseText>
       <Divider size="l" />
       <BaseText size="small" color={Color.gray}>
@@ -61,7 +55,7 @@ const SetState = ({ navigation, route }: Props) => {
         label="Next"
         color={value ? Color.black : Color.gray}
       />
-    </View>
+    </ScreenWithHeading>
   );
 };
 

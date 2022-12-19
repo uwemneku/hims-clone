@@ -9,6 +9,7 @@ export type OnboardingStackParamList = {
   Login: undefined;
   SetNotifications: undefined;
   Start: undefined;
+  Notification: undefined;
 };
 export type AppParamList = {
   Onboarding: NavigatorScreenParams<OnboardingStackParamList>;

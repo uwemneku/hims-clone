@@ -6,6 +6,7 @@ import {
 } from "@react-navigation/native-stack";
 import { OnboardingStackParamList } from "../types/Navigation";
 import {
+  BookVisitScreen,
   GetStartedScreen,
   LoginScreen,
   SetDateOfBirthScreen,
@@ -30,17 +31,13 @@ const OnboardingNavigator = () => {
       initialRouteName="GetStarted"
     >
       <Screen name="GetStarted" component={GetStartedScreen} />
-      <Group
-        screenOptions={{
-          headerShown: true,
-          header: (props) => <Header {...props} />,
-        }}
-      >
+      <Group>
         <Screen name="SetDateOfBirth" component={SetDateOfBirthScreen} />
         <Screen name="SetState" component={SetStateScreen} />
       </Group>
       <Screen name="Login" component={LoginScreen} />
       <Screen name="SignUp" component={SignUpScreen} />
+      <Screen name="BookAVisit" component={BookVisitScreen} />
     </Navigator>
   );
 };

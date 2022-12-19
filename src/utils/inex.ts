@@ -24,7 +24,8 @@ const getRGBAobject = (color: string) => {
 };
 
 export const addOpacity = (color: Color, opacity: number) => {
+  "worklet"; // so it can be called in the UI thread
   return color.replace(/(rgb)([^)]*)([)])/g, (_, p1, p2, p3) => {
-    return `${p1}a${p2},${opacity}${p3}`;
+    return `${p1}a${p2},${opacity}${p3}`; //returns rgba format
   });
 };

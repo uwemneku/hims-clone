@@ -1,5 +1,5 @@
-import { Modal, Pressable, StyleSheet, View } from "react-native";
-import React, { useState, useRef } from "react";
+import { Pressable, StyleSheet, View } from "react-native";
+import React, { useState, useRef, ComponentProps } from "react";
 import BaseTextInput from "../TextInput/BaseTextInput";
 import Animated, {
   interpolate,
@@ -9,10 +9,9 @@ import Animated, {
 } from "react-native-reanimated";
 import { Entypo } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetRef } from "./BottomSheet";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import Color from "../../constants/colors";
 
-interface Props<T> {
+type P = Pick<ComponentProps<typeof BaseTextInput>, "isError" | "helperText">;
+interface Props<T> extends P {
   value?: string;
   data: T[];
   renderItem(item: T): JSX.Element;

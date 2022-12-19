@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import Button from "../../components/Button";
 import Color from "../../constants/colors";
@@ -16,6 +16,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { images } from "../../../assets";
 type Props = NativeStackScreenProps<OnboardingStackParamList, "GetStarted">;
+
 const GetStarted = ({ navigation, route }: Props) => {
   const opacity = useSharedValue(0);
 

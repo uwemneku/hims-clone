@@ -60,7 +60,7 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
     const gestureHandler = useAnimatedGestureHandler<
       PanGestureHandlerGestureEvent,
       {
-        start: number;
+        moveY: number;
         prev: number;
         isDownGestureActive: boolean;
         initY: number;
@@ -71,7 +71,7 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
           e.initY = marginTop.value;
         },
         onActive(_, e) {
-          const isScrollingDownwards = e?.start < _.y;
+          const isScrollingDownwards = e?.moveY < _.y;
           e.isDownGestureActive =
             isScrollingDownwards && scrollOffset.value === 0;
 
@@ -80,10 +80,10 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
           } else if (e.isDownGestureActive) {
             marginTop.value += _.translationY - e.prev || 0;
           } else {
-            e.prev = _.translationY;
+            e.prev = _.translationY; // save how far user has scrolled
           }
 
-          e.start = _.y;
+          e.moveY = _.y;
         },
         onEnd(_, e) {
           e.prev = 0;
@@ -122,7 +122,7 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
     }));
     function close() {
       marginTop.value = withTiming(
-        viewHeight.value,
+        viewHeight.value + 200,
         {
           duration: 250,
           easing: Easing.ease,
@@ -149,14 +149,13 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
           onPress={close}
           style={{
             flex: 1,
-            backgroundColor: Color.black,
-            opacity: 0.5,
+            backgroundColor: addOpacity(Color.black, 0.25),
           }}
         />
         <GestureHandlerRootView
           style={{
             height: "50%",
-            backgroundColor: addOpacity(Color.black, 0.5),
+            backgroundColor: addOpacity(Color.black, 0.25),
           }}
           onTouchStart={close}
         >

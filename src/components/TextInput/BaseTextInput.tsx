@@ -33,7 +33,7 @@ interface Props extends ComponentProps<typeof TextInput> {
   isError?: boolean;
   helperText?: string;
 }
-let isFirstRender = false;
+let hasRenderedOnce = false;
 const SMALL_FONT_SIZE = 5;
 
 const BaseTextInput = ({
@@ -98,17 +98,17 @@ const BaseTextInput = ({
     if (onBlur) onBlur(e);
   };
 
-  if (isFirstRender && value) {
+  if (hasRenderedOnce && value) {
     animatePlaceholder(SMALL_FONT_SIZE);
   }
 
-  isFirstRender = true;
+  hasRenderedOnce = true;
   const animatedPlaceholderStyle = useAnimatedStyle(
     () => ({
       paddingTop: placeholderTop.value,
       fontSize: interpolate(
         placeholderTop.value,
-        [5, calculatedPlaceholderTopValue.current],
+        [SMALL_FONT_SIZE, calculatedPlaceholderTopValue.current],
         [12, placeholderStyle?.fontSize || 14],
         Extrapolate.CLAMP
       ),
@@ -134,6 +134,7 @@ const BaseTextInput = ({
             <Animated.Text
               style={[styles.placeholder, animatedPlaceholderStyle]}
               onLayout={handleTextLayout}
+              allowFontScaling={false}
             >
               {placeholder}
             </Animated.Text>

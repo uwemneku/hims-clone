@@ -1,4 +1,3 @@
-import { StyleSheet, View } from "react-native";
 import React, { useState, useRef } from "react";
 import BaseTextInput from "../../components/TextInput/BaseTextInput";
 import Button from "../../components/Button";
@@ -7,6 +6,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { OnboardingStackParamList } from "../../types/Navigation";
 import Divider from "../../components/Dividers";
 import BaseText from "../../components/Text";
+import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
 
 type Props = NativeStackScreenProps<OnboardingStackParamList, "SetDateOfBirth">;
 const maxYear = new Date().getFullYear() - 18;
@@ -43,11 +43,11 @@ const SetState = ({ navigation }: Props) => {
   const isError = !isTextFormatCorrect || Boolean(errorText);
 
   const handleButtonClick = () => {
-    navigation.navigate("SignUp");
+    navigation.navigate("BookAVisit");
   };
 
   return (
-    <View style={{ padding: 20 }}>
+    <ScreenWithHeading screenTitle="Getting Started">
       <BaseText size="h1">When were you born?</BaseText>
       <Divider size="l" />
       <BaseTextInput
@@ -66,7 +66,7 @@ const SetState = ({ navigation }: Props) => {
         color={Color.black}
         style={{ text: { color: Color.white } }}
       />
-    </View>
+    </ScreenWithHeading>
   );
 };
 
