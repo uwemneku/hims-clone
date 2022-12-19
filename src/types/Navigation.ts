@@ -10,6 +10,10 @@ export type OnboardingStackParamList = {
   SetNotifications: undefined;
   Start: undefined;
 };
+export type StartingVisitStackParamList = {
+  welcome: undefined;
+};
 export type AppParamList = {
   Onboarding: NavigatorScreenParams<OnboardingStackParamList>;
+  StartingVisit: NavigatorScreenParams<StartingVisitStackParamList>;
 };

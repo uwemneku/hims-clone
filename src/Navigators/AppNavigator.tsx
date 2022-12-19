@@ -3,6 +3,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { AppParamList } from "../types/Navigation";
 import OnboardingNavigator from "./OnboardingNavigator";
+import StartVisitingNavigator from "./StartVisitingNavigator";
 const { Navigator, Screen } = createNativeStackNavigator<AppParamList>();
 const AppNavigator = () => {
   return (
@@ -11,6 +12,7 @@ const AppNavigator = () => {
       screenOptions={{ headerShown: false }}
     >
       <Screen name="Onboarding" component={OnboardingNavigator} />
+      <Screen name="StartingVisit" component={StartVisitingNavigator} />
     </Navigator>
   );
 };

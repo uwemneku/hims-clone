@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
+import React, { useEffect } from "react";
 import Button from "../../../components/Button";
 import Color from "../../../constants/colors";
 import Divider from "../../../components/Dividers";
@@ -9,19 +9,47 @@ import { addOpacity } from "../../../utils/inex";
 import NotificationAnimation from "./NotificationAnimation";
 import { requestPermissionsAsync } from "../../../utils/notifications";
 import { OnboardingScreenParams } from "../types";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import {
+  AppParamList,
+  OnboardingStackParamList,
+} from "../../../types/Navigation";
+import { CompositeScreenProps } from "@react-navigation/native";
+import ScreenWithHeading from "../../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
+import { ScrollView } from "react-native-gesture-handler";
 
-type Props = OnboardingScreenParams<"SetNotifications">;
+// type Props = OnboardingScreenParams<"SetNotifications">;
+
+type Props = CompositeScreenProps<
+  NativeStackScreenProps<AppParamList, "Onboarding">,
+  NativeStackScreenProps<OnboardingStackParamList, "SetNotifications">
+>;
 
 const SetNotifications = ({ navigation }: Props) => {
-  const navigateToStartVisit = () => navigation.navigate("Start");
+  const { height } = useWindowDimensions();
+  const navigateToStartVisit = () =>
+    navigation.navigate("StartingVisit", { screen: "welcome" });
   const handleAllowNotification = () => {
     requestPermissionsAsync().then(() => {
       navigateToStartVisit();
     });
   };
+
+  useEffect(() => {
+    const preventBackButton = (e: { preventDefault(): void }) => {
+      e.preventDefault();
+    };
+    navigation.addListener("beforeRemove", preventBackButton);
+    return () => {
+      navigation.removeListener("beforeRemove", preventBackButton);
+    };
+  }, []);
+
   return (
-    <View style={[styles.container]}>
-      <View style={{ flex: 1, position: "relative" }}>
+    <ScrollView style={styles.container}>
+      <View
+        style={{ height: Math.max(height * 0.7, 400), position: "relative" }}
+      >
         <LinearGradient
           style={styles.gradient}
           colors={["rgba(192,212,210,1)", "transparent"]}
@@ -56,7 +84,7 @@ const SetNotifications = ({ navigation }: Props) => {
           label={"Not right now"}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -67,7 +95,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   textContainer: {
-    marginBottom: "20%",
+    marginBottom: "10%",
   },
   gradient: {
     height: "100%",

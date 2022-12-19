@@ -22,11 +22,13 @@ interface Props extends ComponentProps<typeof View> {
   rightHeadingButton?: JSX.Element;
   screenTitle?: string;
   style?: ViewStyle;
+  hideBackButton?: boolean;
 }
 const ScreenWithHeading: FC<PropsWithChildren<Props>> = ({
   children,
   rightHeadingButton,
   screenTitle,
+  hideBackButton,
   style,
 }) => {
   const { top, bottom } = useSafeAreaInsets();
@@ -59,12 +61,14 @@ const ScreenWithHeading: FC<PropsWithChildren<Props>> = ({
       <Animated.View style={[animatedHeadingStyle, { paddingTop: top }]}>
         <View style={styles.header}>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              onPress={handleButtonPress}
-              style={[styles.button, animatedButtonStyle]}
-            >
-              <Ionicons name="arrow-back-sharp" size={20} color="black" />
-            </TouchableOpacity>
+            {!hideBackButton && (
+              <TouchableOpacity
+                onPress={handleButtonPress}
+                style={[styles.button, animatedButtonStyle]}
+              >
+                <Ionicons name="arrow-back-sharp" size={20} color="black" />
+              </TouchableOpacity>
+            )}
             {rightHeadingButton}
           </View>
           <BaseText fontWeight="sofia_bold">{screenTitle}</BaseText>

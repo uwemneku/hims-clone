@@ -21,6 +21,7 @@ const validationSchema = yup.object().shape({
   password: yup.string().required("This field is required"),
 });
 
+//TODO: move this to types
 type LoginFormValues = { email: string; password: string };
 
 const Login = () => {

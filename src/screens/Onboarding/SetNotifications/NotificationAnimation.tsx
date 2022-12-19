@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import Color from "../../../constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
@@ -13,7 +13,6 @@ import Animated, {
   withDelay,
   withTiming,
 } from "react-native-reanimated";
-import { useFocusEffect } from "@react-navigation/native";
 
 interface Props {
   delay: number;
@@ -28,7 +27,6 @@ const NotificationAnimation = ({ delay, endScale = 1 }: Props) => {
   );
 
   const animatedStyle = useAnimatedStyle(() => {
-    // const  = interpolate(progress.value, [0, 0.5], [0, 1], Extrapolate.CLAMP);
     return {
       transform: [
         {
@@ -55,7 +53,7 @@ const NotificationAnimation = ({ delay, endScale = 1 }: Props) => {
     <Animated.View style={[styles.container, animatedStyle]}>
       <LinearGradient
         style={styles.gradient}
-        colors={["rgba(0,0,0, 0.01)", "rgba(0,0,0, 0.05)"]}
+        colors={["rgba(0,0,0, 0)", "rgba(0,0,0, 0.05)"]}
       />
       <Animated.View style={[styles.box]}>
         <View style={styles.innnerBox}>
