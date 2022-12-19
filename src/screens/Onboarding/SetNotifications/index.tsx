@@ -5,11 +5,20 @@ import Color from "../../../constants/colors";
 import Divider from "../../../components/Dividers";
 import BaseText from "../../../components/Text";
 import { LinearGradient } from "expo-linear-gradient";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { addOpacity } from "../../../utils/inex";
+import NotificationAnimation from "./NotificationAnimation";
+import { requestPermissionsAsync } from "../../../utils/notifications";
+import { OnboardingScreenParams } from "../types";
 
-const SetNotifications = () => {
-  const { top } = useSafeAreaInsets();
+type Props = OnboardingScreenParams<"SetNotifications">;
+
+const SetNotifications = ({ navigation }: Props) => {
+  const navigateToStartVisit = () => navigation.navigate("Start");
+  const handleAllowNotification = () => {
+    requestPermissionsAsync().then(() => {
+      navigateToStartVisit();
+    });
+  };
   return (
     <View style={[styles.container]}>
       <View style={{ flex: 1, position: "relative" }}>
@@ -22,6 +31,10 @@ const SetNotifications = () => {
           style={styles.gradient}
           colors={["transparent", "white"]}
         />
+        <View style={styles.notifications}>
+          <NotificationAnimation delay={0} />
+          <NotificationAnimation endScale={0.9} delay={500} />
+        </View>
       </View>
       <View style={{ padding: 20 }}>
         <View style={styles.textContainer}>
@@ -32,9 +45,16 @@ const SetNotifications = () => {
             your DOC, or receive shipping updates
           </BaseText>
         </View>
-        <Button label={"Allow notifications"} />
+        <Button
+          onPress={handleAllowNotification}
+          label={"Allow notifications"}
+        />
         <Divider size="m" />
-        <Button color={Color.lightGray} label={"Not right now"} />
+        <Button
+          onPress={navigateToStartVisit}
+          color={Color.lightGray}
+          label={"Not right now"}
+        />
       </View>
     </View>
   );
@@ -45,7 +65,6 @@ export default SetNotifications;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // padding: 20,
   },
   textContainer: {
     marginBottom: "20%",
@@ -57,7 +76,7 @@ const styles = StyleSheet.create({
   },
   frame: {
     flex: 1,
-    marginHorizontal: 20,
+    marginHorizontal: "10%",
     marginTop: 60,
     borderWidth: 12,
     borderBottomWidth: 0,
@@ -65,5 +84,12 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 80,
     borderColor: addOpacity(Color.black, 0.25),
     backgroundColor: Color.white,
+  },
+  notifications: {
+    position: "absolute",
+    width: "100%",
+    top: "30%",
+    marginHorizontal: "8%",
+    alignSelf: "center",
   },
 });

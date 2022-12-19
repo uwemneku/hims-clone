@@ -3,8 +3,6 @@ import React from "react";
 import Button from "../../components/Button";
 import Color from "../../constants/colors";
 import Divider from "../../components/Dividers";
-import { OnboardingStackParamList } from "../../types/Navigation";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import InfiniteScrollWrapper from "../../components/infiniteScroll/Wrapper";
 import BaseText from "../../components/Text";
 import Animated, {
@@ -15,9 +13,11 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { images } from "../../../assets";
-type Props = NativeStackScreenProps<OnboardingStackParamList, "GetStarted">;
+import { OnboardingScreenParams } from "./types";
+import { OnboardingStackParamList } from "../../types/Navigation";
+type Props = OnboardingScreenParams<"GetStarted">;
 
-const GetStarted = ({ navigation, route }: Props) => {
+const GetStarted = ({ navigation }: Props) => {
   const opacity = useSharedValue(0);
 
   const animatedContainerStyle = useAnimatedStyle(

@@ -1,14 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import BaseTextInput from "../../components/TextInput/BaseTextInput";
 import Button from "../../components/Button";
 import Color from "../../constants/colors";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { OnboardingStackParamList } from "../../types/Navigation";
 import Divider from "../../components/Dividers";
 import BaseText from "../../components/Text";
 import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
+import { OnboardingScreenParams } from "./types";
 
-type Props = NativeStackScreenProps<OnboardingStackParamList, "SetDateOfBirth">;
+type Props = OnboardingScreenParams<"SetDateOfBirth">;
 const maxYear = new Date().getFullYear() - 18;
 const _helperText = "Must be up to 18 years old";
 

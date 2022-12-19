@@ -4,10 +4,9 @@ import ScreenWithHeading from "../../../components/layout/Wrappers/ScreenWithHea
 import BaseText from "../../../components/Text";
 import Color from "../../../constants/colors";
 import Sections, { SectionList } from "./Sections";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { OnboardingStackParamList } from "../../../types/Navigation";
+import { OnboardingScreenParams } from "../types";
 
-type Props = NativeStackScreenProps<OnboardingStackParamList, "BookAVisit">;
+type Props = OnboardingScreenParams<"BookAVisit">;
 
 const BookVisit = ({ navigation }: Props) => {
   const handleClick = (i: string) => navigation.navigate("SignUp");

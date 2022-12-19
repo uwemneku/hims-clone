@@ -8,8 +8,9 @@ import BaseText from "../../components/Text";
 import DropDown from "../../components/Dropdown";
 import Divider from "../../components/Dividers";
 import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
+import { OnboardingScreenParams } from "./types";
 
-type Props = NativeStackScreenProps<OnboardingStackParamList, "SetState">;
+type Props = OnboardingScreenParams<"SetState">;
 
 const SetState = ({ navigation, route }: Props) => {
   const [value, setValue] = useState("");
