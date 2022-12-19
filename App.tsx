@@ -19,9 +19,9 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
-        <SafeAreaView style={styles.container}>
+        {/* <SafeAreaView style={styles.container}> */}
           <AppNavigator />
-        </SafeAreaView>
+        {/* </SafeAreaView> */}
       </NavigationContainer>
     </GestureHandlerRootView>
   );

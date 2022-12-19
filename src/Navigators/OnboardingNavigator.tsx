@@ -6,6 +6,7 @@ import {
 } from "@react-navigation/native-stack";
 import { OnboardingStackParamList } from "../types/Navigation";
 import {
+  SetNotificationsScreen,
   BookVisitScreen,
   GetStartedScreen,
   LoginScreen,
@@ -38,6 +39,7 @@ const OnboardingNavigator = () => {
       <Screen name="Login" component={LoginScreen} />
       <Screen name="SignUp" component={SignUpScreen} />
       <Screen name="BookAVisit" component={BookVisitScreen} />
+      <Screen name="SetNotifications" component={SetNotificationsScreen} />
     </Navigator>
   );
 };

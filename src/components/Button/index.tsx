@@ -11,7 +11,7 @@ import Color from "../../constants/colors";
 import { getAccessibleColor } from "../../utils/inex";
 
 interface Props extends Omit<ComponentProps<typeof TouchableOpacity>, "style"> {
-  label: string;
+  label: string | JSX.Element;
   /**
    * @default "filled"
    */

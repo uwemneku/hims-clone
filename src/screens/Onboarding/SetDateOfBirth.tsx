@@ -13,7 +13,7 @@ const maxYear = new Date().getFullYear() - 18;
 const _helperText = "Must be up to 18 years old";
 
 const SetState = ({ navigation }: Props) => {
-  const [DOB, setDOB] = useState("12");
+  const [DOB, setDOB] = useState("");
   const [errorText, setErrorText] = useState("");
   const displayedText = DOB.replace(/ |[\D]|/g, "").replace(
     /([\d]{2})-?([\d]{1,2})?-?([\d]{1,4})?/g,

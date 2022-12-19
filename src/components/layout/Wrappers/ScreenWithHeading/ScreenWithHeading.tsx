@@ -16,6 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import BaseText from "../../../Text";
 import { addOpacity } from "../../../../utils/inex";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 const TouchableOpacity = Animated.createAnimatedComponent(_TouchableOpacity);
 interface Props extends ComponentProps<typeof View> {
   rightHeadingButton?: JSX.Element;
@@ -28,6 +29,7 @@ const ScreenWithHeading: FC<PropsWithChildren<Props>> = ({
   screenTitle,
   style,
 }) => {
+  const { top, bottom } = useSafeAreaInsets();
   const scrollOffset = useSharedValue(0);
   const navigation = useNavigation();
   const handleButtonPress = () => {
@@ -53,18 +55,20 @@ const ScreenWithHeading: FC<PropsWithChildren<Props>> = ({
     scrollOffset.value = nativeEvent.contentOffset.y;
   };
   return (
-    <View style={[styles.container, style]}>
-      <Animated.View style={[styles.header, animatedHeadingStyle]}>
-        <View style={styles._container}>
-          <TouchableOpacity
-            onPress={handleButtonPress}
-            style={[styles.button, animatedButtonStyle]}
-          >
-            <Ionicons name="arrow-back-sharp" size={20} color="black" />
-          </TouchableOpacity>
-          {rightHeadingButton}
+    <View style={[styles.container, style, { paddingBottom: bottom }]}>
+      <Animated.View style={[animatedHeadingStyle, { paddingTop: top }]}>
+        <View style={styles.header}>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={handleButtonPress}
+              style={[styles.button, animatedButtonStyle]}
+            >
+              <Ionicons name="arrow-back-sharp" size={20} color="black" />
+            </TouchableOpacity>
+            {rightHeadingButton}
+          </View>
+          <BaseText fontWeight="sofia_bold">{screenTitle}</BaseText>
         </View>
-        <BaseText fontWeight="sofia_bold">{screenTitle}</BaseText>
       </Animated.View>
       <ScrollView
         style={styles.scrollView}
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    backgroundColor: Color.white,
+    // backgroundColor: ,
     paddingVertical: 20,
     flexDirection: "row",
     alignItems: "center",
@@ -100,7 +104,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  _container: {
+  buttonContainer: {
     position: "absolute",
     flexDirection: "row",
     justifyContent: "space-between",

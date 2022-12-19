@@ -8,6 +8,7 @@ enum Color {
   purple = "rgb(117,80,118)",
   green = "rgb(120,144,95)",
   red = "rgb(255,0,0)",
+  brown = "rgb(163,124,94)",
 }
 
 export default Color;

@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import BaseTextInput from "../../../components/TextInput/BaseTextInput";
 import Divider from "../../../components/Dividers";
 import Button from "../../../components/Button";
@@ -11,6 +11,11 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import PasswordInput from "../../../components/TextInput/PasswordInput";
+import LoadingAnimation from "./LoadingAnimation";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { OnboardingStackParamList } from "../../../types/Navigation";
+
+type Props = NativeStackScreenProps<OnboardingStackParamList, "SignUp">;
 
 const validationSchema = yup.object().shape({
   email: yup.string().email().required("Email is required"),
@@ -31,9 +36,10 @@ type SignUpInfo = {
   acceptTerms: boolean;
 };
 
-const SignUp = () => {
-  const { values, setFieldValue, handleChange, errors } = useFormik<SignUpInfo>(
-    {
+const SignUp = ({ navigation }: Props) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const { values, setFieldValue, handleChange, errors, submitForm } =
+    useFormik<SignUpInfo>({
       validationSchema,
       initialValues: {
         email: "",
@@ -41,10 +47,15 @@ const SignUp = () => {
         password: "",
         acceptTerms: false,
       },
-      onSubmit() {},
-    }
-  );
+      onSubmit() {
+        setIsLoading(true);
+        setTimeout(() => {
+          navigation.navigate("SetNotifications");
+        }, 500);
+      },
+    });
   const onTermsClick = () => setFieldValue("acceptTerms", !values.acceptTerms);
+  const navigateToLogin = () => navigation.navigate("Login");
 
   return (
     <ScreenWithHeading screenTitle="Sign Up">
@@ -95,11 +106,16 @@ const SignUp = () => {
         </Text>
       </TouchableOpacity>
       <Divider size="xl" />
-      <Button color={Color.black} label="Create account" />
+      <Button
+        onPress={submitForm}
+        color={isLoading ? Color.gray : Color.black}
+        label={isLoading ? <LoadingAnimation /> : "Create account"}
+      />
       <Divider size="l" />
       <Button
+        onPress={navigateToLogin}
         color={Color.lightGray}
-        label="Already have an account? Sign in"
+        label={"Already have an account? Sign in"}
       />
     </ScreenWithHeading>
   );
