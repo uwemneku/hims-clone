@@ -8,6 +8,7 @@ interface Props extends ComponentProps<typeof Text> {
   style?: StyleProp<TextStyle>;
   align?: TextStyle["textAlign"];
   size?: keyof typeof sizes;
+  lineHeight?: number;
 }
 const BaseText = ({
   fontWeight = "sofia_regular",
@@ -15,6 +16,7 @@ const BaseText = ({
   style,
   size = "body",
   align = "left",
+  lineHeight,
   ...props
 }: Props) => {
   const isStyleArray = Array.isArray(style);
@@ -26,6 +28,7 @@ const BaseText = ({
           color,
           fontSize: sizes[size],
           textAlign: align,
+          lineHeight,
         },
         ...(isStyleArray ? style : []),
         !isStyleArray ? style : {},

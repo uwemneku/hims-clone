@@ -13,9 +13,11 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { images } from "../../../assets";
-import { OnboardingScreenParams } from "./types";
-import { OnboardingStackParamList } from "../../types/Navigation";
-type Props = OnboardingScreenParams<"GetStarted">;
+import {
+  OnboardingStackParamList,
+  OnboardingStackScreenProps,
+} from "../../types/Navigation";
+type Props = OnboardingStackScreenProps<"GetStarted">;
 
 const GetStarted = ({ navigation }: Props) => {
   const opacity = useSharedValue(0);
@@ -67,18 +69,20 @@ const GetStarted = ({ navigation }: Props) => {
             Get your personalized treatment plan
           </BaseText>
           <Divider size="l" />
-          <Button
-            label="Get Started"
-            color={Color.white}
-            onPress={handleButtonPress("SetState")}
-          />
-          <Divider />
-          <Button
-            onPress={handleButtonPress("Login")}
-            label="Login"
-            variant="outlined"
-            color={Color.white}
-          />
+          <View style={{ alignItems: "center" }}>
+            <Button
+              label="Get Started"
+              color={Color.white}
+              onPress={handleButtonPress("SetState")}
+            />
+            <Divider />
+            <Button
+              onPress={handleButtonPress("Login")}
+              label="Login"
+              variant="outlined"
+              color={Color.white}
+            />
+          </View>
         </Animated.View>
       </Animated.View>
     </>

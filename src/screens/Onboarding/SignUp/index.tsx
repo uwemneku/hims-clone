@@ -12,10 +12,9 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import PasswordInput from "../../../components/TextInput/PasswordInput";
 import LoadingAnimation from "./LoadingAnimation";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { OnboardingStackParamList } from "../../../types/Navigation";
+import { OnboardingStackScreenProps } from "../../../types/Navigation";
 
-type Props = NativeStackScreenProps<OnboardingStackParamList, "SignUp">;
+type Props = OnboardingStackScreenProps<"SignUp">;
 
 const validationSchema = yup.object().shape({
   email: yup.string().email().required("Email is required"),
@@ -85,38 +84,42 @@ const SignUp = ({ navigation }: Props) => {
         helperText={errors.confirm_password}
       />
       <Divider size="xl" />
-      <TouchableOpacity style={styles.terms} onPress={onTermsClick}>
-        <View
-          style={[
-            styles.button,
-            {
-              backgroundColor: values.acceptTerms ? Color.green : Color.white,
-              borderColor: errors.acceptTerms ? Color.red : Color.lightGray,
-            },
-          ]}
-        >
-          <AntDesign name="check" size={15} color={Color.white} />
-        </View>
-        <Divider dir="horizontal" size="xl" />
-        <Text style={{ flex: 1 }}>
-          <BaseText color={Color.darkGray}>I agree to the</BaseText>
-          <BaseText> Terms and Conditions </BaseText>
-          <BaseText color={Color.darkGray}> and </BaseText>
-          <BaseText>Telehealth Consent</BaseText>{" "}
-        </Text>
-      </TouchableOpacity>
-      <Divider size="xl" />
-      <Button
-        onPress={submitForm}
-        color={isLoading ? Color.gray : Color.black}
-        label={isLoading ? <LoadingAnimation /> : "Create account"}
-      />
-      <Divider size="l" />
-      <Button
-        onPress={navigateToLogin}
-        color={Color.lightGray}
-        label={"Already have an account? Sign in"}
-      />
+      <View style={{ alignItems: "center" }}>
+        <TouchableOpacity style={styles.terms} onPress={onTermsClick}>
+          <View
+            style={[
+              styles.button,
+              {
+                backgroundColor: values.acceptTerms ? Color.green : Color.white,
+                borderColor: errors.acceptTerms ? Color.red : Color.lightGray,
+              },
+            ]}
+          >
+            <AntDesign name="check" size={15} color={Color.white} />
+          </View>
+          <Divider dir="horizontal" size="xl" />
+
+          {/* flex shrink wraps the text in small screens */}
+          <Text style={{ flexShrink: 1 }}>
+            <BaseText color={Color.darkGray}>I agree to the</BaseText>
+            <BaseText> Terms and Conditions </BaseText>
+            <BaseText color={Color.darkGray}> and </BaseText>
+            <BaseText>Telehealth Consent</BaseText>
+          </Text>
+        </TouchableOpacity>
+        <Divider size="xl" />
+        <Button
+          onPress={submitForm}
+          color={isLoading ? Color.gray : Color.black}
+          label={isLoading ? <LoadingAnimation /> : "Create account"}
+        />
+        <Divider size="l" />
+        <Button
+          onPress={navigateToLogin}
+          color={Color.lightGray}
+          label={"Already have an account? Sign in"}
+        />
+      </View>
     </ScreenWithHeading>
   );
 };
@@ -130,6 +133,8 @@ const styles = StyleSheet.create({
   terms: {
     flexDirection: "row",
     alignItems: "center",
+    width: "100%",
+    justifyContent: "center",
   },
   button: {
     width: 25,

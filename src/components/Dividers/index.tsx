@@ -19,7 +19,7 @@ const SIZES: { [key in Required<Props>["size"]]: number } = {
   s: 10,
   m: 15,
   l: 20,
-  xl: 25,
+  xl: 30,
 };
 
 export default Divider;

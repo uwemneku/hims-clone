@@ -1,1 +1,9 @@
 export { default as StartVisitingWelcomeScreen } from "./Welcome";
+export { default as QuestionnaireIntroScreen } from "./QuestionnaireIntro";
+export { default as HowItWorksScreen } from "./HowItWorks";
+export { default as AnxietyQuestionScreen } from "./AnxietyQuestion";
+export { default as QuestionnaireResultScreen } from "./QuestionnaireResult";
+export { default as BiggerPictureScreen } from "./BiggerPicture";
+export { default as MedicalProfileIntroScreen } from "./MedicalProfileIntro";
+export { default as HistoryQuestionScreen } from "./HistoryQuestions";
+export { default as QuestionnaireScreenHeader } from "./components/QuestionnaireScreenHeader";

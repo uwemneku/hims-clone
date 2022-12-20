@@ -61,7 +61,7 @@ const NotificationAnimation = ({ delay, endScale = 1 }: Props) => {
             h
           </BaseText>
           <Divider dir="horizontal" />
-          <View>
+          <View style={{ flex: 1 }}>
             <BaseText size="h3">New message from Pete</BaseText>
             <BaseText size="body">Tap to open</BaseText>
           </View>
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   innnerBox: {
     flexDirection: "row",
     alignItems: "center",
+    flex: 1,
   },
   gradient: {
     position: "absolute",
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     backgroundColor: Color.lightGray,
-    alignSelf: "flex-start",
+    alignSelf: "center",
     width: 50,
     height: 50,
     textAlign: "center",

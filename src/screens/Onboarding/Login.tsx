@@ -1,9 +1,6 @@
-import { StyleSheet, View } from "react-native";
-import { useState } from "react";
+import { StyleSheet } from "react-native";
 import React from "react";
-import DropDown from "../../components/Dropdown";
 import BaseText from "../../components/Text";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
 import Divider from "../../components/Dividers";
 import PasswordInput from "../../components/TextInput/PasswordInput";
@@ -12,6 +9,7 @@ import Button from "../../components/Button";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Color from "../../constants/colors";
+import { OnboardingStackScreenProps } from "../../types/Navigation";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -23,8 +21,9 @@ const validationSchema = yup.object().shape({
 
 //TODO: move this to types
 type LoginFormValues = { email: string; password: string };
+type Props = OnboardingStackScreenProps<"Login">;
 
-const Login = () => {
+const Login = ({ navigation }: Props) => {
   const { errors, values, submitForm } = useFormik<LoginFormValues>({
     initialValues: { email: "", password: "" },
     validationSchema,

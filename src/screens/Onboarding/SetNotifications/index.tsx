@@ -8,22 +8,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import { addOpacity } from "../../../utils/inex";
 import NotificationAnimation from "./NotificationAnimation";
 import { requestPermissionsAsync } from "../../../utils/notifications";
-import { OnboardingScreenParams } from "../types";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import {
-  AppParamList,
-  OnboardingStackParamList,
-} from "../../../types/Navigation";
-import { CompositeScreenProps } from "@react-navigation/native";
-import ScreenWithHeading from "../../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
+import { OnboardingStackScreenProps } from "../../../types/Navigation";
 import { ScrollView } from "react-native-gesture-handler";
 
-// type Props = OnboardingScreenParams<"SetNotifications">;
-
-type Props = CompositeScreenProps<
-  NativeStackScreenProps<AppParamList, "Onboarding">,
-  NativeStackScreenProps<OnboardingStackParamList, "SetNotifications">
->;
+type Props = OnboardingStackScreenProps<"SetNotifications">;
 
 const SetNotifications = ({ navigation }: Props) => {
   const { height } = useWindowDimensions();
@@ -48,7 +36,11 @@ const SetNotifications = ({ navigation }: Props) => {
   return (
     <ScrollView style={styles.container}>
       <View
-        style={{ height: Math.max(height * 0.7, 400), position: "relative" }}
+        style={{
+          height: Math.max(height * 0.65, 400),
+          position: "relative",
+          minHeight: 500,
+        }}
       >
         <LinearGradient
           style={styles.gradient}
@@ -96,6 +88,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     marginBottom: "10%",
+    flex: 1,
   },
   gradient: {
     height: "100%",

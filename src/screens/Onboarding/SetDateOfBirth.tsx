@@ -5,9 +5,9 @@ import Color from "../../constants/colors";
 import Divider from "../../components/Dividers";
 import BaseText from "../../components/Text";
 import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
-import { OnboardingScreenParams } from "./types";
+import { OnboardingStackScreenProps } from "../../types/Navigation";
 
-type Props = OnboardingScreenParams<"SetDateOfBirth">;
+type Props = OnboardingStackScreenProps<"SetDateOfBirth">;
 const maxYear = new Date().getFullYear() - 18;
 const _helperText = "Must be up to 18 years old";
 
@@ -60,6 +60,7 @@ const SetState = ({ navigation }: Props) => {
       />
       <Divider size="l" />
       <Button
+        centerButton
         onPress={handleButtonClick}
         label="Next"
         color={Color.black}

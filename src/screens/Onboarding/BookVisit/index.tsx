@@ -4,9 +4,9 @@ import ScreenWithHeading from "../../../components/layout/Wrappers/ScreenWithHea
 import BaseText from "../../../components/Text";
 import Color from "../../../constants/colors";
 import Sections from "./Sections";
-import { OnboardingScreenParams } from "../types";
 import { data } from "./data";
-type Props = OnboardingScreenParams<"BookAVisit">;
+import { OnboardingStackScreenProps } from "../../../types/Navigation";
+type Props = OnboardingStackScreenProps<"BookAVisit">;
 
 const BookVisit = ({ navigation }: Props) => {
   const handleClick = (i: string) => navigation.navigate("SignUp");

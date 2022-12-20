@@ -27,6 +27,7 @@ interface Props extends Omit<ComponentProps<typeof TouchableOpacity>, "style"> {
      */
     text?: TextStyle;
   };
+  centerButton?: boolean;
 }
 
 const Button = ({
@@ -34,6 +35,7 @@ const Button = ({
   variant = "filled",
   color = Color.black,
   style,
+  centerButton = true,
   ...props
 }: Props) => {
   const textColor = variant === "filled" ? getAccessibleColor(color) : "white";
@@ -43,7 +45,12 @@ const Button = ({
     <TouchableOpacity
       style={[
         styles.container,
-        { borderColor: color, backgroundColor, borderWidth },
+        {
+          borderColor: color,
+          backgroundColor,
+          borderWidth,
+          alignSelf: centerButton ? "center" : "auto",
+        },
         style?.button,
       ]}
       {...props}
@@ -64,6 +71,7 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 2,
     width: "100%",
+    maxWidth: 500,
     borderRadius: 50,
     padding: 20,
     justifyContent: "center",

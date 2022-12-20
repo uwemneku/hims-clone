@@ -2,15 +2,13 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Color from "../../constants/colors";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { OnboardingStackParamList } from "../../types/Navigation";
 import BaseText from "../../components/Text";
 import DropDown from "../../components/Dropdown";
 import Divider from "../../components/Dividers";
 import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
-import { OnboardingScreenParams } from "./types";
+import { OnboardingStackScreenProps } from "../../types/Navigation";
 
-type Props = OnboardingScreenParams<"SetState">;
+type Props = OnboardingStackScreenProps<"SetState">;
 
 const SetState = ({ navigation, route }: Props) => {
   const [value, setValue] = useState("");
@@ -52,6 +50,7 @@ const SetState = ({ navigation, route }: Props) => {
       />
       <Divider size="xl" />
       <Button
+        centerButton
         onPress={handleButtonClick}
         label="Next"
         color={value ? Color.black : Color.gray}
