@@ -11,6 +11,8 @@ import {
   BiggerPictureScreen,
   HistoryQuestionScreen,
   HowItWorksScreen,
+  LifeStyleIntroScreen,
+  LifeStyleQuestionsScreen,
   MedicalProfileIntroScreen,
   QuestionnaireIntroScreen,
   QuestionnaireResultScreen,
@@ -56,6 +58,11 @@ const StartVisitingNavigator = () => {
           <Screen
             name="MedicalProfileIntro"
             component={MedicalProfileIntroScreen}
+          />
+          <Screen name="LifeStyleIntro" component={LifeStyleIntroScreen} />
+          <Screen
+            name="LifeStyleQuestion"
+            component={LifeStyleQuestionsScreen}
           />
           <Screen
             name="QuestionnaireResult"

@@ -30,7 +30,8 @@ export type StartingVisitStackParamList = {
   MedicalProfileIntro: undefined;
   HistoryQuestion: undefined;
   LifeStyleIntro: undefined;
-  LifeStyleQuestion_SMOKE: undefined;
+  LifeStyleQuestion: undefined;
+  ContactIntro: undefined;
 };
 
 //TODO: delete this if not used

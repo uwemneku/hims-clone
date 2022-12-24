@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import React from "react";
-import QuestionnaireProfile from "./components/QuestionnaireProfile";
-import { StartingVisitStackScreenProps } from "../../types/Navigation";
+import QuestionnaireProfile from "../components/QuestionnaireProfile";
+import { StartingVisitStackScreenProps } from "../../../types/Navigation";
 
 type Props = StartingVisitStackScreenProps<"MedicalProfileIntro">;
 const MedicalProfileIntro = ({ navigation }: Props) => {

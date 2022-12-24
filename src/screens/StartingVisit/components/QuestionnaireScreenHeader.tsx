@@ -64,6 +64,8 @@ const screens: Record<keyof StartingVisitStackParamList, number> = {
   BiggerPicture: 5,
   MedicalProfileIntro: 6,
   HistoryQuestion: 7,
+  LifeStyleIntro: 8,
+  LifeStyleQuestion: 9,
 };
 const totalScreens = Object.keys(screens).length;
 

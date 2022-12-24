@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import MultiQuestionLayout from "./components/MultiQuestionLayout";
+import QuestionWithOptions from "./components/QuestionLayout/QuestionWithOptions";
 import { StartingVisitStackScreenProps } from "../../types/Navigation";
 
 type Props = StartingVisitStackScreenProps<"AnxietyQuestion">;
 const AnxietyQuestion = ({ navigation }: Props) => {
   const handleOptionClick = () => navigation.navigate("QuestionnaireResult");
   return (
-    <MultiQuestionLayout
+    <QuestionWithOptions
       stage="Anxiety & Depression Symptoms"
       question=" Over the last 2 weeks, how often have you been bothered by little
       interest or pleasure in doing things?"
