@@ -132,7 +132,11 @@ const BaseTextInput = ({
         <View style={styles.container_inner}>
           {placeholder && (
             <Animated.Text
-              style={[styles.placeholder, animatedPlaceholderStyle]}
+              style={[
+                styles.placeholder,
+                placeholderStyle,
+                animatedPlaceholderStyle,
+              ]}
               onLayout={handleTextLayout}
               allowFontScaling={false}
             >

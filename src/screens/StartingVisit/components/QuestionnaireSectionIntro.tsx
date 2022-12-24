@@ -6,7 +6,7 @@ import Divider from "../../../components/Dividers";
 import QuestionnaireGradientText from "./QuestionnaireGradientText";
 import { LinearGradient } from "expo-linear-gradient";
 import Button from "../../../components/Button";
-import QuestionLayoutWithScrollView from "./QuestionLayoutWithScrollView";
+import QuestionnaireLayoutWithScrollView from "./QuestionLayoutWithScrollView";
 
 interface Props {
   // mode: "history" | "lifestyle" | "contact";
@@ -16,7 +16,7 @@ interface Props {
   onButtonClick(): void;
 }
 
-const QuestionnaireProfile = ({
+const QuestionnaireSectionIntro = ({
   mode,
   details,
   title,
@@ -25,7 +25,7 @@ const QuestionnaireProfile = ({
   const currentIndex = stages.indexOf(mode);
 
   return (
-    <QuestionLayoutWithScrollView>
+    <QuestionnaireLayoutWithScrollView>
       <View>
         <BaseText align="center" size="h1">
           {title}
@@ -64,12 +64,12 @@ const QuestionnaireProfile = ({
       </View>
       <Divider size="m" />
       <Button onPress={onButtonClick} label="Continue" />
-    </QuestionLayoutWithScrollView>
+    </QuestionnaireLayoutWithScrollView>
   );
 };
 const stages = ["HISTORY", "LIFESTYLE", "CONTACT"] as const;
 
-export default QuestionnaireProfile;
+export default QuestionnaireSectionIntro;
 
 const styles = StyleSheet.create({
   circle: {

@@ -1,16 +1,18 @@
 import { BackHandler } from "react-native";
 import React, { ComponentProps, useCallback, useRef, useState } from "react";
-import QuestionWithOptions from "./QuestionLayout/QuestionWithOptions";
+import QuestionWithOptions from "./QuestionWithOptions";
 import { useFocusEffect } from "@react-navigation/native";
+import { MultiStepQuestion } from "./types";
+import Animated, {
+  FadeOut,
+  SlideInDown,
+  SlideInUp,
+} from "react-native-reanimated";
 
 interface Props {
   stage: ComponentProps<typeof QuestionWithOptions>["stage"];
   onRequestNextScreen(answers: Record<number, string>): void;
-  allQuestions: {
-    question: string;
-    details?: string;
-    options: string[];
-  }[];
+  allQuestions: MultiStepQuestion[];
 }
 const MultiStepQuestionScreen = ({
   onRequestNextScreen,
@@ -18,7 +20,11 @@ const MultiStepQuestionScreen = ({
   stage,
 }: Props) => {
   const [currentNumber, setNumberQuestion] = useState(0);
+  const prev = useRef(currentNumber);
   const answers = useRef<Record<number, string>>({});
+
+  const isNext = currentNumber >= prev.current;
+  prev.current = currentNumber;
 
   const isFirstQuestion = currentNumber === 0;
   const isLastQuestion = currentNumber === allQuestions.length - 1;
@@ -53,16 +59,26 @@ const MultiStepQuestionScreen = ({
       };
     }, [isFirstQuestion])
   );
+  if (allQuestions.length === 0) return null;
 
   return (
-    <QuestionWithOptions
-      stage={stage}
-      onSelect={handleSelect}
-      options={currentQuestion.options}
-      key={currentQuestion.question}
-      question={currentQuestion.question}
-      details={currentQuestion.details}
-    />
+    <Animated.View
+      style={{ flex: 1 }}
+      entering={isNext ? SlideInDown : SlideInUp}
+      exiting={FadeOut}
+      key={currentNumber}
+    >
+      <QuestionWithOptions
+        stage={stage}
+        onSelect={handleSelect}
+        key={currentQuestion.question}
+        question={currentQuestion.question}
+        details={currentQuestion.details}
+        {...(currentQuestion.mode === "options"
+          ? { options: currentQuestion.options, mode: "options" }
+          : { placeHolder: currentQuestion.placeHolder, mode: "textInput" })}
+      />
+    </Animated.View>
   );
 };
 

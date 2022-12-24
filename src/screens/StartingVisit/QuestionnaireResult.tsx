@@ -3,7 +3,7 @@ import React from "react";
 import BaseText from "../../components/Text";
 import Button from "../../components/Button";
 import Color from "../../constants/colors";
-import QuestionLayoutWithScrollView from "./components/QuestionLayoutWithScrollView";
+import QuestionnaireLayoutWithScrollView from "./components/QuestionLayoutWithScrollView";
 import QuestionnaireGradientText from "./components/QuestionnaireGradientText";
 import Divider from "../../components/Dividers";
 import { StartingVisitStackScreenProps } from "../../types/Navigation";
@@ -13,7 +13,7 @@ type Props = StartingVisitStackScreenProps<"QuestionnaireResult">;
 const QuestionnaireResult = ({ navigation }: Props) => {
   const handleButtonClick = () => navigation.navigate("BiggerPicture");
   return (
-    <QuestionLayoutWithScrollView>
+    <QuestionnaireLayoutWithScrollView>
       <QuestionnaireGradientText size="small">
         Questionnaire
       </QuestionnaireGradientText>
@@ -57,7 +57,7 @@ const QuestionnaireResult = ({ navigation }: Props) => {
         color={Color.lightGray}
       />
       <Divider size="xl" />
-    </QuestionLayoutWithScrollView>
+    </QuestionnaireLayoutWithScrollView>
   );
 };
 

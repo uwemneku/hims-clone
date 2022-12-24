@@ -25,9 +25,7 @@ const GradientText = ({ height, children, colors, textSize }: Props) => {
               alignItems: "center",
             }}
           >
-            <BaseText align="center" size={textSize}>
-              {children}
-            </BaseText>
+            <BaseText size={textSize}>{children}</BaseText>
           </View>
         }
       >

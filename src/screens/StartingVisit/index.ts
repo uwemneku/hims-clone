@@ -4,6 +4,10 @@ export { default as HowItWorksScreen } from "./HowItWorks";
 export { default as AnxietyQuestionScreen } from "./AnxietyQuestion";
 export { default as QuestionnaireResultScreen } from "./QuestionnaireResult";
 export { default as BiggerPictureScreen } from "./BiggerPicture";
+
+export { default as QuestionnaireScreenHeader } from "./components/QuestionnaireScreenHeader";
+
 export * from "./MedicalHistory";
 export * from "./LifeStyle";
-export { default as QuestionnaireScreenHeader } from "./components/QuestionnaireScreenHeader";
+export * from "./Contact";
+export * from "./TreatmentPlan";

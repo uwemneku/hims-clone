@@ -9,6 +9,9 @@ import { StartingVisitStackParamList } from "../types/Navigation";
 import {
   AnxietyQuestionScreen,
   BiggerPictureScreen,
+  ContactIntroScreen,
+  ContactQuestionsScreen,
+  EmergencyContactDetailsScreen,
   HistoryQuestionScreen,
   HowItWorksScreen,
   LifeStyleIntroScreen,
@@ -18,6 +21,7 @@ import {
   QuestionnaireResultScreen,
   QuestionnaireScreenHeader,
   StartVisitingWelcomeScreen,
+  TreatmentPlanIntroScreen,
 } from "../screens/StartingVisit";
 
 const { Navigator, Screen, Group } =
@@ -53,6 +57,10 @@ const StartVisitingNavigator = () => {
           />
           <Screen name="HowItWorks" component={HowItWorksScreen} />
           <Screen name="AnxietyQuestion" component={AnxietyQuestionScreen} />
+          <Screen
+            name="QuestionnaireResult"
+            component={QuestionnaireResultScreen}
+          />
           <Screen name="BiggerPicture" component={BiggerPictureScreen} />
           <Screen name="HistoryQuestion" component={HistoryQuestionScreen} />
           <Screen
@@ -64,10 +72,13 @@ const StartVisitingNavigator = () => {
             name="LifeStyleQuestion"
             component={LifeStyleQuestionsScreen}
           />
+          <Screen name="ContactIntro" component={ContactIntroScreen} />
+          <Screen name="ContactQuestion" component={ContactQuestionsScreen} />
           <Screen
-            name="QuestionnaireResult"
-            component={QuestionnaireResultScreen}
+            name="EmergencyContactDetailsScreen"
+            component={EmergencyContactDetailsScreen}
           />
+          <Screen name="TreatmentPlan" component={TreatmentPlanIntroScreen} />
         </Group>
       </Navigator>
     </View>

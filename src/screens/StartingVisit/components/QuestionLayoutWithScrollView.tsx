@@ -4,13 +4,13 @@ import {
   View,
   ScrollView,
 } from "react-native";
-import React, { FC, ComponentPropsWithRef, useRef } from "react";
+import React, { ComponentPropsWithRef } from "react";
 
 type Props = Omit<
   ComponentPropsWithRef<typeof ScrollView>,
   "showsVerticalScrollIndicator" | "contentContainerStyle" | "style"
 >;
-const QuestionLayoutWithScrollView = React.forwardRef(
+const QuestionnaireLayoutWithScrollView = React.forwardRef(
   ({ children, ...props }: Props, ref) => {
     const { height } = useWindowDimensions();
     return (
@@ -30,7 +30,7 @@ const QuestionLayoutWithScrollView = React.forwardRef(
   }
 );
 
-export default QuestionLayoutWithScrollView;
+export default QuestionnaireLayoutWithScrollView;
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignSelf: "center", maxWidth: 500 },

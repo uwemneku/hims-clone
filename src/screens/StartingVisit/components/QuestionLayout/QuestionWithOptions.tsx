@@ -5,37 +5,38 @@ import BaseText from "../../../../components/Text";
 import Color from "../../../../constants/colors";
 import { useRef } from "react";
 import BaseQuestionLayout from "./BaseQuestionLayout";
+import BaseTextInput from "../../../../components/TextInput/BaseTextInput";
+import { OptionsVariant, TextVariant } from "./types";
 
-interface Props
-  extends Omit<ComponentProps<typeof BaseQuestionLayout>, "children"> {
-  options: string[];
+type Props = Omit<ComponentProps<typeof BaseQuestionLayout>, "children"> & {
   onSelect(item: string): void;
-}
+} & (OptionsVariant | TextVariant);
 
-const QuestionWithOptions = ({
-  onSelect,
-  options,
-  details,
-  question,
-  stage,
-}: Props) => {
+const QuestionWithOptions = (props: Props) => {
+  const { mode, onSelect, question, stage, details } = props;
   const ref = useRef<ScrollView>(null);
   ref.current?.scrollTo({ y: 0 });
   return (
     <BaseQuestionLayout question={question} stage={stage} details={details}>
       <View>
-        {options.map((i) => {
-          const handleClick = () => onSelect(i);
-          return (
-            <TouchableOpacity
-              onPress={handleClick}
-              key={i}
-              style={styles.options}
-            >
-              <BaseText>{i}</BaseText>
-            </TouchableOpacity>
-          );
-        })}
+        {mode === "options" ? (
+          <>
+            {props.options.map((i) => {
+              const handleClick = () => onSelect(i);
+              return (
+                <TouchableOpacity
+                  onPress={handleClick}
+                  key={i}
+                  style={styles.options}
+                >
+                  <BaseText>{i}</BaseText>
+                </TouchableOpacity>
+              );
+            })}
+          </>
+        ) : (
+          <BaseTextInput placeholderStyle={{ textAlign: "center" }} />
+        )}
       </View>
     </BaseQuestionLayout>
   );

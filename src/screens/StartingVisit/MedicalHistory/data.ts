@@ -1,27 +1,6 @@
-import React from "react";
-import { StartingVisitStackScreenProps } from "../../../types/Navigation";
-import MultiStepQuestionScreen from "../components/MultiStepQuestionScreen";
+import { MultiStepQuestion } from "../components/QuestionLayout/types";
 
-type Props = StartingVisitStackScreenProps<"HistoryQuestion">;
-const HistoryQuestion = ({ navigation }: Props) => {
-  const handleSelect = () => {
-    navigation.navigate("LifeStyleIntro");
-  };
-
-  return (
-    <MultiStepQuestionScreen
-      stage="History"
-      allQuestions={historyQuestion}
-      onRequestNextScreen={handleSelect}
-    />
-  );
-};
-
-const historyQuestion: {
-  question: string;
-  details?: string;
-  options: string[];
-}[] = [
+export const historyQuestion: MultiStepQuestion[] = [
   {
     question:
       "Which of the following best describes why you are seeking service today?",
@@ -36,11 +15,13 @@ const historyQuestion: {
       "Other",
       "I'm not sure",
     ],
+    mode: "options",
   },
   {
     question: "Do you currently have any desire to harm yourself or others",
     details: "",
     options: ["Yes", "No"],
+    mode: "options",
   },
   {
     question: "What is your gender?",
@@ -54,11 +35,13 @@ const historyQuestion: {
       "Genderqueer/non-binary",
       "Agender",
     ],
+    mode: "options",
   },
   {
     question: "What was your sex assigned at birth?",
     details: "For example, on your original birth certificate.",
     options: ["Male", "Female"],
+    mode: "options",
   },
   {
     question:
@@ -73,11 +56,12 @@ const historyQuestion: {
       "Liver disease",
       "Migraines",
     ],
+    mode: "options",
   },
   {
     question:
       "Do you have any allergies to medication, dyes, food, or anything else ?",
     options: ["Yes", "No"],
+    mode: "options",
   },
 ];
-export default HistoryQuestion;

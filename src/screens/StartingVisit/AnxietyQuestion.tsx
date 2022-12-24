@@ -8,6 +8,7 @@ const AnxietyQuestion = ({ navigation }: Props) => {
   const handleOptionClick = () => navigation.navigate("QuestionnaireResult");
   return (
     <QuestionWithOptions
+      mode="options"
       stage="Anxiety & Depression Symptoms"
       question=" Over the last 2 weeks, how often have you been bothered by little
       interest or pleasure in doing things?"

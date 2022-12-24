@@ -57,6 +57,7 @@ const QuestionnaireScreenHeader = ({
 };
 
 const screens: Record<keyof StartingVisitStackParamList, number> = {
+  welcome: 0,
   QuestionnaireIntro: 1,
   HowItWorks: 2,
   AnxietyQuestion: 3,
@@ -66,6 +67,10 @@ const screens: Record<keyof StartingVisitStackParamList, number> = {
   HistoryQuestion: 7,
   LifeStyleIntro: 8,
   LifeStyleQuestion: 9,
+  ContactIntro: 10,
+  ContactQuestion: 11,
+  EmergencyContactDetailsScreen: 12,
+  TreatmentPlan: 13,
 };
 const totalScreens = Object.keys(screens).length;
 

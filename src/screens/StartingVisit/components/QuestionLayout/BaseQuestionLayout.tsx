@@ -3,7 +3,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import BaseText from "../../../../components/Text";
 import Color from "../../../../constants/colors";
 import Divider from "../../../../components/Dividers";
-import QuestionLayoutWithScrollView from "../QuestionLayoutWithScrollView";
+import QuestionnaireLayoutWithScrollView from "../QuestionLayoutWithScrollView";
 import QuestionnaireGradientText from "../QuestionnaireGradientText";
 import { useRef } from "react";
 
@@ -23,7 +23,7 @@ const BaseQuestionLayout = ({
   const ref = useRef<ScrollView>(null);
   ref.current?.scrollTo({ y: 0 });
   return (
-    <QuestionLayoutWithScrollView ref={ref}>
+    <QuestionnaireLayoutWithScrollView ref={ref}>
       <QuestionnaireGradientText size="small">
         {stage}
       </QuestionnaireGradientText>
@@ -41,7 +41,7 @@ const BaseQuestionLayout = ({
       )}
       <Divider size="xl" />
       {children}
-    </QuestionLayoutWithScrollView>
+    </QuestionnaireLayoutWithScrollView>
   );
 };
 

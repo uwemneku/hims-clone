@@ -4,7 +4,10 @@ import { Svg, LinearGradient, Defs, Circle, Stop } from "react-native-svg";
 import SpinningView from "../../../components/Animations/SpinningView";
 import BaseText from "../../../components/Text";
 import Color from "../../../constants/colors";
-const LoadingAnimation = () => {
+interface Props {
+  title: string;
+}
+const LoadingAnimation = ({ title }: Props) => {
   return (
     <View style={styles.container}>
       <SpinningView>
@@ -27,7 +30,7 @@ const LoadingAnimation = () => {
         </Svg>
       </SpinningView>
       <BaseText size="small" color={Color.gray}>
-        Loading Your Consultation
+        {title}
       </BaseText>
     </View>
   );

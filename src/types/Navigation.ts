@@ -25,13 +25,16 @@ export type StartingVisitStackParamList = {
   HowItWorks: undefined;
   AnxietyQuestion: undefined;
   QuestionnaireResult: undefined;
-  UnderstandingResults: undefined;
   BiggerPicture: undefined;
   MedicalProfileIntro: undefined;
   HistoryQuestion: undefined;
   LifeStyleIntro: undefined;
   LifeStyleQuestion: undefined;
   ContactIntro: undefined;
+  ContactQuestion: undefined;
+  EmergencyContactDetailsScreen: undefined;
+  TreatmentPlan: undefined;
+  // AccountAdress
 };
 
 //TODO: delete this if not used

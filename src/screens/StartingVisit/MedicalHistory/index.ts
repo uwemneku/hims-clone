@@ -1,2 +1,2 @@
-export { default as MedicalProfileIntroScreen } from "./MedicalProfileIntro";
-export { default as HistoryQuestionScreen } from "./HistoryQuestion";
+export { default as MedicalProfileIntroScreen } from "./Intro";
+export { default as HistoryQuestionScreen } from "./Question";
