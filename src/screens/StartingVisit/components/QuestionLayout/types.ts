@@ -9,4 +9,5 @@ export type TextVariant = {
 export type MultiStepQuestion = {
   question: string;
   details?: string;
-} & (OptionsVariant | TextVariant);
+  options: string[];
+};

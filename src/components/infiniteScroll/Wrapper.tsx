@@ -15,7 +15,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import Color from "../../constants/colors";
-import { images } from "../../../assets";
+import { images } from "../../constants/images";
 
 interface Props {
   /**

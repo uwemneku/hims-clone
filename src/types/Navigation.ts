@@ -34,7 +34,9 @@ export type StartingVisitStackParamList = {
   ContactQuestion: undefined;
   EmergencyContactDetailsScreen: undefined;
   TreatmentPlan: undefined;
-  // AccountAdress
+  AddressDetails: undefined;
+  ConfirmAddressDetails: undefined;
+  PaymentDetails: undefined;
 };
 
 //TODO: delete this if not used

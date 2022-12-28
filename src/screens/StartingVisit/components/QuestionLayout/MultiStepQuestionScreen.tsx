@@ -69,14 +69,13 @@ const MultiStepQuestionScreen = ({
       key={currentNumber}
     >
       <QuestionWithOptions
+        mode="options"
         stage={stage}
         onSelect={handleSelect}
         key={currentQuestion.question}
         question={currentQuestion.question}
         details={currentQuestion.details}
-        {...(currentQuestion.mode === "options"
-          ? { options: currentQuestion.options, mode: "options" }
-          : { placeHolder: currentQuestion.placeHolder, mode: "textInput" })}
+        options={currentQuestion.options}
       />
     </Animated.View>
   );

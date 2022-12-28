@@ -4,7 +4,7 @@ import BaseText from "../../components/Text";
 import Button from "../../components/Button";
 import IntroScreenLayout from "./components/IntroScreenLayout";
 import Color from "../../constants/colors";
-import { images } from "../../../assets";
+import { images } from "../../constants/images";
 import Divider from "../../components/Dividers";
 import { addOpacity } from "../../utils/inex";
 import { StartingVisitStackScreenProps } from "../../types/Navigation";

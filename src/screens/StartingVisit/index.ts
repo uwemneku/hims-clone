@@ -11,3 +11,4 @@ export * from "./MedicalHistory";
 export * from "./LifeStyle";
 export * from "./Contact";
 export * from "./TreatmentPlan";
+export * from "./Address";

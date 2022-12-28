@@ -15,13 +15,11 @@ export const historyQuestion: MultiStepQuestion[] = [
       "Other",
       "I'm not sure",
     ],
-    mode: "options",
   },
   {
     question: "Do you currently have any desire to harm yourself or others",
     details: "",
     options: ["Yes", "No"],
-    mode: "options",
   },
   {
     question: "What is your gender?",
@@ -35,13 +33,11 @@ export const historyQuestion: MultiStepQuestion[] = [
       "Genderqueer/non-binary",
       "Agender",
     ],
-    mode: "options",
   },
   {
     question: "What was your sex assigned at birth?",
     details: "For example, on your original birth certificate.",
     options: ["Male", "Female"],
-    mode: "options",
   },
   {
     question:
@@ -56,12 +52,10 @@ export const historyQuestion: MultiStepQuestion[] = [
       "Liver disease",
       "Migraines",
     ],
-    mode: "options",
   },
   {
     question:
       "Do you have any allergies to medication, dyes, food, or anything else ?",
     options: ["Yes", "No"],
-    mode: "options",
   },
 ];

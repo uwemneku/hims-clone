@@ -7,6 +7,7 @@ import {
 import { useSharedValue } from "react-native-reanimated";
 import { StartingVisitStackParamList } from "../types/Navigation";
 import {
+  AddressDetailsScreen,
   AnxietyQuestionScreen,
   BiggerPictureScreen,
   ContactIntroScreen,
@@ -79,6 +80,7 @@ const StartVisitingNavigator = () => {
             component={EmergencyContactDetailsScreen}
           />
           <Screen name="TreatmentPlan" component={TreatmentPlanIntroScreen} />
+          <Screen name="AddressDetails" component={AddressDetailsScreen} />
         </Group>
       </Navigator>
     </View>

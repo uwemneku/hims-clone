@@ -5,9 +5,9 @@ import Button from "../../../components/Button";
 import BaseText from "../../../components/Text";
 import Color from "../../../constants/colors";
 import Divider from "../../../components/Dividers";
-import { images } from "../../../../assets";
+import { images } from "../../../constants/images";
 import { StartingVisitStackScreenProps } from "../../../types/Navigation";
-import LoadingAnimation from "../components/LoadingAnimation";
+import LoadingAnimationScreen from "../components/LoadingAnimation";
 
 type Props = StartingVisitStackScreenProps<"welcome">;
 
@@ -22,7 +22,7 @@ const Welcome = ({ navigation }: Props) => {
   };
 
   if (isLoading) {
-    return <LoadingAnimation title="Loading Your Consultation" />;
+    return <LoadingAnimationScreen title="Loading Your Consultation" />;
   }
   return (
     <ScreenWithHeading style={{}} hideBackButton screenTitle="Sign up">

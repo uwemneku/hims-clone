@@ -5,7 +5,6 @@ export const questions_lifestyle: MultiStepQuestion[] = [
     question: "Do you smoke or use other tobacco product",
     details: "This includes smoking, chewing, or vaping",
     options: ["Yes", "No"],
-    mode: "options",
   },
   {
     question:
@@ -17,13 +16,11 @@ export const questions_lifestyle: MultiStepQuestion[] = [
       "Once a week",
       "Daily or almost daily",
     ],
-    mode: "options",
   },
   {
     question:
       "Excessive alcohol use can profoundly alter mood and behavior. Alcohol is a depressant and can lead to depression, anxiety, and increase stress. Alcohol has been linked to a higher risk of many cancers, including mouth, throat, liver, esophagus, colon, and breast cancers. Alcohol use can cause interactions with prescription medications as well.",
     options: ["Continue"],
-    mode: "options",
   },
   {
     question:
@@ -38,7 +35,5 @@ export const questions_lifestyle: MultiStepQuestion[] = [
       "Poppers",
       "None apply",
     ],
-
-    mode: "options",
   },
 ];

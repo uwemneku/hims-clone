@@ -7,7 +7,7 @@ import Color from "../../../constants/colors";
 interface Props {
   title: string;
 }
-const LoadingAnimation = ({ title }: Props) => {
+const LoadingAnimationScreen = ({ title }: Props) => {
   return (
     <View style={styles.container}>
       <SpinningView>
@@ -36,7 +36,7 @@ const LoadingAnimation = ({ title }: Props) => {
   );
 };
 
-export default LoadingAnimation;
+export default LoadingAnimationScreen;
 
 const styles = StyleSheet.create({
   container: {

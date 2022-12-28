@@ -16,6 +16,7 @@ const QuestionnaireLayoutWithScrollView = React.forwardRef(
     return (
       <View style={styles.container}>
         <ScrollView
+          keyboardShouldPersistTaps="always"
           ref={ref as React.RefObject<ScrollView>}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollContainer}
@@ -33,7 +34,7 @@ const QuestionnaireLayoutWithScrollView = React.forwardRef(
 export default QuestionnaireLayoutWithScrollView;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignSelf: "center", maxWidth: 500 },
+  container: { flex: 1, width: "100%", maxWidth: 500, alignSelf: "center" },
   scrollContainer: {
     paddingHorizontal: 20,
     paddingBottom: 40,

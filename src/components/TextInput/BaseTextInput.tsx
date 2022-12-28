@@ -1,4 +1,10 @@
-import { StyleSheet, View, TextInput, TextStyle } from "react-native";
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  TextStyle,
+  StyleProp,
+} from "react-native";
 import React, { ComponentProps, useRef } from "react";
 import Color from "../../constants/colors";
 import Animated, {
@@ -22,7 +28,7 @@ interface Props extends ComponentProps<typeof TextInput> {
   /**
    * This style is applied to the text input component
    */
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
   /**
    * This style is applied to the placeholder text component.
    * ```paddingVertical``` and ```paddingTop``` are omitted as changing this values can affect the placeholder animation
@@ -180,6 +186,7 @@ const styles = StyleSheet.create({
     borderWidth: BORDER_WIDTH,
     flexDirection: "row",
     alignItems: "center",
+    overflow: "hidden",
   },
   container_inner: {
     flex: 1,
@@ -191,6 +198,7 @@ const styles = StyleSheet.create({
     fontFamily: "sofia_regular",
     left: 10,
     color: Color.lightGray,
+    zIndex: 100,
   },
   textInput: {
     flex: 1,
