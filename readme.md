@@ -30,13 +30,17 @@ start the expo app
 
 # Credits
 
-## Animations
+### Animations
 
 [infinite scroll](https://codepen.io/nickcil/pen/BygPMY?editors=1100)
 
-## Images
+### Images
 
 [3D-D0CTOR](https://www.figma.com/community/file/1155127546766846611)
 [doctor](https://www.figma.com/community/file/1176360353412239534)
 [doctor2](https://www.figma.com/community/file/1169922911743790308)
 [doctor_burno](https://unsplash.com/photos/279xIHymPYY)
+
+### Typescript
+
+[How to remove index signature using mapped types](https://stackoverflow.com/questions/51465182/how-to-remove-index-signature-using-mapped-types/68261113)
