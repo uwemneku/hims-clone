@@ -23,6 +23,7 @@ import {
   GestureResponderEvent,
   Pressable,
   Modal,
+  useWindowDimensions,
 } from "react-native";
 import Color from "../../constants/colors";
 import { addOpacity } from "../../utils/inex";
@@ -33,6 +34,7 @@ interface Props {
   open: boolean;
   onRequestClose(): void;
 }
+const minHeight = 100;
 export type BottomSheetRef = {
   /**This calls the requestOnClose function after animation */
   close(): void;
@@ -41,7 +43,6 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
   ({ children, style, onRequestClose, open }, ref) => {
     const scrollView_ref = useRef<ScrollView>(null);
     const gesture_ref = useRef<PanGestureHandler>(null);
-
     const scrollOffset = useSharedValue(0);
     const marginTop = useSharedValue(200);
     const viewHeight = useSharedValue(0);
@@ -51,7 +52,7 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
 
     // animated to position on load
     if (open && marginTop.value > 150) {
-      marginTop.value = withTiming(100, {
+      marginTop.value = withTiming(minHeight, {
         duration: 250,
         easing: Easing.ease,
       });
@@ -88,7 +89,7 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
         onEnd(_, e) {
           e.prev = 0;
           isDraggingBar.value = false;
-          if (marginTop.value > 100) {
+          if (marginTop.value > minHeight) {
             runOnJS(close)();
           } else {
             marginTop.value = withSpring(0, { overshootClamping: true });
@@ -172,6 +173,7 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
               ]}
               onLayout={({ nativeEvent }) => {
                 viewHeight.value = nativeEvent.layout.height;
+                viewHeight.value = nativeEvent.layout.height;
               }}
               onTouchStart={onTouchStart}
             >
@@ -193,6 +195,7 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
                 style={styles.scrollView}
                 simultaneousHandlers={gesture_ref}
                 showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ paddingBottom: minHeight }}
               >
                 {children}
               </ScrollView>

@@ -1,5 +1,5 @@
 import { useFocusEffect } from "@react-navigation/native";
-import { StackHeaderProps } from "@react-navigation/stack";
+import { StackHeaderProps, StackNavigationProp } from "@react-navigation/stack";
 import { StyleSheet, View } from "react-native";
 import Animated, {
   Easing,
@@ -10,7 +10,11 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { StartingVisitStackParamList } from "../../../types/Navigation";
+import {
+  RootStackScreenProps,
+  StartingVisitStackParamList,
+  StartingVisitStackScreenProps,
+} from "../../../types/Navigation";
 import { Ionicons } from "@expo/vector-icons";
 import { addOpacity } from "../../../utils/inex";
 import Color from "../../../constants/colors";
@@ -21,11 +25,15 @@ type Props = StackHeaderProps & {
 const QuestionnaireScreenHeader = ({
   navigation,
   route,
-  options,
   questionProgress,
 }: Props) => {
   const { top } = useSafeAreaInsets();
   const currentScreen = route.name as keyof StartingVisitStackParamList;
+  const navigateBack = () => navigation.goBack();
+  const handleClose = () =>
+    (
+      navigation as RootStackScreenProps<"StartingVisit">["navigation"]
+    ).navigate("HomeBottomTabs", { screen: "home" });
 
   useFocusEffect(() => {
     questionProgress.value = withTiming(screens[currentScreen] / totalScreens, {
@@ -46,8 +54,13 @@ const QuestionnaireScreenHeader = ({
   return (
     <View style={[{ paddingTop: top }, styles.container]}>
       <View style={styles.icons}>
-        <Ionicons name="arrow-back-outline" size={24} color="black" />
-        <Ionicons name="close" size={24} color="black" />
+        <Ionicons
+          onPress={navigateBack}
+          name="arrow-back-outline"
+          size={24}
+          color="black"
+        />
+        <Ionicons onPress={handleClose} name="close" size={24} color="black" />
       </View>
       <View style={{ backgroundColor: addOpacity(Color.black, 0.02) }}>
         <Animated.View style={[styles.animatedBar, animatedStyle]} />
@@ -56,10 +69,8 @@ const QuestionnaireScreenHeader = ({
   );
 };
 
-const screens: Record<
-  keyof Omit<StartingVisitStackParamList, "welcome">,
-  number
-> = {
+const screens: Record<keyof StartingVisitStackParamList, number> = {
+  welcome: 0,
   QuestionnaireIntro: 1,
   HowItWorks: 2,
   AnxietyQuestion: 3,

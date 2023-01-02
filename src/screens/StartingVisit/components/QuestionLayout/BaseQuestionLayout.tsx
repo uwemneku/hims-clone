@@ -21,7 +21,6 @@ const BaseQuestionLayout = ({
   children,
 }: BaseQuestionLayoutProps) => {
   const ref = useRef<ScrollView>(null);
-  ref.current?.scrollTo({ y: 0 });
   return (
     <QuestionnaireLayoutWithScrollView ref={ref}>
       <QuestionnaireGradientText size="small">

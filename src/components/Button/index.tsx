@@ -58,6 +58,7 @@ const Button = ({
       <BaseText
         testID="button_text"
         style={{ ...styles.text, color: textColor, ...style?.text }}
+        align="center"
       >
         {label}
       </BaseText>

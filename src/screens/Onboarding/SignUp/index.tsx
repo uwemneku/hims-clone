@@ -100,7 +100,7 @@ const SignUp = ({ navigation }: Props) => {
           <Divider dir="horizontal" size="xl" />
 
           {/* flex shrink wraps the text in small screens */}
-          <Text style={{ flexShrink: 1 }}>
+          <Text style={{ flexShrink: 1, flexWrap: "wrap" }}>
             <BaseText color={Color.darkGray}>I agree to the</BaseText>
             <BaseText> Terms and Conditions </BaseText>
             <BaseText color={Color.darkGray}> and </BaseText>

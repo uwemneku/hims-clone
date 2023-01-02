@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View, ViewStyle } from "react-native";
 import React, { useState, useRef, ComponentProps } from "react";
 import BaseTextInput from "../TextInput/BaseTextInput";
 import Animated, {
@@ -17,7 +17,13 @@ interface Props<T> extends P {
   renderItem(item: T): JSX.Element;
   keyExtractor(item: T): string;
   placeholder?: string;
+  /**BottomSheet is closed when the value Prop changes */
   closeOnSelect?: boolean;
+  containerStyles?: ViewStyle;
+  inputProps?: Pick<
+    ComponentProps<typeof BaseTextInput>,
+    "containerStyle" | "placeholderStyle" | "style"
+  >;
 }
 
 const DropDown = <T,>({
@@ -27,6 +33,8 @@ const DropDown = <T,>({
   keyExtractor,
   renderItem,
   closeOnSelect,
+  containerStyles,
+  inputProps,
 }: Props<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const i = useSharedValue(0);
@@ -55,7 +63,7 @@ const DropDown = <T,>({
   }
   return (
     <>
-      <View style={styles.container}>
+      <View style={[styles.container, containerStyles]}>
         <Pressable onPress={toggle("open")} style={styles.button} />
         <BaseTextInput
           placeholder={placeholder}
@@ -65,6 +73,7 @@ const DropDown = <T,>({
               <Entypo name="chevron-small-down" size={24} color="black" />
             </Animated.View>
           }
+          {...inputProps}
         />
       </View>
       {isOpen && (
@@ -85,6 +94,7 @@ export default DropDown;
 const styles = StyleSheet.create({
   container: {
     position: "relative",
+    overflow: "hidden",
   },
   button: {
     position: "absolute",

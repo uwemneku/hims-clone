@@ -1,5 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { OnboardingStackParamList } from "../../types/Navigation";
+import { AuthenticationStackParamList } from "../../types/Navigation";
 
-export type OnboardingScreenParams<T extends keyof OnboardingStackParamList> =
-  NativeStackScreenProps<OnboardingStackParamList, T>;
+export type OnboardingScreenParams<
+  T extends keyof AuthenticationStackParamList
+> = NativeStackScreenProps<AuthenticationStackParamList, T>;

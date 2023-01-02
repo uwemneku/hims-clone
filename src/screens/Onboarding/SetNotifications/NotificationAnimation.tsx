@@ -57,7 +57,12 @@ const NotificationAnimation = ({ delay, endScale = 1 }: Props) => {
       />
       <Animated.View style={[styles.box]}>
         <View style={styles.innnerBox}>
-          <BaseText style={styles.logo} size="h1" fontWeight="sofia_curly">
+          <BaseText
+            style={styles.logo}
+            allowFontScaling={false}
+            size="h1"
+            fontWeight="sofia_curly"
+          >
             h
           </BaseText>
           <Divider dir="horizontal" />

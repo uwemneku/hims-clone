@@ -5,3 +5,8 @@ type RemoveIndex<T> = {
     ? never
     : K]: T[K];
 };
+
+type PickFromComponentProps<
+  T extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>,
+  Y extends keyof import("react").ComponentProps<T>
+> = Pick<import("react").ComponentProps<T>, Y>;

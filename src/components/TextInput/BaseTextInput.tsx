@@ -4,12 +4,18 @@ import {
   TextInput,
   TextStyle,
   StyleProp,
+  ViewStyle,
 } from "react-native";
 import React, { ComponentProps, useRef } from "react";
 import Color from "../../constants/colors";
 import Animated, {
   Easing,
   Extrapolate,
+  FadeInDown,
+  FadeInUp,
+  FadeOut,
+  FadeOutDown,
+  FadeOutUp,
   interpolate,
   useAnimatedStyle,
   useSharedValue,
@@ -34,6 +40,13 @@ interface Props extends ComponentProps<typeof TextInput> {
    * ```paddingVertical``` and ```paddingTop``` are omitted as changing this values can affect the placeholder animation
    */
   placeholderStyle?: Omit<TextStyle, "paddingTop" | "paddingVertical">;
+  /**
+   * ```height```, ```borderWidth```, ```paddingLeft``` and ```paddingRight``` are omitted as changing this values can affect the placeholder animation
+   */
+  containerStyle?: Omit<
+    ViewStyle,
+    "height" | "borderWidth" | "paddingRight" | "paddingLeft"
+  >;
   leftAdornment?: JSX.Element;
   rightAdornment?: JSX.Element;
   isError?: boolean;
@@ -54,6 +67,7 @@ const BaseTextInput = ({
   isError,
   helperText,
   value,
+  containerStyle,
   ...props
 }: Props) => {
   const placeholderLayoutChangeCount = useRef(0);
@@ -63,7 +77,9 @@ const BaseTextInput = ({
 
   const paddingLeft = leftAdornment ? 10 : 0;
   const paddingRight = rightAdornment ? 10 : 0;
-  const borderColor = isError ? Color.red : Color.lightGray;
+  const borderColor = isError
+    ? Color.red
+    : containerStyle?.borderColor || Color.lightGray;
 
   const animatePlaceholder = (value: number) => {
     placeholderTop.value = withTiming(value, {
@@ -86,7 +102,7 @@ const BaseTextInput = ({
     placeholderTop.value = calculatedPlaceholderTopValue.current;
 
     // Animate the placeholder if textInput has an initial value
-    // this is done here so the that accurate middle placement is calculated before moving the placeholder to the top
+    // this is done here so the accurate middle placement is calculated before moving the placeholder to the top
     if (value) animatePlaceholder(SMALL_FONT_SIZE);
 
     placeholderLayoutChangeCount.current++;
@@ -94,14 +110,14 @@ const BaseTextInput = ({
 
   const handleTextInputChange: textInputProps["onChangeText"] = (e) => {
     isTextInputEmpty.current = e.trim().length === 0;
-    if (onChangeText) onChangeText(e);
+    if (onChangeText) onChangeText(e); //call onBlur if a custom function was passed
   };
 
   // Animated the placeholder back to the middle if the text input is empty on blur
   const handleTextInputBlur: textInputProps["onBlur"] = (e) => {
     if (isTextInputEmpty.current)
       animatePlaceholder(calculatedPlaceholderTopValue.current);
-    if (onBlur) onBlur(e);
+    if (onBlur) onBlur(e); //call onBlur if a custom function was passed
   };
 
   if (hasRenderedOnce && value) {
@@ -127,6 +143,7 @@ const BaseTextInput = ({
       <View
         style={[
           styles.container,
+          containerStyle,
           {
             paddingLeft,
             paddingRight,
@@ -161,23 +178,26 @@ const BaseTextInput = ({
         {rightAdornment}
       </View>
       {helperText && (
-        <BaseText
-          style={[
-            styles.helperText,
-            { color: isError ? Color.red : Color.gray },
-          ]}
-          fontWeight="sofia_medium"
-          size="small"
-          color={Color.gray}
+        <Animated.View
+          style={styles.helperText}
+          entering={FadeInUp.duration(250)}
+          exiting={FadeOutUp.duration(125)}
         >
-          {helperText}
-        </BaseText>
+          <BaseText
+            style={[{ color: isError ? Color.red : Color.gray }]}
+            fontWeight="sofia_medium"
+            size="small"
+            color={Color.gray}
+          >
+            {helperText}
+          </BaseText>
+        </Animated.View>
       )}
     </>
   );
 };
 
-export default BaseTextInput;
+export default React.memo(BaseTextInput);
 
 const styles = StyleSheet.create({
   container: {

@@ -14,7 +14,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { images } from "../../constants/images";
 import {
-  OnboardingStackParamList,
+  AuthenticationStackParamList,
   OnboardingStackScreenProps,
 } from "../../types/Navigation";
 type Props = OnboardingStackScreenProps<"GetStarted">;
@@ -35,8 +35,9 @@ const GetStarted = ({ navigation }: Props) => {
   );
 
   opacity.value = withDelay(2000, withTiming(1, { duration: 2000 }));
-  const handleButtonPress = (screen: keyof OnboardingStackParamList) => () =>
-    opacity.value > 0.5 && navigation.navigate(screen); // only navigate when buttons are visible
+  const handleButtonPress =
+    (screen: keyof AuthenticationStackParamList) => () =>
+      opacity.value > 0.5 && navigation.navigate(screen); // only navigate when buttons are visible
   return (
     <>
       <View style={styles.container}>

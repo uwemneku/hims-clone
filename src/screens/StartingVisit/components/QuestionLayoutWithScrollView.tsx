@@ -34,9 +34,16 @@ const QuestionnaireLayoutWithScrollView = React.forwardRef(
 export default QuestionnaireLayoutWithScrollView;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, width: "100%", maxWidth: 500, alignSelf: "center" },
+  container: {
+    flex: 1,
+    width: "100%",
+    alignSelf: "center",
+  },
   scrollContainer: {
+    maxWidth: 500,
+    alignSelf: "center",
+    width: "100%",
     paddingHorizontal: 20,
-    paddingBottom: 40,
+    paddingBottom: 130,
   },
 });

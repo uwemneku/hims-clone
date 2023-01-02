@@ -1,10 +1,7 @@
-import { StyleSheet, TouchableOpacity, View } from "react-native";
-import React, { ComponentProps } from "react";
-import {
-  createNativeStackNavigator,
-  NativeStackHeaderProps,
-} from "@react-navigation/native-stack";
-import { OnboardingStackParamList } from "../types/Navigation";
+import { StyleSheet } from "react-native";
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { AuthenticationStackParamList } from "../types/Navigation";
 import {
   SetNotificationsScreen,
   BookVisitScreen,
@@ -15,13 +12,11 @@ import {
   SignUpScreen,
 } from "../screens/Onboarding";
 import Color from "../constants/colors";
-import BaseText from "../components/Text";
-import { Ionicons } from "@expo/vector-icons";
 
 const { Navigator, Screen, Group } =
-  createNativeStackNavigator<OnboardingStackParamList>();
+  createNativeStackNavigator<AuthenticationStackParamList>();
 
-const OnboardingNavigator = () => {
+const AuthenticationNavigator = () => {
   return (
     <Navigator
       screenOptions={{
@@ -44,22 +39,7 @@ const OnboardingNavigator = () => {
   );
 };
 
-const Header = ({ navigation }: NativeStackHeaderProps) => {
-  const handleButtonPress = () => {
-    if (navigation.canGoBack()) navigation.goBack();
-  };
-  return (
-    <View style={styles.header}>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={handleButtonPress} style={styles.button}>
-          <Ionicons name="arrow-back-sharp" size={20} color="black" />
-        </TouchableOpacity>
-      </View>
-      <BaseText fontWeight="sofia_bold">Getting Stared</BaseText>
-    </View>
-  );
-};
-export default OnboardingNavigator;
+export default AuthenticationNavigator;
 
 const styles = StyleSheet.create({
   header: {

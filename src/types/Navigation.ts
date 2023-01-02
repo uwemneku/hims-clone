@@ -5,11 +5,12 @@ import {
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type RootStackParamList = {
-  Onboarding: NavigatorScreenParams<OnboardingStackParamList>;
+  Onboarding: NavigatorScreenParams<AuthenticationStackParamList>;
   StartingVisit: NavigatorScreenParams<StartingVisitStackParamList>;
+  HomeBottomTabs: NavigatorScreenParams<HomeBottomTabsParamsList>;
 };
 
-export type OnboardingStackParamList = {
+export type AuthenticationStackParamList = {
   GetStarted: undefined;
   SetState: undefined;
   SetDateOfBirth: undefined;
@@ -39,22 +40,19 @@ export type StartingVisitStackParamList = {
   PaymentDetails: undefined;
 };
 
-//TODO: delete this if not used
-export type HistoryQuestionsStackParamList = {
-  question_1: undefined;
-  question_2: undefined;
-  question_3: undefined;
-  question_4: undefined;
-  question_5: undefined;
-  question_6: undefined;
+export type HomeBottomTabsParamsList = {
+  home: undefined;
+  care: undefined;
+  programs: undefined;
+  shop: undefined;
 };
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;
 
 export type OnboardingStackScreenProps<
-  T extends keyof OnboardingStackParamList
+  T extends keyof AuthenticationStackParamList
 > = CompositeScreenProps<
-  NativeStackScreenProps<OnboardingStackParamList, T>,
+  NativeStackScreenProps<AuthenticationStackParamList, T>,
   RootStackScreenProps<keyof RootStackParamList>
 >;
 

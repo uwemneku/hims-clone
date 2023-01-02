@@ -24,11 +24,17 @@ type LoginFormValues = { email: string; password: string };
 type Props = OnboardingStackScreenProps<"Login">;
 
 const Login = ({ navigation }: Props) => {
-  const { errors, values, submitForm } = useFormik<LoginFormValues>({
-    initialValues: { email: "", password: "" },
-    validationSchema,
-    onSubmit() {},
-  });
+  const { errors, values, submitForm, setFieldValue } =
+    useFormik<LoginFormValues>({
+      initialValues: { email: "", password: "" },
+      validationSchema,
+      onSubmit() {
+        navigation.navigate("HomeBottomTabs", { screen: "home" });
+      },
+    });
+  const handleChange = (key: keyof LoginFormValues) => (value: string) => {
+    setFieldValue(key, value);
+  };
   return (
     <ScreenWithHeading screenTitle="Log in">
       <BaseText size="h1">Welcome back!</BaseText>
@@ -37,12 +43,14 @@ const Login = ({ navigation }: Props) => {
         helperText={errors.email}
         isError={Boolean(errors.email)}
         value={values.email}
+        onChangeText={handleChange("email")}
         placeholder="Email"
       />
       <Divider size="l" />
       <PasswordInput
         value={values.password}
         helperText={errors.password}
+        onChangeText={handleChange("password")}
         isError={Boolean(errors.password)}
         placeholder="password"
       />

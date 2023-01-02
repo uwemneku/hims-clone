@@ -2,11 +2,12 @@ import { StyleSheet } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/Navigation";
-import OnboardingNavigator from "./OnboardingNavigator";
+import AuthenticationNavigator from "./AuthenticationNavigator";
 import StartVisitingNavigator from "./StartVisitingNavigator";
 import { Linking, Platform } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
+import BottomTabsNavigator from "./BottomTabsNavigator";
 
 const PERSISTENCE_KEY = "NAVIGATION_STATE_V1";
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
@@ -55,8 +56,9 @@ const AppNavigator = () => {
         initialRouteName="Onboarding"
         screenOptions={{ headerShown: false, animation: "slide_from_bottom" }}
       >
-        <Screen name="Onboarding" component={OnboardingNavigator} />
+        <Screen name="Onboarding" component={AuthenticationNavigator} />
         <Screen name="StartingVisit" component={StartVisitingNavigator} />
+        <Screen name="HomeBottomTabs" component={BottomTabsNavigator} />
       </Navigator>
     </NavigationContainer>
   );

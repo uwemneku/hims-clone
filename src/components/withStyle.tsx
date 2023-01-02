@@ -5,9 +5,10 @@ const withStyle = <S, K extends { style?: S }>(
   Component: React.ComponentType<K>,
   style: ViewStyle | TextStyle
 ) => {
-  return (props: K) => (
-    <Component style={{ ...style, ...props.style }} {...props} />
-  );
+  return ({ style: componentStyle, ...props }: K) => {
+    // @ts-ignore
+    return <Component style={[style, componentStyle]} {...props} />;
+  };
 };
 export default withStyle;
 

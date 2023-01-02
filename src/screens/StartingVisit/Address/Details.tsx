@@ -1,5 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { ComponentProps } from "react";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { AntDesign } from "@expo/vector-icons";
 import QuestionnaireLayoutWithScrollView from "../components/QuestionLayoutWithScrollView";
 import QuestionnaireGradientText from "../components/QuestionnaireGradientText";
 import BaseText from "../../../components/Text";
@@ -8,8 +12,8 @@ import BaseTextInput from "../../../components/TextInput/BaseTextInput";
 import withStyle from "../../../components/withStyle";
 import Color from "../../../constants/colors";
 import Button from "../../../components/Button";
-import { useFormik } from "formik";
-import * as yup from "yup";
+import DropDown from "../../../components/Dropdown";
+import { StartingVisitStackScreenProps } from "../../../types/Navigation";
 
 const validationSchema = yup.object().shape({
   first_name: yup.string().required("This field is required"),
@@ -21,26 +25,41 @@ const validationSchema = yup.object().shape({
   city: yup.string(),
   state: yup.string(),
   zip: yup.string(),
+  terms: yup.boolean(),
 });
 
-type J = RemoveIndex<yup.InferType<typeof validationSchema>>;
-
-const Details = () => {
-  const { submitForm, errors, setFieldValue } = useFormik<Partial<J>>({
+type FormInfoType = RemoveIndex<yup.InferType<typeof validationSchema>>;
+type Props = StartingVisitStackScreenProps<"AddressDetails">;
+const Details = ({ navigation }: Props) => {
+  const { submitForm, errors, setFieldValue, values } = useFormik<
+    Partial<FormInfoType>
+  >({
     initialValues: {},
-    onSubmit() {},
+    onSubmit(values) {
+      navigation.navigate("ConfirmAddressDetails");
+    },
     validationSchema,
   });
 
   const getInputProps = (
-    key: keyof J
-  ): ComponentProps<typeof BaseTextInput> => ({
+    key: keyof Omit<FormInfoType, "terms">
+  ): PickFromComponentProps<
+    typeof BaseTextInput,
+    "isError" | "onChangeText" | "helperText" | "value"
+  > => ({
     isError: Boolean(errors[key]),
     onChangeText(text) {
       setFieldValue(key, text);
     },
     helperText: errors[key],
+    value: values[key],
   });
+
+  const handleTermsPress = () => setFieldValue("terms", !values.terms);
+  const handleDropDownSelect = (selectedItem: string) => () => {
+    //Todo: find a better implementation without the non nullable exclamation point
+    getInputProps("state").onChangeText!(selectedItem);
+  };
 
   return (
     <QuestionnaireLayoutWithScrollView>
@@ -79,7 +98,24 @@ const Details = () => {
       <Divider />
       <AddressInput placeholder="City" {...getInputProps("city")} />
       <Divider />
-      <AddressInput placeholder="State" {...getInputProps("state")} />
+      <DropDown
+        data={["Sample 1", "Sample 2", "Sample 3"]}
+        renderItem={(i) => (
+          <BaseText
+            onPress={handleDropDownSelect(i)}
+            style={styles.dropDownText}
+            size="h2"
+            align="center"
+          >
+            {i}
+          </BaseText>
+        )}
+        closeOnSelect
+        keyExtractor={(i) => i}
+        value={values.state}
+        placeholder="State"
+        inputProps={{ containerStyle: { backgroundColor: Color.white } }}
+      />
       <Divider />
       <AddressInput
         placeholder="Zip"
@@ -90,6 +126,16 @@ const Details = () => {
       <Divider size="xl" />
       <Button onPress={submitForm} label="Save and Continue" />
       <Divider size="xl" />
+      <TouchableOpacity style={styles.terms} onPress={handleTermsPress}>
+        <View style={styles.box}>
+          {values.terms && <AntDesign name="check" size={18} color="black" />}
+        </View>
+        <Divider dir="horizontal" size="l" />
+        <BaseText size="h3" style={{ flex: 1 }}>
+          Text me updates about Hims products and services
+        </BaseText>
+      </TouchableOpacity>
+      <Divider size="l" />
       <BaseText color={Color.gray} lineHeight={25}>
         By checking the option "Text me updates about Hims products and
         services!". I agree to receive marketing text messages rom Hims
@@ -110,4 +156,21 @@ const AddressInput = withStyle(BaseTextInput, { backgroundColor: Color.white });
 
 export default Details;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  terms: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  box: {
+    width: 24,
+    height: 24,
+    borderColor: Color.lightGray,
+    borderWidth: 2,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  dropDownText: {
+    paddingVertical: 10,
+  },
+});
