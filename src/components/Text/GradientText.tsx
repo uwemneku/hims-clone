@@ -26,7 +26,7 @@ const GradientText = ({ height, children, colors, textSize }: Props) => {
             }}
           >
             {/* Todo: Find a way to stop gradient text from cutting off when font-scaling is disabled */}
-            <BaseText allowFontScaling={false} size={textSize}>
+            <BaseText allowFontScaling={false} size={textSize} align="center">
               {children}
             </BaseText>
           </View>
