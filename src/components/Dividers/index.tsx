@@ -2,16 +2,18 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
 interface Props {
-  size?: "xs" | "s" | "m" | "l" | "xl";
+  size?: "xs" | "s" | "m" | "l" | "xl" | number;
   /**
    * Direction of the divider
    */
   dir?: "vertical" | "horizontal";
 }
 const Divider = ({ dir = "vertical", size = "m" }: Props) => {
-  const _size = SIZES[size];
+  const _size = typeof size === "string" ? SIZES[size] : size;
   const styleProperty = dir === "vertical" ? "height" : "width";
-  return <View style={{ [styleProperty]: _size }} />;
+  return (
+    <View style={{ [styleProperty]: _size, backgroundColor: "transparent" }} />
+  );
 };
 
 const SIZES: { [key in Required<Props>["size"]]: number } = {

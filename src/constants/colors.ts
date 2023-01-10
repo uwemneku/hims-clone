@@ -1,5 +1,7 @@
 enum Color {
   white = "rgb(255,255,255)",
+  offWhite = "rgb(248, 248, 248)",
+  milk = "rgb(242, 242, 235)",
   black = "rgb(0,0,0)",
   gray = "rgb(143,143,143)",
   darkGray = "rgb(90,90,90)",

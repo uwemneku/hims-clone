@@ -13,11 +13,10 @@ import Animated, {
 } from "react-native-reanimated";
 import Color from "../../../../constants/colors";
 import { useNavigation } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
 import BaseText from "../../../Text";
 import { addOpacity } from "../../../../utils/inex";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-const TouchableOpacity = Animated.createAnimatedComponent(_TouchableOpacity);
+import AnimatedHeaderIcon from "../../../AnimatedHeaderIcon/AnimatedHeaderIcon";
 interface Props extends ComponentProps<typeof View> {
   rightHeadingButton?: JSX.Element;
   screenTitle?: string;
@@ -44,13 +43,6 @@ const ScreenWithHeading: FC<PropsWithChildren<Props>> = ({
       ["rgba(242, 242, 242, 0)", "rgba(242, 242, 242, 1)"]
     ),
   }));
-  const animatedButtonStyle = useAnimatedStyle(() => ({
-    borderColor: interpolateColor(
-      scrollOffset.value,
-      [0, 50],
-      [Color.lightGray, addOpacity(Color.lightGray, 0)]
-    ),
-  }));
   const handleScroll: ComponentProps<typeof ScrollView>["onScroll"] = ({
     nativeEvent,
   }) => {
@@ -62,12 +54,11 @@ const ScreenWithHeading: FC<PropsWithChildren<Props>> = ({
         <View style={styles.header}>
           <View style={styles.buttonContainer}>
             {!hideBackButton && (
-              <TouchableOpacity
+              <AnimatedHeaderIcon
                 onPress={handleButtonPress}
-                style={[styles.button, animatedButtonStyle]}
-              >
-                <Ionicons name="arrow-back-sharp" size={20} color="black" />
-              </TouchableOpacity>
+                scrollOffset={scrollOffset}
+                iconName="arrow-back-sharp"
+              />
             )}
             {rightHeadingButton}
           </View>

@@ -6,6 +6,8 @@ import Divider from "../../components/Dividers";
 import InfiniteScrollWrapper from "../../components/infiniteScroll/Wrapper";
 import BaseText from "../../components/Text";
 import Animated, {
+  FadeInDown,
+  FadeInUp,
   interpolateColor,
   useAnimatedStyle,
   useSharedValue,
@@ -22,18 +24,6 @@ type Props = OnboardingStackScreenProps<"GetStarted">;
 const GetStarted = ({ navigation }: Props) => {
   const opacity = useSharedValue(0);
 
-  const animatedContainerStyle = useAnimatedStyle(
-    () => ({
-      opacity: opacity.value,
-      backgroundColor: interpolateColor(
-        opacity.value,
-        [0, 1],
-        ["rgba(0,0,0,0)", "rgba(0,0,0,0.5)"]
-      ),
-    }),
-    [opacity.value]
-  );
-
   opacity.value = withDelay(2000, withTiming(1, { duration: 2000 }));
   const handleButtonPress =
     (screen: keyof AuthenticationStackParamList) => () =>
@@ -41,16 +31,19 @@ const GetStarted = ({ navigation }: Props) => {
   return (
     <>
       <View style={styles.container}>
-        <InfiniteScrollWrapper images={[images._3dDoctor, images.doctor]} />
+        <InfiniteScrollWrapper images={[images.announcement, images.gummies]} />
         <Divider />
         <InfiniteScrollWrapper
-          images={[images.doctor_burno, images._3dDoctor]}
+          images={[images.happyCouple, images.himsPack]}
           animationDirection="right"
         />
         <Divider />
-        <InfiniteScrollWrapper images={[images.boy_doctor, images._3dDoctor]} />
+        <InfiniteScrollWrapper images={[images.tropical, images.skin]} />
       </View>
-      <Animated.View style={[styles._container, animatedContainerStyle]}>
+      <Animated.View
+        entering={FadeInDown.delay(500).duration(500)}
+        style={[styles._container]}
+      >
         <BaseText
           fontWeight="sofia_curly"
           color={Color.white}
@@ -105,6 +98,7 @@ const styles = StyleSheet.create({
     paddingVertical: "20%",
     paddingHorizontal: "5%",
     justifyContent: "space-around",
+    backgroundColor: "rgba(0,0,0,0.5)",
   },
   title: {
     marginHorizontal: 40,
