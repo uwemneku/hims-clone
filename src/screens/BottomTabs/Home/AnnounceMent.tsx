@@ -1,18 +1,12 @@
-import {
-  StyleSheet,
-  View,
-  ImageBackground,
-  useWindowDimensions,
-} from "react-native";
+import { StyleSheet, View, useWindowDimensions } from "react-native";
 import React from "react";
-import HomeCards from "../components/HomeCards";
 import { ScrollView } from "react-native-gesture-handler";
 import Divider from "../../../components/Dividers";
 import ProductCard from "./ProductCard";
 import { images } from "../../../constants/images";
 import BaseText from "../../../components/Text";
 import Color from "../../../constants/colors";
-import { addOpacity } from "../../../utils/inex";
+import { addOpacity } from "../../../utils";
 import { LinearGradient } from "expo-linear-gradient";
 import ZoomImageCard from "../../../components/ZoomImageCard";
 
@@ -36,7 +30,6 @@ const AnnounceMent = () => {
       </View>
       <ZoomImageCard enable style={{ flex: 1 }} source={images.announcement} />
       <LinearGradient
-        //   start={{ x: 0.5, y:  }}
         end={{ x: 0.5, y: 0.3 }}
         colors={[addOpacity(Color.black, 0), addOpacity(Color.black, 1)]}
         style={{ paddingVertical: 15, marginTop: "-30%" }}

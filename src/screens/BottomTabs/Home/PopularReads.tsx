@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ImageSourcePropType } from "react-native";
 import React from "react";
 import HomeCards from "../components/HomeCards";
 import { ScrollView } from "react-native-gesture-handler";
@@ -6,7 +6,7 @@ import Divider from "../../../components/Dividers";
 import { images } from "../../../constants/images";
 import BlogPost from "./BlogPost";
 
-const data: { image: string; title: string }[] = [
+const data: { image: ImageSourcePropType; title: string }[] = [
   { image: images.blog3, title: "Skin Care" },
   { image: images.blog1, title: "Lorem ipsum" },
   { image: images.blog2, title: "Booster shot" },

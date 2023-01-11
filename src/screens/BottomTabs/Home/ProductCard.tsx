@@ -1,7 +1,7 @@
 import { StyleSheet, View, Image } from "react-native";
 import React from "react";
 import Color from "../../../constants/colors";
-import { addOpacity } from "../../../utils/inex";
+import { addOpacity } from "../../../utils";
 import Divider from "../../../components/Dividers";
 import BaseText from "../../../components/Text";
 import { TouchableOpacity } from "react-native-gesture-handler";

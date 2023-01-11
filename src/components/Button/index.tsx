@@ -8,7 +8,7 @@ import {
 import React, { ComponentProps } from "react";
 import BaseText from "../Text";
 import Color from "../../constants/colors";
-import { getAccessibleColor } from "../../utils/inex";
+import { getAccessibleColor } from "../../utils";
 
 interface Props extends Omit<ComponentProps<typeof TouchableOpacity>, "style"> {
   label: string | JSX.Element;

@@ -6,7 +6,7 @@ import {
   ViewStyle,
 } from "react-native";
 import React from "react";
-import { addOpacity } from "../../../utils/inex";
+import { addOpacity } from "../../../utils";
 import Color from "../../../constants/colors";
 
 interface Props {

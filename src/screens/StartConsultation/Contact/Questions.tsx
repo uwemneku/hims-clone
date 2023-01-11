@@ -2,14 +2,14 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import QuestionWithOptions from "../components/QuestionLayout/QuestionWithOptions";
 import {
-  StartingVisitStackParamList,
+  StartingConsultationStackParamList,
   StartingVisitStackScreenProps,
 } from "../../../types/Navigation";
 
 type Props = StartingVisitStackScreenProps<"ContactQuestion">;
 const Questions = ({ navigation }: Props) => {
   const handleNextScreen = (answer: string) => {
-    const nextScreen: keyof StartingVisitStackParamList =
+    const nextScreen: keyof StartingConsultationStackParamList =
       answer === "Yes" ? "EmergencyContactDetailsScreen" : "TreatmentPlan";
     navigation.navigate(nextScreen);
   };

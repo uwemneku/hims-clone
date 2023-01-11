@@ -5,7 +5,7 @@ import {
   createStackNavigator,
 } from "@react-navigation/stack";
 import { useSharedValue } from "react-native-reanimated";
-import { StartingVisitStackParamList } from "../types/Navigation";
+import { StartingConsultationStackParamList } from "../types/Navigation";
 import {
   AddressDetailsScreen,
   AnxietyQuestionScreen,
@@ -23,18 +23,18 @@ import {
   QuestionnaireIntroScreen,
   QuestionnaireResultScreen,
   QuestionnaireScreenHeader,
-  StartVisitingWelcomeScreen,
+  StartConsultationWelcomeScreen,
   TreatmentPlanIntroScreen,
-} from "../screens/StartingVisit";
-import { StartVisitingContext } from "../context/StartVisitingContext";
+} from "../screens/StartConsultation";
+import { StartConsultationContext } from "../context/StartConsultationContext";
 
 const { Navigator, Screen, Group } =
-  createStackNavigator<StartingVisitStackParamList>();
+  createStackNavigator<StartingConsultationStackParamList>();
 
-const StartVisitingNavigator = () => {
+const StartConsultationNavigator = () => {
   const progress = useSharedValue(0);
   return (
-    <StartVisitingContext>
+    <StartConsultationContext>
       <View style={{ position: "relative", flex: 1 }}>
         <Navigator
           initialRouteName="welcome"
@@ -43,7 +43,7 @@ const StartVisitingNavigator = () => {
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           }}
         >
-          <Screen name="welcome" component={StartVisitingWelcomeScreen} />
+          <Screen name="welcome" component={StartConsultationWelcomeScreen} />
 
           <Group
             screenOptions={{
@@ -94,8 +94,8 @@ const StartVisitingNavigator = () => {
           </Group>
         </Navigator>
       </View>
-    </StartVisitingContext>
+    </StartConsultationContext>
   );
 };
 
-export default StartVisitingNavigator;
+export default StartConsultationNavigator;

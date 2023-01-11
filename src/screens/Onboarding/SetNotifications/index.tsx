@@ -5,7 +5,7 @@ import Color from "../../../constants/colors";
 import Divider from "../../../components/Dividers";
 import BaseText from "../../../components/Text";
 import { LinearGradient } from "expo-linear-gradient";
-import { addOpacity } from "../../../utils/inex";
+import { addOpacity } from "../../../utils";
 import NotificationAnimation from "./NotificationAnimation";
 import { requestPermissionsAsync } from "../../../utils/notifications";
 import { OnboardingStackScreenProps } from "../../../types/Navigation";
@@ -16,7 +16,7 @@ type Props = OnboardingStackScreenProps<"SetNotifications">;
 const SetNotifications = ({ navigation }: Props) => {
   const { height } = useWindowDimensions();
   const navigateToStartVisit = () =>
-    navigation.navigate("StartingVisit", { screen: "welcome" });
+    navigation.navigate("StartingConsultation", { screen: "welcome" });
   const handleAllowNotification = () => {
     requestPermissionsAsync().then(() => {
       navigateToStartVisit();

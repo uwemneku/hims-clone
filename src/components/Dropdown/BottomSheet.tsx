@@ -26,7 +26,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 import Color from "../../constants/colors";
-import { addOpacity } from "../../utils/inex";
+import { addOpacity } from "../../utils";
 
 interface Props {
   children?: React.ReactNode;

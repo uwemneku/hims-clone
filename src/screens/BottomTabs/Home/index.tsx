@@ -5,7 +5,7 @@ import BaseText from "../../../components/Text";
 import Divider from "../../../components/Dividers";
 import { images } from "../../../constants/images";
 import Color from "../../../constants/colors";
-import { addOpacity } from "../../../utils/inex";
+import { addOpacity } from "../../../utils";
 import HomeCards from "../components/HomeCards";
 import Trending from "./Trending";
 import PopularReads from "./PopularReads";

@@ -48,6 +48,7 @@
     "@types/react-test-renderer": "^18.0.0",
     "jest": "^26.6.3",
     "jest-expo": "^47.0.1",
+    "react-native-bundle-visualizer": "^3.1.1",
     "react-test-renderer": "^18.2.0",
     "sharp-cli": "^2.1.0"
   },

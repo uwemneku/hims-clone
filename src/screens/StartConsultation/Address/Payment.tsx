@@ -6,7 +6,7 @@ import Button from "../../../components/Button";
 import BaseTextInput from "../../../components/TextInput/BaseTextInput";
 import Color from "../../../constants/colors";
 import Divider from "../../../components/Dividers";
-import { addOpacity } from "../../../utils/inex";
+import { addOpacity } from "../../../utils";
 import withStyle from "../../../components/withStyle";
 import { useFormik } from "formik";
 import * as yup from "yup";

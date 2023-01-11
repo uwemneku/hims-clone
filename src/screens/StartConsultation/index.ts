@@ -1,4 +1,4 @@
-export { default as StartVisitingWelcomeScreen } from "./Welcome";
+export { default as StartConsultationWelcomeScreen } from "./Welcome";
 export { default as QuestionnaireIntroScreen } from "./QuestionnaireIntro";
 export { default as HowItWorksScreen } from "./HowItWorks";
 export { default as AnxietyQuestionScreen } from "./AnxietyQuestion";

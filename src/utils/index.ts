@@ -1,13 +1,17 @@
 import Color from "../constants/colors";
 
 export const getAccessibleColor = (color: string) => {
-  const splitted = getRGBAobject(color);
+  const rgbaColor = getRGBAobject(color);
 
-  return getBrightness(splitted) > 128 || splitted.a < 0.5 ? "black" : "white";
+  return getBrightness(rgbaColor) > 128 || rgbaColor.a < 0.5
+    ? "black"
+    : "white";
 };
+
 const getBrightness = ({ r, g, b }: { r: number; g: number; b: number }) => {
   return (r * 299 + g * 587 + b * 114) / 1000;
 };
+
 const getRGBAobject = (color: string) => {
   const [rgbaValue] = /\(.*\)/g.exec(color) as RegExpExecArray;
   const colorArray = rgbaValue

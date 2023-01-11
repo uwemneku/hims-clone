@@ -1,5 +1,5 @@
 import { useFocusEffect } from "@react-navigation/native";
-import { StackHeaderProps, StackNavigationProp } from "@react-navigation/stack";
+import { StackHeaderProps } from "@react-navigation/stack";
 import { StyleSheet, View } from "react-native";
 import Animated, {
   Easing,
@@ -12,11 +12,10 @@ import Animated, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   RootStackScreenProps,
-  StartingVisitStackParamList,
-  StartingVisitStackScreenProps,
+  StartingConsultationStackParamList,
 } from "../../../types/Navigation";
 import { Ionicons } from "@expo/vector-icons";
-import { addOpacity } from "../../../utils/inex";
+import { addOpacity } from "../../../utils";
 import Color from "../../../constants/colors";
 
 type Props = StackHeaderProps & {
@@ -28,11 +27,11 @@ const QuestionnaireScreenHeader = ({
   questionProgress,
 }: Props) => {
   const { top } = useSafeAreaInsets();
-  const currentScreen = route.name as keyof StartingVisitStackParamList;
+  const currentScreen = route.name as keyof StartingConsultationStackParamList;
   const navigateBack = () => navigation.goBack();
   const handleClose = () =>
     (
-      navigation as RootStackScreenProps<"StartingVisit">["navigation"]
+      navigation as RootStackScreenProps<"StartingConsultation">["navigation"]
     ).navigate("HomeBottomTabs", { screen: "home" });
 
   useFocusEffect(() => {
@@ -69,7 +68,7 @@ const QuestionnaireScreenHeader = ({
   );
 };
 
-const screens: Record<keyof StartingVisitStackParamList, number> = {
+const screens: Record<keyof StartingConsultationStackParamList, number> = {
   welcome: 0,
   QuestionnaireIntro: 1,
   HowItWorks: 2,

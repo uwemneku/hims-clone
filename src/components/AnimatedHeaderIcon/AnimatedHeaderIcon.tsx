@@ -9,7 +9,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
 import Color from "../../constants/colors";
-import { addOpacity } from "../../utils/inex";
+import { addOpacity } from "../../utils";
 const TouchableOpacity = Animated.createAnimatedComponent(_TouchableOpacity);
 interface Props
   extends Omit<ComponentProps<typeof TouchableOpacity>, "children"> {

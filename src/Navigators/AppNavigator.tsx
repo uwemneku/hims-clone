@@ -3,7 +3,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/Navigation";
 import AuthenticationNavigator from "./AuthenticationNavigator";
-import StartVisitingNavigator from "./StartVisitingNavigator";
+import StartConsultationNavigator from "./StartConsultationNavigator";
 import { Linking, Platform } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
@@ -57,7 +57,10 @@ const AppNavigator = () => {
         screenOptions={{ headerShown: false, animation: "slide_from_bottom" }}
       >
         <Screen name="Onboarding" component={AuthenticationNavigator} />
-        <Screen name="StartingVisit" component={StartVisitingNavigator} />
+        <Screen
+          name="StartingConsultation"
+          component={StartConsultationNavigator}
+        />
         <Screen name="HomeBottomTabs" component={BottomTabsNavigator} />
       </Navigator>
     </NavigationContainer>

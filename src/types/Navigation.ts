@@ -6,7 +6,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type RootStackParamList = {
   Onboarding: NavigatorScreenParams<AuthenticationStackParamList>;
-  StartingVisit: NavigatorScreenParams<StartingVisitStackParamList>;
+  StartingConsultation: NavigatorScreenParams<StartingConsultationStackParamList>;
   HomeBottomTabs: NavigatorScreenParams<HomeBottomTabsParamsList>;
 };
 
@@ -20,7 +20,7 @@ export type AuthenticationStackParamList = {
   SetNotifications: undefined;
   Start: undefined;
 };
-export type StartingVisitStackParamList = {
+export type StartingConsultationStackParamList = {
   welcome: undefined;
   QuestionnaireIntro: undefined;
   HowItWorks: undefined;
@@ -57,9 +57,9 @@ export type OnboardingStackScreenProps<
 >;
 
 export type StartingVisitStackScreenProps<
-  T extends keyof StartingVisitStackParamList
+  T extends keyof StartingConsultationStackParamList
 > = CompositeScreenProps<
-  NativeStackScreenProps<StartingVisitStackParamList, T>,
+  NativeStackScreenProps<StartingConsultationStackParamList, T>,
   RootStackScreenProps<keyof RootStackParamList>
 >;
 

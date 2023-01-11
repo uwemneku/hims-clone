@@ -1,3 +1,4 @@
+import { ComponentProps } from "react";
 import { StyleSheet, View } from "react-native";
 import Divider from "../../../components/Dividers";
 import BaseText from "../../../components/Text";
@@ -8,7 +9,7 @@ interface Props {
   /**@default false */
   enableImageAnimation?: boolean;
   height?: number;
-  image: string;
+  image: ComponentProps<typeof ZoomImageCard>["source"];
   title: string;
 }
 

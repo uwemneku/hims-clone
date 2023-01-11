@@ -6,7 +6,7 @@ import IntroScreenLayout from "./components/IntroScreenLayout";
 import Color from "../../constants/colors";
 import GradientText from "../../components/Text/GradientText";
 import { StartingVisitStackScreenProps } from "../../types/Navigation";
-import { addOpacity } from "../../utils/inex";
+import { addOpacity } from "../../utils";
 import Divider from "../../components/Dividers";
 import QuestionnaireGradientText from "./components/QuestionnaireGradientText";
 

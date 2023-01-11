@@ -14,7 +14,7 @@ import Animated, {
 import Color from "../../../../constants/colors";
 import { useNavigation } from "@react-navigation/native";
 import BaseText from "../../../Text";
-import { addOpacity } from "../../../../utils/inex";
+import { addOpacity } from "../../../../utils";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import AnimatedHeaderIcon from "../../../AnimatedHeaderIcon/AnimatedHeaderIcon";
 interface Props extends ComponentProps<typeof View> {

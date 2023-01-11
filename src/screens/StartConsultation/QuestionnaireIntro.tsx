@@ -6,7 +6,7 @@ import IntroScreenLayout from "./components/IntroScreenLayout";
 import Color from "../../constants/colors";
 import { images } from "../../constants/images";
 import Divider from "../../components/Dividers";
-import { addOpacity } from "../../utils/inex";
+import { addOpacity } from "../../utils";
 import { StartingVisitStackScreenProps } from "../../types/Navigation";
 
 type Props = StartingVisitStackScreenProps<"QuestionnaireIntro">;
