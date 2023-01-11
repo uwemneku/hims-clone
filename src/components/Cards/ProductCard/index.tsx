@@ -2,8 +2,8 @@ import { StyleSheet, View, Image } from "react-native";
 import React from "react";
 import Color from "../../../constants/colors";
 import { addOpacity } from "../../../utils";
-import Divider from "../../../components/Dividers";
-import BaseText from "../../../components/Text";
+import Divider from "../../Dividers";
+import BaseText from "../../Text";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { images } from "../../../constants/images";
 

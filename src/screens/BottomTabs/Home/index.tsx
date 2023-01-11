@@ -1,20 +1,21 @@
-import { StyleSheet, View, ImageBackground } from "react-native";
-import React, { useRef } from "react";
-import ScreenWrapper from "./ScreenWrapper";
+import { StyleSheet, View } from "react-native";
+import React from "react";
+import BottomTabScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
 import BaseText from "../../../components/Text";
 import Divider from "../../../components/Dividers";
 import { images } from "../../../constants/images";
 import Color from "../../../constants/colors";
 import { addOpacity } from "../../../utils";
-import HomeCards from "../components/HomeCards";
 import Trending from "./Trending";
 import PopularReads from "./PopularReads";
-import ZoomImageCard from "../../../components/ZoomImageCard";
+import ZoomImageCard from "../../../components/Cards/ZoomImageCard";
 import AnnounceMent from "./AnnounceMent";
+import withDefaultValue from "../../../utils/withDefaultValue";
+import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
 
 const Home = () => {
   return (
-    <ScreenWrapper>
+    <BottomTabScreenWrapper title="Home" leftIcon={Icon}>
       <View>
         <BaseText size="h1" style={{ width: "70%" }}>
           Welcome back, John
@@ -55,10 +56,11 @@ const Home = () => {
       <PopularReads />
       <Divider size="xl" />
       <AnnounceMent />
-    </ScreenWrapper>
+    </BottomTabScreenWrapper>
   );
 };
 
+const Icon = withDefaultValue(AnimatedHeaderIcon, { iconName: "person" });
 export default Home;
 
 const styles = StyleSheet.create({

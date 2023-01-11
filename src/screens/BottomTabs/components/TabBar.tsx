@@ -8,7 +8,6 @@ import BaseText from "../../../components/Text";
 import { Ionicons } from "@expo/vector-icons";
 import Divider from "../../../components/Dividers";
 import Animated from "react-native-reanimated";
-import { HomeBottomTabsParamsList } from "../../../types/Navigation";
 interface Props extends BottomTabBarProps {}
 const TabBar = ({ navigation, state }: Props) => {
   const currentRoute = state.routeNames[state.index];

@@ -8,6 +8,7 @@ enum Color {
   lightGray = "rgb(224,224,224)",
   blue = "rgb(98,149,241)",
   purple = "rgb(117,80,118)",
+  brightPurple = "rgb(109,77,183)",
   green = "rgb(120,144,95)",
   red = "rgb(255,0,0)",
   brown = "rgb(163,124,94)",

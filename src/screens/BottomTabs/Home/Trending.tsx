@@ -3,7 +3,7 @@ import React from "react";
 import HomeCards from "../components/HomeCards";
 import { ScrollView } from "react-native-gesture-handler";
 import Divider from "../../../components/Dividers";
-import ProductCard from "./ProductCard";
+import ProductCard from "../../../components/Cards/ProductCard";
 import { images } from "../../../constants/images";
 
 const data = [

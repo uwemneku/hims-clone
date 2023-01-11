@@ -9,6 +9,7 @@ import {
   BottomTabs_ShopScreen,
   BottomTabs_TabBar,
 } from "../screens/BottomTabs";
+import Color from "../constants/colors";
 
 const { Navigator, Screen } =
   createBottomTabNavigator<HomeBottomTabsParamsList>();
@@ -17,6 +18,7 @@ const BottomTabsNavigator = () => {
   return (
     <Navigator
       screenOptions={{ headerShown: false }}
+      sceneContainerStyle={{ backgroundColor: Color.offWhite }}
       tabBar={BottomTabs_TabBar}
     >
       <Screen name="home" component={BottomTabs_HomeScreen} />

@@ -2,13 +2,13 @@ import { StyleSheet, View, useWindowDimensions } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import Divider from "../../../components/Dividers";
-import ProductCard from "./ProductCard";
+import ProductCard from "../../../components/Cards/ProductCard";
 import { images } from "../../../constants/images";
 import BaseText from "../../../components/Text";
 import Color from "../../../constants/colors";
 import { addOpacity } from "../../../utils";
 import { LinearGradient } from "expo-linear-gradient";
-import ZoomImageCard from "../../../components/ZoomImageCard";
+import ZoomImageCard from "../../../components/Cards/ZoomImageCard";
 
 const data = [
   { image: images.skin },

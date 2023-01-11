@@ -9,7 +9,7 @@ import QuestionnaireGradientText from "../components/QuestionnaireGradientText";
 import BaseText from "../../../components/Text";
 import Divider from "../../../components/Dividers";
 import BaseTextInput from "../../../components/TextInput/BaseTextInput";
-import withStyle from "../../../components/withStyle";
+import withStyle from "../../../utils/withStyle";
 import Color from "../../../constants/colors";
 import Button from "../../../components/Button";
 import DropDown from "../../../components/Dropdown";

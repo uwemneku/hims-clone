@@ -2,7 +2,7 @@ import { ComponentProps } from "react";
 import { StyleSheet, View } from "react-native";
 import Divider from "../../../components/Dividers";
 import BaseText from "../../../components/Text";
-import ZoomImageCard from "../../../components/ZoomImageCard";
+import ZoomImageCard from "../../../components/Cards/ZoomImageCard";
 import Color from "../../../constants/colors";
 
 interface Props {

@@ -8,14 +8,27 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Color from "../../../constants/colors";
-import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
-import BaseText from "../../../components/Text";
+import Color from "../../../../constants/colors";
+import AnimatedHeaderIcon from "../../../AnimatedHeaderIcon/AnimatedHeaderIcon";
+import BaseText from "../../../Text";
 interface Props {
   children: React.ReactNode | React.ReactNode[];
+  title: string;
+  leftIcon?: (props: {
+    scrollOffset: Animated.SharedValue<number>;
+  }) => JSX.Element;
+  rightIcon?: (props: {
+    scrollOffset: Animated.SharedValue<number>;
+  }) => JSX.Element;
 }
 type onScroll = ComponentProps<typeof ScrollView>["onScroll"];
-const ScreenWrapper = ({ children }: Props) => {
+
+const BottomTabScreenWrapper = ({
+  children,
+  title,
+  leftIcon,
+  rightIcon,
+}: Props) => {
   const scrollOffset = useSharedValue(0);
   const { top: paddingTop } = useSafeAreaInsets();
 
@@ -56,10 +69,11 @@ const ScreenWrapper = ({ children }: Props) => {
         <View style={styles.headerContent}>
           <Animated.View style={[styles.header, animatedTextStyle]}>
             <BaseText size="h2" align="center">
-              Home
+              {title}
             </BaseText>
           </Animated.View>
-          <AnimatedHeaderIcon scrollOffset={scrollOffset} iconName="person" />
+          {/* <AnimatedHeaderIcon scrollOffset={scrollOffset} iconName="person" /> */}
+          {leftIcon && leftIcon({ scrollOffset })}
         </View>
       </Animated.View>
       <ScrollView
@@ -72,7 +86,7 @@ const ScreenWrapper = ({ children }: Props) => {
   );
 };
 
-export default ScreenWrapper;
+export default BottomTabScreenWrapper;
 
 const styles = StyleSheet.create({
   container: {
