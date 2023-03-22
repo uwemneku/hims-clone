@@ -6,6 +6,8 @@ A clone of HIMS mobile application using [Mobbin](https://mobbin.com/apps/hims-i
 
 [![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
 
+<img width="100%" src="./screenshots/Screenshot%202023-03-22%20181806.png" />
+
 # Set up
 
 Make sure that you have a [react native environment](https://reactnative.dev/docs/environment-setup) set up
