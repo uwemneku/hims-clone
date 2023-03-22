@@ -12,9 +12,14 @@ import ZoomImageCard from "../../../components/Cards/ZoomImageCard";
 import AnnounceMent from "./AnnounceMent";
 import withDefaultValue from "../../../utils/withDefaultValue";
 import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
-import { Link, useNavigation } from "@react-navigation/native";
+import { Link, NavigationProp, useNavigation } from "@react-navigation/native";
 import Animated from "react-native-reanimated";
+import {
+  RootStackParamList,
+  RootStackScreenProps,
+} from "../../../types/Navigation";
 
+type Prop = RootStackScreenProps<"HomeBottomTabs">;
 const Home = () => {
   return (
     <BottomTabScreenWrapper title="Home" rightIcon={HomeIcon}>
@@ -61,14 +66,16 @@ const Home = () => {
     </BottomTabScreenWrapper>
   );
 };
+type Navigation = NavigationProp<RootStackParamList, "HomeBottomTabs">;
 
 const HomeIcon = ({
   scrollOffset,
 }: {
   scrollOffset: Animated.SharedValue<number>;
 }): JSX.Element => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<Navigation>();
   const onPress = () => navigation.navigate("Account", { screen: "account" });
+
   return (
     <AnimatedHeaderIcon
       scrollOffset={scrollOffset}

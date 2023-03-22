@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
 interface Props {
-  size?: "xs" | "s" | "m" | "l" | "xl" | number;
+  size?: "xs" | "s" | "m" | "l" | "xl" | "2xl" | number;
   /**
    * Direction of the divider
    */
@@ -22,6 +22,7 @@ const SIZES: { [key in Required<Props>["size"]]: number } = {
   m: 15,
   l: 20,
   xl: 30,
+  "2xl": 60,
 };
 
 export default Divider;

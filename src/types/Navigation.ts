@@ -1,6 +1,7 @@
 import {
   NavigatorScreenParams,
   CompositeScreenProps,
+  ParamListBase,
 } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
@@ -72,9 +73,11 @@ export type StartingVisitStackScreenProps<
   NativeStackScreenProps<StartingConsultationStackParamList, T>,
   RootStackScreenProps<keyof RootStackParamList>
 >;
-
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
-  }
-}
+export type NestedStackScreenProps<
+  T extends ParamListBase,
+  K extends keyof T
+> = CompositeScreenProps<
+  // @ts-ignore
+  NativeStackScreenProps<T, K>,
+  RootStackScreenProps<keyof RootStackParamList>
+>;
