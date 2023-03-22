@@ -8,6 +8,7 @@ import { Linking, Platform } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import BottomTabsNavigator from "./BottomTabsNavigator";
+import AccountsNavigator from "./AccountsNavigator";
 
 const PERSISTENCE_KEY = "NAVIGATION_STATE_V1";
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
@@ -62,6 +63,7 @@ const AppNavigator = () => {
           component={StartConsultationNavigator}
         />
         <Screen name="HomeBottomTabs" component={BottomTabsNavigator} />
+        <Screen name="Account" component={AccountsNavigator} />
       </Navigator>
     </NavigationContainer>
   );

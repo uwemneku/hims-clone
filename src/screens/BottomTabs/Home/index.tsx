@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import React from "react";
+import React, { FC } from "react";
 import BottomTabScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
 import BaseText from "../../../components/Text";
 import Divider from "../../../components/Dividers";
@@ -12,10 +12,12 @@ import ZoomImageCard from "../../../components/Cards/ZoomImageCard";
 import AnnounceMent from "./AnnounceMent";
 import withDefaultValue from "../../../utils/withDefaultValue";
 import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
+import { Link, useNavigation } from "@react-navigation/native";
+import Animated from "react-native-reanimated";
 
 const Home = () => {
   return (
-    <BottomTabScreenWrapper title="Home" leftIcon={Icon}>
+    <BottomTabScreenWrapper title="Home" rightIcon={HomeIcon}>
       <View>
         <BaseText size="h1" style={{ width: "70%" }}>
           Welcome back, John
@@ -60,7 +62,22 @@ const Home = () => {
   );
 };
 
-const Icon = withDefaultValue(AnimatedHeaderIcon, { iconName: "person" });
+const HomeIcon = ({
+  scrollOffset,
+}: {
+  scrollOffset: Animated.SharedValue<number>;
+}): JSX.Element => {
+  const navigation = useNavigation();
+  const onPress = () => navigation.navigate("Account", { screen: "account" });
+  return (
+    <AnimatedHeaderIcon
+      scrollOffset={scrollOffset}
+      iconName="person"
+      onPress={onPress}
+    />
+  );
+};
+
 export default Home;
 
 const styles = StyleSheet.create({

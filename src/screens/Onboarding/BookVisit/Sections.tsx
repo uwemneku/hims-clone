@@ -1,8 +1,8 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import BaseText from "../../../components/Text";
-import { Ionicons } from "@expo/vector-icons";
 import Color from "../../../constants/colors";
+import ChevronList from "../../../components/ChevronList";
 export type SectionList = {
   title: string;
   list: string[];
@@ -15,30 +15,15 @@ const Sections = ({ list, title, onItemClick }: Props) => {
     onItemClick(i);
   };
   return (
-    <View style={styles.container}>
+    <View>
       <BaseText size="body" style={{ paddingBottom: 5 }} color={Color.darkGray}>
         {title}
       </BaseText>
       {list.map((i) => (
-        <TouchableOpacity onPress={handleClick(i)} key={i} style={styles.list}>
-          <BaseText>{i}</BaseText>
-          <Ionicons size={20} name="chevron-forward" />
-        </TouchableOpacity>
+        <ChevronList key={i} onPress={handleClick(i)} title={i} />
       ))}
     </View>
   );
 };
 
 export default Sections;
-
-const styles = StyleSheet.create({
-  container: {
-    // marginVertical: 20,
-  },
-  list: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 10,
-  },
-});

@@ -8,6 +8,7 @@ export type RootStackParamList = {
   Onboarding: NavigatorScreenParams<AuthenticationStackParamList>;
   StartingConsultation: NavigatorScreenParams<StartingConsultationStackParamList>;
   HomeBottomTabs: NavigatorScreenParams<HomeBottomTabsParamsList>;
+  Account: NavigatorScreenParams<AccountStackScreenParamsList>;
 };
 
 export type AuthenticationStackParamList = {
@@ -40,6 +41,15 @@ export type StartingConsultationStackParamList = {
   PaymentDetails: undefined;
 };
 
+export type AccountStackScreenParamsList = {
+  contactInfo: undefined;
+  subscriptions: undefined;
+  orderHistory: undefined;
+  paymentMethod: undefined;
+  helpCenter: undefined;
+  terms: undefined;
+  account: undefined;
+};
 export type HomeBottomTabsParamsList = {
   home: undefined;
   care: undefined;

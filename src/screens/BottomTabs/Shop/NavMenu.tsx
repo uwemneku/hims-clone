@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const Shop = () => {
+const NavMenu = () => {
   return (
     <View>
-      <Text>Shop</Text>
+      <Text>NavMenu</Text>
     </View>
   );
 };
 
-export default Shop;
+export default NavMenu;
 
 const styles = StyleSheet.create({});

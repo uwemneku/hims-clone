@@ -8,10 +8,10 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Color from "../../../../constants/colors";
-import BaseText from "../../../Text";
+import BaseText from "../../../components/Text";
+import Color from "../../../constants/colors";
+import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
 interface Props {
-  children: React.ReactNode | React.ReactNode[];
   title: string;
   leftIcon?: (props: {
     scrollOffset: Animated.SharedValue<number>;
@@ -22,14 +22,9 @@ interface Props {
 }
 type onScroll = ComponentProps<typeof ScrollView>["onScroll"];
 
-const BottomTabScreenWrapper = ({
-  children,
-  title,
-  leftIcon,
-  rightIcon,
-}: Props) => {
+const BottomTabScreenWrapper = ({ title, leftIcon, rightIcon }: Props) => {
   const scrollOffset = useSharedValue(0);
-  const { top: paddingTop } = useSafeAreaInsets();
+  const { top } = useSafeAreaInsets();
 
   const handleScroll: onScroll = ({ nativeEvent }) => {
     scrollOffset.value = nativeEvent.contentOffset.y;
@@ -61,29 +56,23 @@ const BottomTabScreenWrapper = ({
         style={[
           styles.animatedHeader,
           animatedHeaderContentStyle,
-          { paddingTop: paddingTop, paddingBottom: paddingTop * 0.5 },
+          { paddingTop: top + 10 },
         ]}
       >
         <View style={styles.headerContent}>
-          <View style={styles.iconContainer}>
-            {leftIcon && leftIcon({ scrollOffset })}
-          </View>
-          <View style={{ flex: 1 }} />
           <Animated.View style={[styles.header, animatedTextStyle]}>
             <BaseText size="h2" align="center">
-              {title}
+              Shop
             </BaseText>
           </Animated.View>
-          <View style={styles.iconContainer}>
-            {rightIcon && rightIcon({ scrollOffset })}
-          </View>
+          <AnimatedHeaderIcon scrollOffset={scrollOffset} iconName="cart" />
         </View>
       </Animated.View>
       <ScrollView
         onScroll={handleScroll}
         contentContainerStyle={[styles.content]}
       >
-        {children}
+        <View style={{ height: 3000, backgroundColor: "red" }} />
       </ScrollView>
     </View>
   );
@@ -108,6 +97,7 @@ const styles = StyleSheet.create({
     width: "100%",
     zIndex: 2,
     paddingHorizontal: 20,
+    paddingBottom: 10,
     overflow: "hidden",
   },
   headerContent: {
@@ -120,10 +110,5 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     textAlign: "center",
-  },
-  iconContainer: {
-    minHeight: 24,
-    zIndex: 20,
-    paddingVertical: 5,
   },
 });

@@ -19,7 +19,7 @@ const data = [
 const AnnounceMent = () => {
   const { height, width } = useWindowDimensions();
   return (
-    <View style={[styles.container, { height: height * 0.8, minHeight: 700 }]}>
+    <View style={[styles.container, { height: height * 0.75, minHeight: 600 }]}>
       <View style={styles.header}>
         <BaseText size="h2" color={Color.white}>
           Big News

@@ -15,6 +15,7 @@ const validationSchema = yup.object().shape({
   email: yup
     .string()
     .email("Enter a valid email")
+    .trim()
     .required("This field is required"),
   password: yup.string().required("This field is required"),
 });
