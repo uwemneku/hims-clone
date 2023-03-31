@@ -37,6 +37,7 @@ const AnnounceMent = () => {
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
+          scrollEventThrottle={16}
           contentContainerStyle={{ paddingHorizontal: 15 }}
         >
           {data.map((_, i) => (

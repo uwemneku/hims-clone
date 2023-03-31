@@ -2,6 +2,7 @@ import { StyleProp, Text, TextStyle } from "react-native";
 import React, { ComponentProps } from "react";
 import AppFonts from "../../constants/fonts";
 import Color from "../../constants/colors";
+
 interface Props extends ComponentProps<typeof Text> {
   fontWeight?: keyof typeof AppFonts;
   color?: string;
@@ -11,7 +12,7 @@ interface Props extends ComponentProps<typeof Text> {
   lineHeight?: number;
 }
 const BaseText = ({
-  fontWeight = "sofia_regular",
+  fontWeight = "SofiaSans-Regular",
   color = Color.black,
   style,
   size = "body",

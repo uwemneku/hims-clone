@@ -67,6 +67,7 @@ const ScreenWithHeading: FC<PropsWithChildren<Props>> = ({
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={{ paddingBottom: 100 }}
+        scrollEventThrottle={16}
         onScroll={handleScroll}
         keyboardShouldPersistTaps="always"
       >

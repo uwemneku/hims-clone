@@ -18,6 +18,7 @@ const QuestionnaireLayoutWithScrollView = React.forwardRef(
         <ScrollView
           keyboardShouldPersistTaps="always"
           ref={ref as React.RefObject<ScrollView>}
+          scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollContainer}
           style={{ flex: 1 }}

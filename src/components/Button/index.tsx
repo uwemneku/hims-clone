@@ -40,7 +40,7 @@ const Button = ({
 }: Props) => {
   const textColor = variant === "filled" ? getAccessibleColor(color) : "white";
   const backgroundColor = variant === "filled" ? color : "transparent";
-  const borderWidth = variant === "filled" ? 0 : 2;
+  const borderWidth = variant === "filled" ? 0 : 1;
   return (
     <TouchableOpacity
       style={[
@@ -59,6 +59,7 @@ const Button = ({
         testID="button_text"
         style={{ ...styles.text, color: textColor, ...style?.text }}
         align="center"
+        size="small"
       >
         {label}
       </BaseText>

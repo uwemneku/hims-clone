@@ -1,8 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import BottomTabScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
-import withDefaultValue from "../../utils/withDefaultValue";
-import AnimatedHeaderIcon from "../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
 import BaseText from "../../components/Text";
 import ChevronList from "../../components/ChevronList";
 import Color from "../../constants/colors";
@@ -12,6 +10,7 @@ import {
   AccountStackScreenParamsList,
   NestedStackScreenProps,
 } from "../../types/Navigation";
+import BackIcon from "../../components/Icon/BackIcon";
 
 type Props = NestedStackScreenProps<AccountStackScreenParamsList, "account">;
 
@@ -22,7 +21,7 @@ const Account = ({ navigation }: Props) => {
     navigation.navigate("Account", { screen: key });
   };
   return (
-    <BottomTabScreenWrapper title="Account" rightIcon={LeftIcon}>
+    <BottomTabScreenWrapper title="Account" rightIcon={BackIcon}>
       <BaseText size="h1">Account</BaseText>
       <View style={styles.heading}>
         <View style={styles.initials}>
@@ -50,7 +49,12 @@ const Account = ({ navigation }: Props) => {
             title={
               <View style={styles.listBox}>
                 <BaseText>Payment methods</BaseText>
-                <BaseText color={Color.gray}>**** 1234</BaseText>
+                <BaseText
+                  style={{ textAlignVertical: "center" }}
+                  color={Color.gray}
+                >
+                  **** 1234
+                </BaseText>
               </View>
             }
           />
@@ -69,8 +73,6 @@ const Account = ({ navigation }: Props) => {
   );
 };
 
-const LeftIcon = withDefaultValue(AnimatedHeaderIcon)("iconName", "close")();
-
 export default Account;
 
 const listData: { label: string; nav: keyof AccountStackScreenParamsList }[] = [
@@ -84,7 +86,6 @@ const listData: { label: string; nav: keyof AccountStackScreenParamsList }[] = [
 const styles = StyleSheet.create({
   list: {
     paddingVertical: 10,
-    borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
   },
   heading: {

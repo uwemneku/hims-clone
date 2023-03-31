@@ -53,7 +53,7 @@ const Login = ({ navigation }: Props) => {
         helperText={errors.password}
         onChangeText={handleChange("password")}
         isError={Boolean(errors.password)}
-        placeholder="password"
+        placeholder="Password"
       />
       <Divider size="xl" />
       <BaseText color={Color.brown}>Forgot password?</BaseText>

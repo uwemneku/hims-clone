@@ -11,25 +11,32 @@ import Divider from "../../components/Dividers";
 import Button from "../../components/Button";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import BackIcon from "../../components/Icon/BackIcon";
+import DateInput from "../../components/TextInput/DateInput";
+import Color from "../../constants/colors";
 
 const validationSchema = yup.object().shape({
   firstName: yup.string().required("This field is required"),
   lastName: yup.string().required("This field is required"),
   email: yup.string().email().required("This field is required"),
   phoneNumber: yup.number().required("This field is required"),
-  dob: yup.string().required("This field is required"),
+  dob: yup
+    .string()
+    .matches(/\d\d-\d\d-\d\d\d\d/)
+    .required("This field is required"),
 });
 
 type Form = ExtractFormikTypes<typeof validationSchema>;
 type Props = StackScreenProps<AccountStackScreenParamsList, "contactInfo">;
 const Contact = ({ navigation }: Props) => {
-  const { errors, values, submitForm, setFieldValue } = useFormik<Form>({
-    initialValues: {},
-    validationSchema,
-    onSubmit() {
-      navigation.goBack();
-    },
-  });
+  const { errors, values, submitForm, setFieldValue, isValid } =
+    useFormik<Form>({
+      initialValues: {},
+      validationSchema,
+      onSubmit() {
+        navigation.goBack();
+      },
+    });
 
   const getFormProps = (
     key: keyof Form
@@ -71,16 +78,25 @@ const Contact = ({ navigation }: Props) => {
         {...getFormProps("email")}
       />
       <Divider />
-      <BaseTextInput placeholder="Date of Birth" {...getFormProps("dob")} />
+      <DateInput
+        maxAge={18}
+        placeholder="Date of Birth"
+        onChange={(e) => {
+          setFieldValue("dob", e);
+        }}
+        isError={Boolean(errors.dob)}
+        helperText={errors.dob}
+      />
       <Divider size="xl" />
-      <Button label="Save" onPressIn={submitForm} />
+      <Button
+        color={isValid ? Color.black : Color.lightGray}
+        label="Save"
+        onPressIn={submitForm}
+      />
     </BottomTabScreenWrapper>
   );
 };
-const LeftIcon = withDefaultValue(AnimatedHeaderIcon)(
-  "iconName",
-  "arrow-back"
-)();
+const LeftIcon = withDefaultValue(BackIcon)("iconName", "arrow-back")();
 
 export default Contact;
 

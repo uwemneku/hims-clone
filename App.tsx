@@ -8,11 +8,16 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   const [isFontsLoaded] = useFonts({
-    [AppFonts.sofia_bold]: require("./assets/fonts/SofiaProBold-english.ttf"),
-    [AppFonts.sofia_medium]: require("./assets/fonts/SofiaProRegular-english.ttf"),
+    [AppFonts.sofia_bold]: require("./assets/fonts/SofiaSans-Bold.ttf"),
     [AppFonts.sofia_regular]: require("./assets/fonts/SofiaProSemiBold-english.ttf"),
     [AppFonts.sofia_medium]: require("./assets/fonts/SofiaProMedium-english.ttf"),
     [AppFonts.sofia_curly]: require("./assets/fonts/Sofia-Regular.ttf"),
+    [AppFonts[
+      "SofiaSans-Light"
+    ]]: require("./assets/fonts/SofiaSans-Light.ttf"),
+    [AppFonts[
+      "SofiaSans-Regular"
+    ]]: require("./assets/fonts/SofiaSans-Regular.ttf"),
   });
   if (!isFontsLoaded) {
     return null;
@@ -20,7 +25,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       {/* <SafeAreaView style={styles.container}> */}
-        <AppNavigator />
+      <AppNavigator />
       {/* </SafeAreaView> */}
     </GestureHandlerRootView>
   );

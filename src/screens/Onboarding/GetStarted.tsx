@@ -55,7 +55,7 @@ const GetStarted = ({ navigation }: Props) => {
         <Animated.View>
           <BaseText
             align="center"
-            size="h1"
+            size="h2"
             fontWeight="sofia_medium"
             color={Color.white}
             style={styles.title}

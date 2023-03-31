@@ -18,6 +18,7 @@ const Trending = () => {
     <HomeCards title="Trending" subtitle="Jun 15">
       <Divider size={"xs"} />
       <ScrollView
+        scrollEventThrottle={16}
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: 15 }}

@@ -24,7 +24,7 @@ import Animated, {
 import BaseText from "../Text";
 
 const HEIGHT = 60;
-const BORDER_WIDTH = 2;
+const BORDER_WIDTH = 1;
 type onLayout = ComponentProps<typeof Animated.Text>["onLayout"];
 type textInputProps = Pick<
   ComponentProps<typeof TextInput>,
@@ -159,6 +159,7 @@ const BaseTextInput = ({
                 styles.placeholder,
                 placeholderStyle,
                 animatedPlaceholderStyle,
+                { color: isError ? Color.red : Color.gray },
               ]}
               onLayout={handleTextLayout}
               allowFontScaling={false}
@@ -185,9 +186,9 @@ const BaseTextInput = ({
         >
           <BaseText
             style={[{ color: isError ? Color.red : Color.gray }]}
-            fontWeight="sofia_medium"
             size="small"
             color={Color.gray}
+            fontWeight="SofiaSans-Light"
           >
             {helperText}
           </BaseText>
@@ -215,16 +216,16 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     position: "absolute",
-    fontFamily: "sofia_regular",
+    fontFamily: "SofiaSans-Light",
     left: 10,
-    color: Color.lightGray,
+    color: Color.darkGray,
     zIndex: 100,
   },
   textInput: {
     flex: 1,
     height: "100%",
     padding: 10,
-    fontFamily: "sofia_regular",
+    fontFamily: "SofiaSans-Regular",
   },
   helperText: {
     marginTop: 8,

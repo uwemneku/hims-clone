@@ -27,6 +27,7 @@ const PopularReads = () => {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={16}
         style={{ paddingLeft: 15 }}
       >
         {data.map((_, i) => (

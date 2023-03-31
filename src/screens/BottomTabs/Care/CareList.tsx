@@ -14,7 +14,11 @@ const CareList = ({ items = [], title }: Props) => {
     <View>
       <BaseText color={Color.darkGray}>{title}</BaseText>
       <Divider size="l" />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={16}
+      >
         {items.map((_) => {
           return (
             <View key={_.title} style={{ flexDirection: "row" }}>

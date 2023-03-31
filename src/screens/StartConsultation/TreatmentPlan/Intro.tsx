@@ -30,7 +30,10 @@ const Intro = ({ navigation }: Props) => {
     return <LoadingAnimationScreen title="Personalizing your treatment" />;
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        scrollEventThrottle={16}
+      >
         <QuestionnaireGradientText size="title">
           Your Treatment Plan
         </QuestionnaireGradientText>

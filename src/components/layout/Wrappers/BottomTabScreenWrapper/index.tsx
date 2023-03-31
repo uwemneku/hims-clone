@@ -10,15 +10,15 @@ import Animated, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Color from "../../../../constants/colors";
 import BaseText from "../../../Text";
+
+type IconProps = Object & {
+  scrollOffset: Animated.SharedValue<number>;
+};
 interface Props {
   children: React.ReactNode | React.ReactNode[];
   title: string;
-  leftIcon?: (props: {
-    scrollOffset: Animated.SharedValue<number>;
-  }) => JSX.Element;
-  rightIcon?: (props: {
-    scrollOffset: Animated.SharedValue<number>;
-  }) => JSX.Element;
+  leftIcon?: (props: IconProps) => JSX.Element;
+  rightIcon?: (props: IconProps) => JSX.Element;
 }
 type onScroll = ComponentProps<typeof ScrollView>["onScroll"];
 
@@ -61,7 +61,7 @@ const BottomTabScreenWrapper = ({
         style={[
           styles.animatedHeader,
           animatedHeaderContentStyle,
-          { paddingTop: paddingTop, paddingBottom: paddingTop * 0.5 },
+          { paddingTop: paddingTop, paddingBottom: paddingTop * 0 },
         ]}
       >
         <View style={styles.headerContent}>
@@ -81,6 +81,7 @@ const BottomTabScreenWrapper = ({
       </Animated.View>
       <ScrollView
         onScroll={handleScroll}
+        scrollEventThrottle={16}
         contentContainerStyle={[styles.content]}
       >
         {children}

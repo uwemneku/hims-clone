@@ -6,43 +6,16 @@ import Divider from "../../components/Dividers";
 import BaseText from "../../components/Text";
 import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
 import { OnboardingStackScreenProps } from "../../types/Navigation";
+import useDateInputFormat from "../../hooks/useDateInputFormat";
 
 type Props = OnboardingStackScreenProps<"SetDateOfBirth">;
-const maxYear = new Date().getFullYear() - 18;
 const _helperText = "Must be up to 18 years old";
 
 const SetState = ({ navigation }: Props) => {
-  const [DOB, setDOB] = useState("");
-  const [errorText, setErrorText] = useState("");
-  const displayedText = DOB.replace(/ |[\D]|/g, "").replace(
-    /([\d]{2})-?([\d]{1,2})?-?([\d]{1,4})?/g,
-    (_, p1, p2, p3) => {
-      const errorText =
-        parseInt(p1) > 12
-          ? "Invalid month"
-          : parseInt(p2) > 31
-          ? "Invalid day"
-          : parseInt(p3) > maxYear
-          ? "Invalid Year"
-          : "";
-      // this is to avoid infinite rerender
-      setTimeout(() => {
-        setErrorText(errorText);
-      }, 0);
-      // This allows the code to match dates of birth in the format dd, dd-mm, or dd-mm-yyyy.
-      return `${p1}${p2 ? `-${p2}` : ""}${p3 ? `-${p3}` : ""}`;
-    }
-  );
-
-  // Text format is correct when displayed text text is not empty and matches the format of MM-DD-YYYY or when the text input is empty
-  const isTextFormatCorrect =
-    (Boolean(displayedText.match(/[\d]{2}-[\d]{2}-[\d]{4}/g)) &&
-      displayedText.length > 0) ||
-    displayedText.length === 0;
-  const isError = !isTextFormatCorrect || Boolean(errorText);
-
+  const [displayedText, setDOB, isError, errorText] = useDateInputFormat(18);
+  const isButtonDisabled = !displayedText || isError;
   const handleButtonClick = () => {
-    navigation.navigate("BookAVisit");
+    !isButtonDisabled && navigation.navigate("BookAVisit");
   };
 
   return (
@@ -63,7 +36,7 @@ const SetState = ({ navigation }: Props) => {
         centerButton
         onPress={handleButtonClick}
         label="Next"
-        color={Color.black}
+        color={isButtonDisabled ? Color.lightGray : Color.black}
         style={{ text: { color: Color.white } }}
       />
     </ScreenWithHeading>

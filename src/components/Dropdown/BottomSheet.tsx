@@ -195,6 +195,7 @@ const BottomSheet = forwardRef<BottomSheetRef, Props>(
                 style={styles.scrollView}
                 simultaneousHandlers={gesture_ref}
                 showsVerticalScrollIndicator={false}
+                scrollEventThrottle={16}
                 contentContainerStyle={{ paddingBottom: minHeight }}
               >
                 {children}

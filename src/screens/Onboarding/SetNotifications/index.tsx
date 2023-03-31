@@ -34,7 +34,7 @@ const SetNotifications = ({ navigation }: Props) => {
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} scrollEventThrottle={16}>
       <View
         style={{
           height: Math.max(height * 0.65, 400),

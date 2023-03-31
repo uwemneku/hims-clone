@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <BottomTabScreenWrapper title="Home" rightIcon={HomeIcon}>
       <View>
-        <BaseText size="h1" style={{ width: "70%" }}>
+        <BaseText fontWeight="sofia_bold" size="h1" style={{ width: "70%" }}>
           Welcome back, John
         </BaseText>
       </View>
