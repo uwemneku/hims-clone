@@ -13,8 +13,8 @@
           "icon": "./assets/notification-icon.png",
           "color": "#ffffff",
           "sounds": [
-            "./assets/notificationSound.wav",
-            "./assets/notificationOther.wav"
+            "./assets/notificationsound.wav",
+            "./assets/notificationother.wav"
           ]
         }
       ]
