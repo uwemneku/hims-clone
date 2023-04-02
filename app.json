@@ -25,13 +25,13 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/7a6c5613-9705-4786-8479-d7050ddcd793"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.uwemneku.himsclone"
     },
     "android": {
       "adaptiveIcon": {
@@ -47,6 +47,9 @@
       "eas": {
         "projectId": "7a6c5613-9705-4786-8479-d7050ddcd793"
       }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }
