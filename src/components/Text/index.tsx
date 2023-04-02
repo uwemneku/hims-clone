@@ -8,7 +8,7 @@ interface Props extends ComponentProps<typeof Text> {
   color?: string;
   style?: StyleProp<TextStyle>;
   align?: TextStyle["textAlign"];
-  size?: keyof typeof sizes;
+  size?: keyof typeof sizes | number;
   lineHeight?: number;
 }
 const BaseText = ({
@@ -27,7 +27,7 @@ const BaseText = ({
         {
           fontFamily: fontWeight,
           color,
-          fontSize: sizes[size],
+          fontSize: typeof size === "number" ? size : sizes[size],
           textAlign: align,
           lineHeight,
         },

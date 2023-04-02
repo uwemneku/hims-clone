@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
-import BottomTabScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
+import HeadingScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
 import BaseText from "../../components/Text";
 import ChevronList from "../../components/ChevronList";
 import Color from "../../constants/colors";
@@ -13,16 +13,24 @@ import {
 import BackIcon from "../../components/Icon/BackIcon";
 
 type Props = NestedStackScreenProps<AccountStackScreenParamsList, "account">;
-
+type NavKeys = Exclude<
+  keyof AccountStackScreenParamsList,
+  "orderHistoryDetails"
+>;
 const Account = ({ navigation }: Props) => {
   const handleLogout = () =>
-    navigation.navigate("Onboarding", { screen: "Login" });
-  const handleNavigation = (key: keyof AccountStackScreenParamsList) => () => {
+    navigation.navigate("Onboarding", { screen: "GetStarted" });
+  const handleNavigation = (key: NavKeys) => () => {
     navigation.navigate("Account", { screen: key });
   };
+  const handleLinkNavigation = (link: string) => () => {
+    navigation.navigate("WebView", { link });
+  };
   return (
-    <BottomTabScreenWrapper title="Account" rightIcon={BackIcon}>
-      <BaseText size="h1">Account</BaseText>
+    <HeadingScreenWrapper title="Account" rightIcon={BackIcon}>
+      <BaseText size="h1" fontWeight="sofia_bold">
+        Account
+      </BaseText>
       <View style={styles.heading}>
         <View style={styles.initials}>
           <BaseText size="h2">S.N</BaseText>
@@ -59,28 +67,33 @@ const Account = ({ navigation }: Props) => {
             }
           />
         </View>
-        {listData.slice(3).map(({ label, nav }) => {
+        {webListData.map(({ label, link }) => {
           return (
             <View key={label} style={styles.list}>
-              <ChevronList onPress={() => {}} title={label} />
+              <ChevronList onPress={handleLinkNavigation(link)} title={label} />
             </View>
           );
         })}
       </View>
       <Divider size={"xl"} />
       <Button label={"Log Out"} onPressIn={handleLogout} />
-    </BottomTabScreenWrapper>
+    </HeadingScreenWrapper>
   );
 };
 
 export default Account;
 
-const listData: { label: string; nav: keyof AccountStackScreenParamsList }[] = [
+const listData: { label: string; nav: NavKeys }[] = [
   { nav: "contactInfo", label: "Contact Information" },
   { nav: "subscriptions", label: "Subscriptions" },
   { nav: "orderHistory", label: "Order history" },
-  { nav: "helpCenter", label: "Help center" },
-  { nav: "terms", label: "Terms, Privacy and Consent" },
+];
+const webListData: { label: string; link: string }[] = [
+  { link: "https://support.forhims.com/hc/en-us", label: "Help center" },
+  {
+    link: "https://www.forhims.com/terms-and-conditions",
+    label: "Terms, Privacy and Consent",
+  },
 ];
 
 const styles = StyleSheet.create({

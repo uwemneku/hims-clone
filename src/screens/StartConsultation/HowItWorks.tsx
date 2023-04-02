@@ -1,10 +1,9 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import BaseText from "../../components/Text";
 import Button from "../../components/Button";
 import IntroScreenLayout from "./components/IntroScreenLayout";
 import Color from "../../constants/colors";
-import GradientText from "../../components/Text/GradientText";
 import { StartingVisitStackScreenProps } from "../../types/Navigation";
 import { addOpacity } from "../../utils";
 import Divider from "../../components/Dividers";

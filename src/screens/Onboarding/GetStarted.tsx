@@ -89,6 +89,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Color.black,
     justifyContent: "center",
+    height: "100%",
+    overflow: "hidden",
   },
   _container: {
     position: "absolute",

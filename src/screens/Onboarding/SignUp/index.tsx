@@ -11,7 +11,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import PasswordInput from "../../../components/TextInput/PasswordInput";
-import LoadingAnimation from "./LoadingAnimation";
+import LoadingAnimation from "../../../components/LoadingAnimation";
 import { OnboardingStackScreenProps } from "../../../types/Navigation";
 
 type Props = OnboardingStackScreenProps<"SignUp">;

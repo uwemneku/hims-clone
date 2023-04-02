@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View, ViewStyle } from "react-native";
 import React, { ComponentProps } from "react";
 import Animated, {
   Extrapolate,
@@ -10,6 +10,7 @@ import Animated, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Color from "../../../../constants/colors";
 import BaseText from "../../../Text";
+import ResponsiveWrapper from "../../ResponsiveWrapper";
 
 type IconProps = Object & {
   scrollOffset: Animated.SharedValue<number>;
@@ -19,14 +20,18 @@ interface Props {
   title: string;
   leftIcon?: (props: IconProps) => JSX.Element;
   rightIcon?: (props: IconProps) => JSX.Element;
+  contentStyle?: ViewStyle;
+  showHeading?: boolean;
 }
 type onScroll = ComponentProps<typeof ScrollView>["onScroll"];
 
-const BottomTabScreenWrapper = ({
+const HeadingScreenWrapper = ({
   children,
   title,
   leftIcon,
   rightIcon,
+  contentStyle,
+  showHeading,
 }: Props) => {
   const scrollOffset = useSharedValue(0);
   const { top: paddingTop } = useSafeAreaInsets();
@@ -56,41 +61,48 @@ const BottomTabScreenWrapper = ({
   }));
 
   return (
-    <View style={styles.container}>
-      <Animated.View
-        style={[
-          styles.animatedHeader,
-          animatedHeaderContentStyle,
-          { paddingTop: paddingTop, paddingBottom: paddingTop * 0 },
-        ]}
-      >
-        <View style={styles.headerContent}>
-          <View style={styles.iconContainer}>
-            {leftIcon && leftIcon({ scrollOffset })}
+    <ResponsiveWrapper>
+      <View style={styles.container}>
+        <Animated.View
+          style={[
+            styles.animatedHeader,
+            animatedHeaderContentStyle,
+            { paddingTop: paddingTop, paddingBottom: paddingTop * 0 },
+          ]}
+        >
+          <View style={styles.headerContent}>
+            <View style={styles.iconContainer}>
+              {leftIcon && leftIcon({ scrollOffset })}
+            </View>
+            <View style={{ flex: 1 }} />
+            <Animated.View
+              style={[
+                styles.header,
+                showHeading ? undefined : animatedTextStyle,
+              ]}
+            >
+              <BaseText align="center" fontWeight="sofia_bold">
+                {title}
+              </BaseText>
+            </Animated.View>
+            <View style={styles.iconContainer}>
+              {rightIcon && rightIcon({ scrollOffset })}
+            </View>
           </View>
-          <View style={{ flex: 1 }} />
-          <Animated.View style={[styles.header, animatedTextStyle]}>
-            <BaseText size="h2" align="center">
-              {title}
-            </BaseText>
-          </Animated.View>
-          <View style={styles.iconContainer}>
-            {rightIcon && rightIcon({ scrollOffset })}
-          </View>
-        </View>
-      </Animated.View>
-      <ScrollView
-        onScroll={handleScroll}
-        scrollEventThrottle={16}
-        contentContainerStyle={[styles.content]}
-      >
-        {children}
-      </ScrollView>
-    </View>
+        </Animated.View>
+        <ScrollView
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
+          contentContainerStyle={[styles.content, contentStyle]}
+        >
+          {children}
+        </ScrollView>
+      </View>
+    </ResponsiveWrapper>
   );
 };
 
-export default BottomTabScreenWrapper;
+export default HeadingScreenWrapper;
 
 const styles = StyleSheet.create({
   container: {
@@ -123,7 +135,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   iconContainer: {
-    minHeight: 24,
+    minHeight: 35,
     zIndex: 20,
     paddingVertical: 5,
   },

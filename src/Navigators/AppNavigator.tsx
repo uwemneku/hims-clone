@@ -9,6 +9,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import BottomTabsNavigator from "./BottomTabsNavigator";
 import AccountsNavigator from "./AccountsNavigator";
+import AppWebView from "../screens/WebView";
 
 const PERSISTENCE_KEY = "NAVIGATION_STATE_V1";
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
@@ -64,6 +65,7 @@ const AppNavigator = () => {
         />
         <Screen name="HomeBottomTabs" component={BottomTabsNavigator} />
         <Screen name="Account" component={AccountsNavigator} />
+        <Screen name="WebView" component={AppWebView} />
       </Navigator>
     </NavigationContainer>
   );

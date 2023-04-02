@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import React, { FC } from "react";
-import BottomTabScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
+import HeadingScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
 import BaseText from "../../../components/Text";
 import Divider from "../../../components/Dividers";
 import { images } from "../../../constants/images";
@@ -22,7 +22,7 @@ import {
 type Prop = RootStackScreenProps<"HomeBottomTabs">;
 const Home = () => {
   return (
-    <BottomTabScreenWrapper title="Home" rightIcon={HomeIcon}>
+    <HeadingScreenWrapper title="Home" rightIcon={HomeIcon}>
       <View>
         <BaseText fontWeight="sofia_bold" size="h1" style={{ width: "70%" }}>
           Welcome back, John
@@ -63,7 +63,7 @@ const Home = () => {
       <PopularReads />
       <Divider size="xl" />
       <AnnounceMent />
-    </BottomTabScreenWrapper>
+    </HeadingScreenWrapper>
   );
 };
 type Navigation = NavigationProp<RootStackParamList, "HomeBottomTabs">;

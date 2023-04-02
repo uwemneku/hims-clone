@@ -1,10 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React, { ComponentProps } from "react";
 import { StackScreenProps } from "@react-navigation/stack";
 import { AccountStackScreenParamsList } from "../../types/Navigation";
-import BottomTabScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
+import HeadingScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
 import withDefaultValue from "../../utils/withDefaultValue";
-import AnimatedHeaderIcon from "../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
 import BaseText from "../../components/Text";
 import BaseTextInput from "../../components/TextInput/BaseTextInput";
 import Divider from "../../components/Dividers";
@@ -19,20 +18,25 @@ const validationSchema = yup.object().shape({
   firstName: yup.string().required("This field is required"),
   lastName: yup.string().required("This field is required"),
   email: yup.string().email().required("This field is required"),
-  phoneNumber: yup.number().required("This field is required"),
+  phoneNumber: yup
+    .number()
+    .required("This field is required")
+    .typeError("Must be number"),
   dob: yup
     .string()
-    .matches(/\d\d-\d\d-\d\d\d\d/)
-    .required("This field is required"),
+    .matches(/\d\d-\d\d-\d\d\d\d/, "Invalid date format")
+    .required("This field is required")
+    .typeError("Invalid format"),
 });
 
 type Form = ExtractFormikTypes<typeof validationSchema>;
 type Props = StackScreenProps<AccountStackScreenParamsList, "contactInfo">;
 const Contact = ({ navigation }: Props) => {
-  const { errors, values, submitForm, setFieldValue, isValid } =
+  const { errors, values, submitForm, setFieldValue, isValid, dirty } =
     useFormik<Form>({
       initialValues: {},
       validationSchema,
+
       onSubmit() {
         navigation.goBack();
       },
@@ -49,7 +53,7 @@ const Contact = ({ navigation }: Props) => {
     },
   });
   return (
-    <BottomTabScreenWrapper title="Contacts" leftIcon={LeftIcon}>
+    <HeadingScreenWrapper title="Contacts" leftIcon={LeftIcon}>
       <BaseText size="h1">Contact information</BaseText>
       <Divider size="xl" />
       <BaseTextInput
@@ -89,15 +93,13 @@ const Contact = ({ navigation }: Props) => {
       />
       <Divider size="xl" />
       <Button
-        color={isValid ? Color.black : Color.lightGray}
+        color={isValid && dirty ? Color.black : Color.lightGray}
         label="Save"
         onPressIn={submitForm}
       />
-    </BottomTabScreenWrapper>
+    </HeadingScreenWrapper>
   );
 };
 const LeftIcon = withDefaultValue(BackIcon)("iconName", "arrow-back")();
 
 export default Contact;
-
-const styles = StyleSheet.create({});

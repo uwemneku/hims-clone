@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 import React from "react";
 import BaseText from "../../components/Text";
-import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
 import Divider from "../../components/Dividers";
 import PasswordInput from "../../components/TextInput/PasswordInput";
 import BaseTextInput from "../../components/TextInput/BaseTextInput";
@@ -10,6 +9,9 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Color from "../../constants/colors";
 import { OnboardingStackScreenProps } from "../../types/Navigation";
+import HeadingScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
+import withDefaultValue from "../../utils/withDefaultValue";
+import BackIcon from "../../components/Icon/BackIcon";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -27,7 +29,7 @@ type Props = OnboardingStackScreenProps<"Login">;
 const Login = ({ navigation }: Props) => {
   const { errors, values, submitForm, setFieldValue } =
     useFormik<LoginFormValues>({
-      initialValues: { email: "", password: "" },
+      initialValues: { email: "sample@g.com", password: "dffd" },
       validationSchema,
       onSubmit() {
         navigation.navigate("HomeBottomTabs", { screen: "home" });
@@ -37,7 +39,7 @@ const Login = ({ navigation }: Props) => {
     setFieldValue(key, value);
   };
   return (
-    <ScreenWithHeading screenTitle="Log in">
+    <HeadingScreenWrapper showHeading leftIcon={BackButton} title="Log in">
       <BaseText size="h1">Welcome back!</BaseText>
       <Divider size="xl" />
       <BaseTextInput
@@ -59,9 +61,11 @@ const Login = ({ navigation }: Props) => {
       <BaseText color={Color.brown}>Forgot password?</BaseText>
       <Divider size="xl" />
       <Button onPress={submitForm} label="Log in" />
-    </ScreenWithHeading>
+    </HeadingScreenWrapper>
   );
 };
+
+const BackButton = withDefaultValue(BackIcon)("iconName", "arrow-back")();
 
 export default Login;
 

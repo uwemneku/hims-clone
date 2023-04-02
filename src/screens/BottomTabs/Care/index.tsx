@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
-import BottomTabScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
+import HeadingScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
 import Divider from "../../../components/Dividers";
 import SectionTitle from "./SectionTiltle";
 import CareCard from "./CareCard";
@@ -10,7 +10,7 @@ import CareList from "./CareList";
 
 const Care = () => {
   return (
-    <BottomTabScreenWrapper title="Care">
+    <HeadingScreenWrapper title="Care">
       <SectionTitle
         title="Care"
         subTitle="The support you need when you need it. Meet your care Team"
@@ -43,7 +43,7 @@ const Care = () => {
           </View>
         );
       })}
-    </BottomTabScreenWrapper>
+    </HeadingScreenWrapper>
   );
 };
 

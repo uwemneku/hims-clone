@@ -7,11 +7,15 @@ import Color from "../../constants/colors";
 interface Props {
   title: string | JSX.Element;
   onPress(): void;
+  disabled?: boolean;
 }
-const ChevronList = ({ onPress, title }: Props) => {
+const ChevronList = ({ onPress, title, disabled }: Props) => {
   const left = typeof title === "string" ? <BaseText>{title}</BaseText> : title;
+  const handleClick = () => {
+    !disabled && onPress();
+  };
   return (
-    <TouchableOpacity onPress={onPress} style={styles.list}>
+    <TouchableOpacity onPress={handleClick} style={styles.list}>
       <View style={{ flex: 1 }}>{left}</View>
       <Ionicons size={20} name="chevron-forward" color={Color.gray} />
     </TouchableOpacity>

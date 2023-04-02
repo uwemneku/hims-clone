@@ -10,6 +10,7 @@ export type RootStackParamList = {
   StartingConsultation: NavigatorScreenParams<StartingConsultationStackParamList>;
   HomeBottomTabs: NavigatorScreenParams<HomeBottomTabsParamsList>;
   Account: NavigatorScreenParams<AccountStackScreenParamsList>;
+  WebView: { link: string };
 };
 
 export type AuthenticationStackParamList = {
@@ -46,6 +47,7 @@ export type AccountStackScreenParamsList = {
   contactInfo: undefined;
   subscriptions: undefined;
   orderHistory: undefined;
+  orderHistoryDetails: { id: number };
   paymentMethod: undefined;
   helpCenter: undefined;
   terms: undefined;

@@ -1,10 +1,4 @@
-import {
-  Image,
-  ImageBackground,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { Image, StyleSheet, useWindowDimensions, View } from "react-native";
 import React, { useEffect } from "react";
 import Animated, {
   cancelAnimation,
