@@ -3,9 +3,5 @@
   "compilerOptions": {
     "strict": true,
     "module":"esNext",
-    "baseUrl": ".",
-    "paths": {
-      "Cards": ["./components/Cards"]
-    }
   }
 }

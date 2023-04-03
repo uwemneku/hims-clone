@@ -41,6 +41,8 @@ export type StartingConsultationStackParamList = {
   AddressDetails: undefined;
   ConfirmAddressDetails: undefined;
   PaymentDetails: undefined;
+  Products: undefined;
+  ProductDetails: undefined;
 };
 
 export type AccountStackScreenParamsList = {

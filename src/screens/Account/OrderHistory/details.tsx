@@ -26,7 +26,7 @@ const OrderHistoryDetails = ({ navigation, route }: Props) => {
     <HeadingScreenWrapper
       title=""
       leftIcon={LeftIcon}
-      contentStyle={styles.container}
+      contentContainerStyle={styles.container}
     >
       <View style={[styles.content, { paddingTop: 10 }]}>
         <BaseText fontWeight="sofia_bold" size="h1">

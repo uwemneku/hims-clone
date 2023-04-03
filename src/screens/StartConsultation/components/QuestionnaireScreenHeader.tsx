@@ -70,6 +70,8 @@ const QuestionnaireScreenHeader = ({
 
 const screens: Record<keyof StartingConsultationStackParamList, number> = {
   welcome: 0,
+  ProductDetails: 0,
+  Products: 0,
   QuestionnaireIntro: 1,
   HowItWorks: 2,
   AnxietyQuestion: 3,

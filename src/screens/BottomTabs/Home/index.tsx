@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import React, { FC } from "react";
 import HeadingScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
 import BaseText from "../../../components/Text";
@@ -15,12 +15,17 @@ import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedH
 import { Link, NavigationProp, useNavigation } from "@react-navigation/native";
 import Animated from "react-native-reanimated";
 import {
+  HomeBottomTabsParamsList,
+  NestedStackScreenProps,
   RootStackParamList,
   RootStackScreenProps,
 } from "../../../types/Navigation";
 
-type Prop = RootStackScreenProps<"HomeBottomTabs">;
-const Home = () => {
+type Prop = NestedStackScreenProps<HomeBottomTabsParamsList, "home">;
+const Home = ({ navigation }: Prop) => {
+  const handleBoxClick = () => {
+    navigation.navigate("StartingConsultation", { screen: "Products" });
+  };
   return (
     <HeadingScreenWrapper title="Home" rightIcon={HomeIcon}>
       <View>
@@ -35,7 +40,7 @@ const Home = () => {
           style={styles.image}
           source={images.happyCouple}
         />
-        <View style={styles.overlay}>
+        <Pressable onPress={handleBoxClick} style={styles.overlay}>
           <BaseText size="small" style={styles.pill} color={Color.white}>
             Mental Health
           </BaseText>
@@ -55,7 +60,7 @@ const Home = () => {
               help you feel better than ever.
             </BaseText>
           </View>
-        </View>
+        </Pressable>
       </View>
       <Divider size="xl" />
       <Trending />

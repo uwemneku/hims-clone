@@ -6,6 +6,7 @@ import Divider from "../../Dividers";
 import BaseText from "../../Text";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { images } from "../../../constants/images";
+import { productCardSize } from "../../../constants/sizes";
 
 interface Props extends PickFromComponentProps<typeof Image, "source"> {
   /**@default ```transparent```` */
@@ -58,8 +59,8 @@ const styles = StyleSheet.create({
   minCard: {
     padding: 15,
     borderRadius: 20,
-    width: 200,
-    height: 300,
+    width: productCardSize.width,
+    height: productCardSize.height,
     backgroundColor: addOpacity(Color.lightGray, 0.2),
     top: 0,
     right: 0,

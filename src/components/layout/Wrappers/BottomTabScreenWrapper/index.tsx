@@ -1,5 +1,12 @@
-import { ScrollView, StyleSheet, Text, View, ViewStyle } from "react-native";
-import React, { ComponentProps } from "react";
+import {
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  ViewStyle,
+} from "react-native";
+import React, { ComponentProps, FC } from "react";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -15,24 +22,44 @@ import ResponsiveWrapper from "../../ResponsiveWrapper";
 type IconProps = Object & {
   scrollOffset: Animated.SharedValue<number>;
 };
-interface Props {
-  children: React.ReactNode | React.ReactNode[];
-  title: string;
-  leftIcon?: (props: IconProps) => JSX.Element;
-  rightIcon?: (props: IconProps) => JSX.Element;
-  contentStyle?: ViewStyle;
+interface CommonProps {
+  leftIcon?: (props: IconProps) => JSX.Element | null;
+  rightIcon?: (props: IconProps) => JSX.Element | null;
   showHeading?: boolean;
+  title: string;
 }
+
+interface ScrollViewProps
+  extends CommonProps,
+    ComponentProps<typeof ScrollView> {
+  isFlatList?: false | undefined; // default value
+}
+interface FlatListProps extends CommonProps, ComponentProps<typeof FlatList> {
+  isFlatList: true;
+}
+// interface Props {
+//   children: React.ReactNode | React.ReactNode[];
+//   title: string;
+//   leftIcon?: (props: IconProps) => JSX.Element | null;
+//   rightIcon?: (props: IconProps) => JSX.Element | null;
+//   contentStyle?: ViewStyle;
+//   showHeading?: boolean;
+// }
+
+type Props = FlatListProps | ScrollViewProps;
 type onScroll = ComponentProps<typeof ScrollView>["onScroll"];
 
-const HeadingScreenWrapper = ({
-  children,
-  title,
-  leftIcon,
-  rightIcon,
-  contentStyle,
-  showHeading,
-}: Props) => {
+const HeadingScreenWrapper: FC<Props> = (props) => {
+  const {
+    children,
+    title,
+    leftIcon,
+    rightIcon,
+    contentContainerStyle,
+    showHeading,
+    isFlatList,
+    ..._props
+  } = props;
   const scrollOffset = useSharedValue(0);
   const { top: paddingTop } = useSafeAreaInsets();
 
@@ -90,13 +117,22 @@ const HeadingScreenWrapper = ({
             </View>
           </View>
         </Animated.View>
-        <ScrollView
-          onScroll={handleScroll}
-          scrollEventThrottle={16}
-          contentContainerStyle={[styles.content, contentStyle]}
-        >
-          {children}
-        </ScrollView>
+        {isFlatList ? (
+          <FlatList
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
+            {...props}
+            contentContainerStyle={[styles.content, contentContainerStyle]}
+          />
+        ) : (
+          <ScrollView
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
+            contentContainerStyle={[styles.content, contentContainerStyle]}
+          >
+            {children}
+          </ScrollView>
+        )}
       </View>
     </ResponsiveWrapper>
   );

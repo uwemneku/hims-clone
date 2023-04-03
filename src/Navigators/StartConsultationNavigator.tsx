@@ -11,6 +11,7 @@ import {
   AnxietyQuestionScreen,
   BiggerPictureScreen,
   ConfirmAddressDetailsScreen,
+  ConsultationProductsScreen,
   ContactIntroScreen,
   ContactQuestionsScreen,
   EmergencyContactDetailsScreen,
@@ -20,6 +21,7 @@ import {
   LifeStyleQuestionsScreen,
   MedicalProfileIntroScreen,
   PaymentDetailsScreen,
+  ProductDetailsScreen,
   QuestionnaireIntroScreen,
   QuestionnaireResultScreen,
   QuestionnaireScreenHeader,
@@ -44,6 +46,8 @@ const StartConsultationNavigator = () => {
           }}
         >
           <Screen name="welcome" component={StartConsultationWelcomeScreen} />
+          <Screen name="Products" component={ConsultationProductsScreen} />
+          <Screen name="ProductDetails" component={ProductDetailsScreen} />
 
           <Group
             screenOptions={{
