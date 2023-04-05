@@ -9,7 +9,7 @@ import { addOpacity } from "../../../utils";
 import Trending from "./Trending";
 import PopularReads from "./PopularReads";
 import ZoomImageCard from "../../../components/Cards/ZoomImageCard";
-import AnnounceMent from "./AnnounceMent";
+import AnnounceMentCard from "../../../components/Cards/AnnounceMentCard";
 import withDefaultValue from "../../../utils/withDefaultValue";
 import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
 import { Link, NavigationProp, useNavigation } from "@react-navigation/native";
@@ -20,6 +20,7 @@ import {
   RootStackParamList,
   RootStackScreenProps,
 } from "../../../types/Navigation";
+import LargeCard from "../../../components/Cards/LargeCard";
 
 type Prop = NestedStackScreenProps<HomeBottomTabsParamsList, "home">;
 const Home = ({ navigation }: Prop) => {
@@ -34,40 +35,26 @@ const Home = ({ navigation }: Prop) => {
         </BaseText>
       </View>
       <Divider size={60} />
-      <View style={styles.largeBox}>
-        <ZoomImageCard
-          enable
-          style={styles.image}
-          source={images.happyCouple}
-        />
-        <Pressable onPress={handleBoxClick} style={styles.overlay}>
-          <BaseText size="small" style={styles.pill} color={Color.white}>
-            Mental Health
-          </BaseText>
-          <View>
-            <BaseText
-              lineHeight={35}
-              color={Color.white}
-              style={{ width: "60%" }}
-              size="h1"
-            >
-              Be Kind to your mind in 2023
-            </BaseText>
-            <Divider size="m" />
-            <BaseText color={Color.white} lineHeight={24}>
-              It's always a good time to take care of your mental health. With
-              affordable online therapy and doctor-trusted medication, Hims can
-              help you feel better than ever.
-            </BaseText>
-          </View>
-        </Pressable>
-      </View>
+      <LargeCard
+        onPressIn={handleBoxClick}
+        tag="Mental Health"
+        image={images.happyCouple}
+        details="It's always a good time to take care of your mental health. With
+        affordable online therapy and doctor-trusted medication, Hims can
+        help you feel better than ever."
+        title="Be Kind to your mind in 2023"
+      />
       <Divider size="xl" />
       <Trending />
       <Divider size="xl" />
       <PopularReads />
       <Divider size="xl" />
-      <AnnounceMent />
+      <AnnounceMentCard
+        title="Big News"
+        subtitle="Welcome Grank to the hims family"
+        image={images.announcement}
+        products={data}
+      />
     </HeadingScreenWrapper>
   );
 };
@@ -91,6 +78,13 @@ const HomeIcon = ({
 };
 
 export default Home;
+
+const data = [
+  { image: images.skin },
+  { image: images.tropical },
+  { image: images.gummies },
+  { image: images.sleep },
+];
 
 const styles = StyleSheet.create({
   container: {

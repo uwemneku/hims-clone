@@ -55,11 +55,15 @@ export type AccountStackScreenParamsList = {
   terms: undefined;
   account: undefined;
 };
+export type ShopMaterialTopTabsParamList = {
+  featured: undefined;
+  browse: undefined;
+};
 export type HomeBottomTabsParamsList = {
   home: undefined;
   care: undefined;
   programs: undefined;
-  shop: undefined;
+  shop: NavigatorScreenParams<ShopMaterialTopTabsParamList>;
 };
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;

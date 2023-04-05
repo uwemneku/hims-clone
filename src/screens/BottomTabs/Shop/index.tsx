@@ -1,14 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-
-const ShopScreen = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  );
-};
-
-export default ShopScreen;
-
-const styles = StyleSheet.create({});
+export { default as ShopNavigatorHeader } from "./components/Header";
+export { default as MaterialTopScrollContextProvider } from "./components/ScrollContext";
+export { default as ShopFeaturesScreen } from "./Features";
+export { default as ShopBrowseScreen } from "./Browse";

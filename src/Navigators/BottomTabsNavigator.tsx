@@ -6,10 +6,10 @@ import {
   BottomTabs_CareScreen,
   BottomTabs_HomeScreen,
   BottomTabs_ProgramsScreen,
-  BottomTabs_ShopScreen,
   BottomTabs_TabBar,
 } from "../screens/BottomTabs";
 import Color from "../constants/colors";
+import ShopNavigator from "./ShopNavigator";
 
 const { Navigator, Screen } =
   createBottomTabNavigator<HomeBottomTabsParamsList>();
@@ -23,7 +23,7 @@ const BottomTabsNavigator = () => {
     >
       <Screen name="home" component={BottomTabs_HomeScreen} />
       <Screen name="care" component={BottomTabs_CareScreen} />
-      <Screen name="shop" component={BottomTabs_ShopScreen} />
+      <Screen name="shop" component={ShopNavigator} />
       <Screen name="programs" component={BottomTabs_ProgramsScreen} />
     </Navigator>
   );

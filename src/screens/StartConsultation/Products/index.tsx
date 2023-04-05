@@ -25,7 +25,9 @@ type Props = StartingVisitStackScreenProps<"Products">;
 
 const ConsultationProducts: FC<Props> = ({ navigation }) => {
   const { width } = useWindowDimensions();
-  const columnCount = Math.floor((width - 40) / productCardSize.width);
+  const columnCount = Math.floor(
+    (Math.min(width, 800) - 40) / productCardSize.width
+  );
   const handleProductPress = () => navigation.navigate("ProductDetails");
   return (
     <HeadingScreenWrapper
@@ -41,8 +43,8 @@ const ConsultationProducts: FC<Props> = ({ navigation }) => {
           onPress={handleProductPress}
           style={{
             marginLeft: index % 2 ? 10 : 0,
-            marginRight: index % 2 ? 10 : 0,
-            marginVertical: 10,
+            marginRight: index % 2 ? 0 : 10,
+            marginVertical: 15,
           }}
         >
           <ProductCard

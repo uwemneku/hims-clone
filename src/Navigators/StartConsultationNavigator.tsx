@@ -28,7 +28,6 @@ import {
   StartConsultationWelcomeScreen,
   TreatmentPlanIntroScreen,
 } from "../screens/StartConsultation";
-import { StartConsultationContext } from "../context/StartConsultationContext";
 
 const { Navigator, Screen, Group } =
   createStackNavigator<StartingConsultationStackParamList>();
@@ -36,69 +35,67 @@ const { Navigator, Screen, Group } =
 const StartConsultationNavigator = () => {
   const progress = useSharedValue(0);
   return (
-    <StartConsultationContext>
-      <View style={{ position: "relative", flex: 1 }}>
-        <Navigator
-          initialRouteName="welcome"
+    <View style={{ position: "relative", flex: 1 }}>
+      <Navigator
+        initialRouteName="welcome"
+        screenOptions={{
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      >
+        <Screen name="welcome" component={StartConsultationWelcomeScreen} />
+        <Screen name="Products" component={ConsultationProductsScreen} />
+        <Screen name="ProductDetails" component={ProductDetailsScreen} />
+
+        <Group
           screenOptions={{
-            headerShown: false,
-            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            header: (props) => (
+              <QuestionnaireScreenHeader
+                {...props}
+                questionProgress={progress}
+              />
+            ),
+            headerShown: true,
+            headerMode: "float",
           }}
         >
-          <Screen name="welcome" component={StartConsultationWelcomeScreen} />
-          <Screen name="Products" component={ConsultationProductsScreen} />
-          <Screen name="ProductDetails" component={ProductDetailsScreen} />
-
-          <Group
-            screenOptions={{
-              header: (props) => (
-                <QuestionnaireScreenHeader
-                  {...props}
-                  questionProgress={progress}
-                />
-              ),
-              headerShown: true,
-              headerMode: "float",
-            }}
-          >
-            <Screen
-              name="QuestionnaireIntro"
-              component={QuestionnaireIntroScreen}
-            />
-            <Screen name="HowItWorks" component={HowItWorksScreen} />
-            <Screen name="AnxietyQuestion" component={AnxietyQuestionScreen} />
-            <Screen
-              name="QuestionnaireResult"
-              component={QuestionnaireResultScreen}
-            />
-            <Screen name="BiggerPicture" component={BiggerPictureScreen} />
-            <Screen name="HistoryQuestion" component={HistoryQuestionScreen} />
-            <Screen
-              name="MedicalProfileIntro"
-              component={MedicalProfileIntroScreen}
-            />
-            <Screen name="LifeStyleIntro" component={LifeStyleIntroScreen} />
-            <Screen
-              name="LifeStyleQuestion"
-              component={LifeStyleQuestionsScreen}
-            />
-            <Screen name="ContactIntro" component={ContactIntroScreen} />
-            <Screen name="ContactQuestion" component={ContactQuestionsScreen} />
-            <Screen
-              name="EmergencyContactDetailsScreen"
-              component={EmergencyContactDetailsScreen}
-            />
-            <Screen name="TreatmentPlan" component={TreatmentPlanIntroScreen} />
-            <Screen name="AddressDetails" component={AddressDetailsScreen} />
-            <Screen
-              name="ConfirmAddressDetails"
-              component={ConfirmAddressDetailsScreen}
-            />
-            <Screen name="PaymentDetails" component={PaymentDetailsScreen} />
-          </Group>
-        </Navigator>
-      </View>
-    </StartConsultationContext>
+          <Screen
+            name="QuestionnaireIntro"
+            component={QuestionnaireIntroScreen}
+          />
+          <Screen name="HowItWorks" component={HowItWorksScreen} />
+          <Screen name="AnxietyQuestion" component={AnxietyQuestionScreen} />
+          <Screen
+            name="QuestionnaireResult"
+            component={QuestionnaireResultScreen}
+          />
+          <Screen name="BiggerPicture" component={BiggerPictureScreen} />
+          <Screen name="HistoryQuestion" component={HistoryQuestionScreen} />
+          <Screen
+            name="MedicalProfileIntro"
+            component={MedicalProfileIntroScreen}
+          />
+          <Screen name="LifeStyleIntro" component={LifeStyleIntroScreen} />
+          <Screen
+            name="LifeStyleQuestion"
+            component={LifeStyleQuestionsScreen}
+          />
+          <Screen name="ContactIntro" component={ContactIntroScreen} />
+          <Screen name="ContactQuestion" component={ContactQuestionsScreen} />
+          <Screen
+            name="EmergencyContactDetailsScreen"
+            component={EmergencyContactDetailsScreen}
+          />
+          <Screen name="TreatmentPlan" component={TreatmentPlanIntroScreen} />
+          <Screen name="AddressDetails" component={AddressDetailsScreen} />
+          <Screen
+            name="ConfirmAddressDetails"
+            component={ConfirmAddressDetailsScreen}
+          />
+          <Screen name="PaymentDetails" component={PaymentDetailsScreen} />
+        </Group>
+      </Navigator>
+    </View>
   );
 };
 

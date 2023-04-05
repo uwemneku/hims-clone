@@ -1,42 +1,55 @@
 import { ImageSourcePropType, StyleSheet, View } from "react-native";
-import React from "react";
+import React, { ComponentProps } from "react";
 import BaseText from "../../../components/Text";
 import Divider from "../../../components/Dividers";
 import Color from "../../../constants/colors";
 import { addOpacity } from "../../../utils";
 import ZoomImageCard from "../../../components/Cards/ZoomImageCard";
+import {
+  TouchableHighlight,
+  TouchableOpacity,
+} from "react-native-gesture-handler";
 
-interface Props {
+interface Props extends ComponentProps<typeof TouchableOpacity> {
   title: string;
   details: string;
   tag: string;
   image: ImageSourcePropType;
 }
 
-const LargeCard = ({ details, image, tag, title }: Props) => {
+const LargeCard = ({ details, image, tag, title, ...props }: Props) => {
   return (
-    <View style={styles.largeBox}>
-      <ZoomImageCard enable style={styles.image} source={image} />
-      <View style={styles.overlay}>
-        <BaseText size="small" style={styles.pill} color={Color.white}>
-          {tag}
-        </BaseText>
-        <View>
+    <TouchableOpacity activeOpacity={0.9} style={styles.largeBox} {...props}>
+      <>
+        <ZoomImageCard enable style={styles.image} source={image} />
+        <View style={styles.overlay}>
           <BaseText
-            lineHeight={35}
+            size="small"
+            style={[
+              styles.pill,
+              { backgroundColor: addOpacity(Color.brown, tag ? 1 : 0) },
+            ]}
             color={Color.white}
-            style={{ width: "60%" }}
-            size="h1"
           >
-            {title}
+            {tag}
           </BaseText>
-          <Divider size="m" />
-          <BaseText color={Color.white} lineHeight={24}>
-            {details}
-          </BaseText>
+          <View>
+            <BaseText
+              lineHeight={35}
+              color={Color.white}
+              style={{ width: "70%" }}
+              size="h1"
+            >
+              {title}
+            </BaseText>
+            <Divider size="m" />
+            <BaseText color={Color.white} lineHeight={24}>
+              {details}
+            </BaseText>
+          </View>
         </View>
-      </View>
-    </View>
+      </>
+    </TouchableOpacity>
   );
 };
 
@@ -57,7 +70,7 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingHorizontal: 10,
     borderRadius: 30,
-    backgroundColor: Color.brown,
+
     alignSelf: "flex-start",
   },
   overlay: {
