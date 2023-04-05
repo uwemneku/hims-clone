@@ -12,8 +12,11 @@ A clone of HIMS mobile application using [Mobbin](https://mobbin.com/apps/hims-i
 
 ### Custom animations using reanimated 2
 
-   <image width="80%" src="./screenshots/loading.gif" />
-   <image width="80%" src="./screenshots/zoom.gif" />
+<div align="left">
+
+   <image width="200" src="./screenshots/loading.gif" />
+   <image width="200" src="./screenshots/zoom.gif" />
+</div>
 
 # Set up
 
