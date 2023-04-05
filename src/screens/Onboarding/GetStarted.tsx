@@ -27,7 +27,7 @@ const GetStarted = ({ navigation }: Props) => {
   opacity.value = withDelay(2000, withTiming(1, { duration: 2000 }));
   const handleButtonPress =
     (screen: keyof AuthenticationStackParamList) => () =>
-      opacity.value > 0.5 && navigation.navigate(screen); // only navigate when buttons are visible
+      opacity.value > 0.25 && navigation.navigate(screen); // only navigate when buttons are visible
   return (
     <>
       <View style={styles.container}>

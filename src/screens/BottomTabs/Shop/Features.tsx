@@ -6,19 +6,10 @@ import { images } from "../../../constants/images";
 import HorizontalProductCard from "../../../components/Cards/HorizontalProductCard";
 import Divider from "../../../components/Dividers";
 import AnnounceMentCard from "../../../components/Cards/AnnounceMentCard";
-const data = [
-  { image: images.elixr },
-  { image: images.bottle },
-  { image: images.clean },
-  { image: images.hairloss },
-  { image: images.gummies },
-  { image: images.hairloss },
-  { image: images.mental },
-  { image: images.skin },
-  { image: images.skincream },
-  { image: images.sleep },
-  { image: images.tropical },
-];
+import { shuffleArray } from "../../../utils";
+import Header from "./components/Header";
+import { allProducts } from "../../../constants/products";
+
 const Features = () => {
   return (
     <MaterialTopScrollWrapper>
@@ -30,22 +21,25 @@ const Features = () => {
       />
       <Divider />
       <HorizontalProductCard
-        data={[{ image: images.skin }, { image: images.skincream }]}
+        data={shuffleArray(allProducts)}
         title="Trending"
         subtitle="This month"
       />
       <Divider />
-      <HorizontalProductCard data={data} title="Everyday favorites" />
+      <HorizontalProductCard
+        data={shuffleArray(allProducts)}
+        title="Everyday favorites"
+      />
       <Divider />
       <AnnounceMentCard
         title="Big News"
         subtitle="Welcome phill to the hims family"
         image={images.pillsboy}
-        products={data}
+        products={allProducts}
       />
       <Divider />
       <HorizontalProductCard
-        data={[{ image: images.skin }]}
+        data={shuffleArray(allProducts)}
         title="Set the Mood"
       />
       <Divider />

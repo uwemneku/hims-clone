@@ -8,6 +8,7 @@ import {
 import React, { ComponentProps } from "react";
 import { useMaterialTopScrollContext } from "./ScrollContext";
 import Animated from "react-native-reanimated";
+import Color from "../../../../constants/colors";
 
 interface Props extends ComponentProps<typeof Animated.ScrollView> {}
 
@@ -31,5 +32,6 @@ export default MaterialTopScrollWrapper;
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    backgroundColor: Color.white,
   },
 });

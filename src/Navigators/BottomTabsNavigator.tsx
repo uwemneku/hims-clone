@@ -20,6 +20,7 @@ const BottomTabsNavigator = () => {
       screenOptions={{ headerShown: false }}
       sceneContainerStyle={{ backgroundColor: Color.offWhite }}
       tabBar={BottomTabs_TabBar}
+      initialRouteName="shop"
     >
       <Screen name="home" component={BottomTabs_HomeScreen} />
       <Screen name="care" component={BottomTabs_CareScreen} />

@@ -11,11 +11,13 @@ export const useMaterialTopScrollContext = () =>
 const MaterialTopScrollContextProvider: FC<PropsWithChildren<{}>> = ({
   children,
 }) => {
+  const MAX = 100;
+
   const scrollOffset = useSharedValue(0);
   const updateScrollOffset = useCallback((i: number) => {
-    console.log(i);
-
-    scrollOffset.value = i;
+    if (scrollOffset.value < MAX) {
+      scrollOffset.value = i;
+    }
   }, []);
   return (
     <MaterialTopScrollContext.Provider

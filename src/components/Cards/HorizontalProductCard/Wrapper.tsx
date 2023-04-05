@@ -6,32 +6,48 @@ import Color from "../../../constants/colors";
 import Divider from "../../Dividers";
 
 interface Props extends ComponentProps<typeof View> {
-  title: string;
+  title?: string;
   subtitle?: string;
+  iconName?: ComponentProps<typeof MaterialIcons>["name"];
 }
-const Wrapper = ({ children, style, title, subtitle, ...props }: Props) => {
+const HorizontalCardWrapper = ({
+  children,
+  style,
+  title,
+  subtitle,
+  iconName,
+  ...props
+}: Props) => {
   return (
     <View style={[styles.container, style]} {...props}>
-      <View style={styles.header}>
-        <View>
-          <BaseText size="h2">{title}</BaseText>
-          {subtitle && (
-            <>
-              <Divider size="xs" />
-              <BaseText size="h2" color={Color.gray}>
-                {subtitle}
+      {Boolean(title || subtitle || iconName) && (
+        <View style={styles.header}>
+          <View>
+            {title && (
+              <BaseText fontWeight="sofia_bold" size="h2">
+                {title}
               </BaseText>
-            </>
+            )}
+            {subtitle && (
+              <>
+                <Divider size="xs" />
+                <BaseText size="h2" color={Color.gray}>
+                  {subtitle}
+                </BaseText>
+              </>
+            )}
+          </View>
+          {iconName && (
+            <MaterialIcons name={iconName} size={30} color={Color.black} />
           )}
         </View>
-        <MaterialIcons name="show-chart" size={30} color={Color.black} />
-      </View>
+      )}
       {children}
     </View>
   );
 };
 
-export default Wrapper;
+export default HorizontalCardWrapper;
 
 const styles = StyleSheet.create({
   container: {

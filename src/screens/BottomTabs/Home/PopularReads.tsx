@@ -1,10 +1,10 @@
 import { StyleSheet, View, ImageSourcePropType } from "react-native";
 import React from "react";
-import HomeCards from "../components/HomeCards";
 import { ScrollView } from "react-native-gesture-handler";
 import Divider from "../../../components/Dividers";
 import { images } from "../../../constants/images";
 import BlogPost from "./BlogPost";
+import HorizontalCardWrapper from "../../../components/Cards/HorizontalProductCard/Wrapper";
 
 const data: { image: ImageSourcePropType; title: string }[] = [
   { image: images.blog3, title: "Skin Care" },
@@ -13,7 +13,7 @@ const data: { image: ImageSourcePropType; title: string }[] = [
 ];
 const PopularReads = () => {
   return (
-    <HomeCards title="Popular reads">
+    <HorizontalCardWrapper title="Popular reads">
       <Divider size={"xs"} />
       <View style={{ paddingHorizontal: 15 }}>
         <BlogPost
@@ -39,7 +39,7 @@ const PopularReads = () => {
           </View>
         ))}
       </ScrollView>
-    </HomeCards>
+    </HorizontalCardWrapper>
   );
 };
 

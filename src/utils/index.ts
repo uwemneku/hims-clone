@@ -33,3 +33,14 @@ export const addOpacity = (color: Color, opacity: number) => {
     return `${p1}a${p2},${opacity}${p3}`; //returns rgba format
   });
 };
+
+export function shuffleArray<T>(array: T[]) {
+  const _arr = [...array];
+  for (let i = _arr.length - 1; i > 0; i--) {
+    const j = parseInt(
+      Date.now().toString()[Math.floor(Math.random() * (i + 1))]
+    );
+    [_arr[i], _arr[j]] = [_arr[j], _arr[i]];
+  }
+  return _arr;
+}

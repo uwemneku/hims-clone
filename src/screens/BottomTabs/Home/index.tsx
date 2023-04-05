@@ -1,26 +1,24 @@
-import { Pressable, StyleSheet, View } from "react-native";
-import React, { FC } from "react";
+import { StyleSheet, View } from "react-native";
+import React from "react";
 import HeadingScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
 import BaseText from "../../../components/Text";
 import Divider from "../../../components/Dividers";
 import { images } from "../../../constants/images";
 import Color from "../../../constants/colors";
-import { addOpacity } from "../../../utils";
-import Trending from "./Trending";
+import { addOpacity, shuffleArray } from "../../../utils";
 import PopularReads from "./PopularReads";
-import ZoomImageCard from "../../../components/Cards/ZoomImageCard";
 import AnnounceMentCard from "../../../components/Cards/AnnounceMentCard";
-import withDefaultValue from "../../../utils/withDefaultValue";
 import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
-import { Link, NavigationProp, useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import Animated from "react-native-reanimated";
 import {
   HomeBottomTabsParamsList,
   NestedStackScreenProps,
   RootStackParamList,
-  RootStackScreenProps,
 } from "../../../types/Navigation";
 import LargeCard from "../../../components/Cards/LargeCard";
+import HorizontalProductCard from "../../../components/Cards/HorizontalProductCard";
+import { allProducts } from "../../../constants/products";
 
 type Prop = NestedStackScreenProps<HomeBottomTabsParamsList, "home">;
 const Home = ({ navigation }: Prop) => {
@@ -45,7 +43,12 @@ const Home = ({ navigation }: Prop) => {
         title="Be Kind to your mind in 2023"
       />
       <Divider size="xl" />
-      <Trending />
+      <HorizontalProductCard
+        title="Trending"
+        iconName="show-chart"
+        subtitle="Jul 15"
+        data={shuffleArray(allProducts)}
+      />
       <Divider size="xl" />
       <PopularReads />
       <Divider size="xl" />
