@@ -12,7 +12,9 @@ A clone of HIMS mobile application using [Mobbin](https://mobbin.com/apps/hims-i
 
 ### Custom animations using reanimated 2
 
-   <video width="80%" src="./screenshots/zoom.mp4" />
+   <image width="80%" src="./screenshots/loading.gif" />
+   <image width="80%" src="./screenshots/zoom.gif" />
+
 # Set up
 
 Make sure that you have a [react native environment](https://reactnative.dev/docs/environment-setup) set up
