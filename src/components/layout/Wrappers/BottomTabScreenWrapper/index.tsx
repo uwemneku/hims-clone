@@ -16,7 +16,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Color from "../../../../constants/colors";
-import BaseText from "../../../text";
+import BaseText from "../../../Text";
 import ResponsiveWrapper from "../../ResponsiveWrapper";
 
 type IconProps = Object & {
@@ -88,48 +88,53 @@ const HeadingScreenWrapper: FC<Props> = (props) => {
   }));
 
   return (
-    <View style={styles.container}>
-      <Animated.View
-        style={[
-          styles.animatedHeader,
-          animatedHeaderContentStyle,
-          { paddingTop: paddingTop, paddingBottom: paddingTop * 0 },
-        ]}
-      >
-        <View style={styles.headerContent}>
-          <View style={styles.iconContainer}>
-            {leftIcon && leftIcon({ scrollOffset })}
-          </View>
-          <View style={{ flex: 1 }} />
-          <Animated.View
-            style={[styles.header, showHeading ? undefined : animatedTextStyle]}
-          >
-            <BaseText align="center" fontWeight="sofia_bold">
-              {title}
-            </BaseText>
-          </Animated.View>
-          <View style={styles.iconContainer}>
-            {rightIcon && rightIcon({ scrollOffset })}
-          </View>
-        </View>
-      </Animated.View>
-      {isFlatList ? (
-        <FlatList
-          onScroll={handleScroll}
-          scrollEventThrottle={16}
-          {...props}
-          contentContainerStyle={[styles.content, contentContainerStyle]}
-        />
-      ) : (
-        <ScrollView
-          onScroll={handleScroll}
-          scrollEventThrottle={16}
-          contentContainerStyle={[styles.content, contentContainerStyle]}
+    <ResponsiveWrapper>
+      <View style={styles.container}>
+        <Animated.View
+          style={[
+            styles.animatedHeader,
+            animatedHeaderContentStyle,
+            { paddingTop: paddingTop, paddingBottom: paddingTop * 0 },
+          ]}
         >
-          {children}
-        </ScrollView>
-      )}
-    </View>
+          <View style={styles.headerContent}>
+            <View style={styles.iconContainer}>
+              {leftIcon && leftIcon({ scrollOffset })}
+            </View>
+            <View style={{ flex: 1 }} />
+            <Animated.View
+              style={[
+                styles.header,
+                showHeading ? undefined : animatedTextStyle,
+              ]}
+            >
+              <BaseText align="center" fontWeight="sofia_bold">
+                {title}
+              </BaseText>
+            </Animated.View>
+            <View style={styles.iconContainer}>
+              {rightIcon && rightIcon({ scrollOffset })}
+            </View>
+          </View>
+        </Animated.View>
+        {isFlatList ? (
+          <FlatList
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
+            {...props}
+            contentContainerStyle={[styles.content, contentContainerStyle]}
+          />
+        ) : (
+          <ScrollView
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
+            contentContainerStyle={[styles.content, contentContainerStyle]}
+          >
+            {children}
+          </ScrollView>
+        )}
+      </View>
+    </ResponsiveWrapper>
   );
 };
 

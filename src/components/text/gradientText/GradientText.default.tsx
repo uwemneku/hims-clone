@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
 import { LinearGradient } from "expo-linear-gradient";
+// import MaskedView from "@react-native-masked-view/masked-view";
 import BaseText from "../index";
 import MaskedView from "@react-native-masked-view/masked-view";
 
