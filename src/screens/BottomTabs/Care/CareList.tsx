@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import BaseText from "../../../components/Text";
+import BaseText from "../../../components/text";
 import Color from "../../../constants/colors";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import Divider from "../../../components/Dividers";
+import Divider from "../../../components/dividers";
 
 interface Props {
   title: string;

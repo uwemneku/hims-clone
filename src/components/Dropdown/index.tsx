@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, View, ViewStyle } from "react-native";
 import React, { useState, useRef, ComponentProps } from "react";
-import BaseTextInput from "../TextInput/BaseTextInput";
+import BaseTextInput from "../textInput/BaseTextInput";
 import Animated, {
   interpolate,
   useAnimatedStyle,

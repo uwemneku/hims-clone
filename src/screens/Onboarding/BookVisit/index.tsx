@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import ScreenWithHeading from "../../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
-import BaseText from "../../../components/Text";
+import BaseText from "../../../components/text";
 import Color from "../../../constants/colors";
 import Sections from "./Sections";
 import { data } from "./data";

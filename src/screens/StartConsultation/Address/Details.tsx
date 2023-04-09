@@ -6,13 +6,13 @@ import * as yup from "yup";
 import { AntDesign } from "@expo/vector-icons";
 import QuestionnaireLayoutWithScrollView from "../components/QuestionLayoutWithScrollView";
 import QuestionnaireGradientText from "../components/QuestionnaireGradientText";
-import BaseText from "../../../components/Text";
-import Divider from "../../../components/Dividers";
-import BaseTextInput from "../../../components/TextInput/BaseTextInput";
+import BaseText from "../../../components/text";
+import Divider from "../../../components/dividers";
+import BaseTextInput from "../../../components/textInput/BaseTextInput";
 import withStyle from "../../../utils/withStyle";
 import Color from "../../../constants/colors";
-import Button from "../../../components/Button";
-import DropDown from "../../../components/Dropdown";
+import Button from "../../../components/button";
+import DropDown from "../../../components/dropdown";
 import { StartingVisitStackScreenProps } from "../../../types/Navigation";
 
 const validationSchema = yup.object().shape({

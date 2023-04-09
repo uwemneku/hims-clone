@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { ComponentProps } from "react";
-import GradientText from "../../../components/Text/GradientText";
+import GradientText from "../../../components/text/gradientText";
 interface Props {
   size: "small" | "title";
   children: string;

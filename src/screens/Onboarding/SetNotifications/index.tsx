@@ -1,9 +1,9 @@
 import { StyleSheet, useWindowDimensions, View } from "react-native";
 import React, { useEffect } from "react";
-import Button from "../../../components/Button";
+import Button from "../../../components/button";
 import Color from "../../../constants/colors";
-import Divider from "../../../components/Dividers";
-import BaseText from "../../../components/Text";
+import Divider from "../../../components/dividers";
+import BaseText from "../../../components/text";
 import { LinearGradient } from "expo-linear-gradient";
 import { addOpacity } from "../../../utils";
 import NotificationAnimation from "./NotificationAnimation";

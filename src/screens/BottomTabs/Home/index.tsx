@@ -1,14 +1,14 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import HeadingScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
-import BaseText from "../../../components/Text";
-import Divider from "../../../components/Dividers";
+import BaseText from "../../../components/text";
+import Divider from "../../../components/dividers";
 import { images } from "../../../constants/images";
 import Color from "../../../constants/colors";
 import { addOpacity, shuffleArray } from "../../../utils";
 import PopularReads from "./PopularReads";
 import AnnounceMentCard from "../../../components/Cards/AnnounceMentCard";
-import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
+import AnimatedHeaderIcon from "../../../components/animatedHeaderIcon/AnimatedHeaderIcon";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import Animated from "react-native-reanimated";
 import {
@@ -16,9 +16,10 @@ import {
   NestedStackScreenProps,
   RootStackParamList,
 } from "../../../types/Navigation";
-import LargeCard from "../../../components/Cards/LargeCard";
-import HorizontalProductCard from "../../../components/Cards/HorizontalProductCard";
+import LargeCard from "../../../components/Cards/largeCard";
+import HorizontalProductCard from "../../../components/Cards/horizontalProductCard";
 import { allProducts } from "../../../constants/products";
+import ResponsiveWrapper from "../../../components/layout/ResponsiveWrapper";
 
 type Prop = NestedStackScreenProps<HomeBottomTabsParamsList, "home">;
 const Home = ({ navigation }: Prop) => {
@@ -27,37 +28,39 @@ const Home = ({ navigation }: Prop) => {
   };
   return (
     <HeadingScreenWrapper title="Home" rightIcon={HomeIcon}>
-      <View>
-        <BaseText fontWeight="sofia_bold" size="h1" style={{ width: "70%" }}>
-          Welcome back, John
-        </BaseText>
-      </View>
-      <Divider size={60} />
-      <LargeCard
-        onPressIn={handleBoxClick}
-        tag="Mental Health"
-        image={images.happyCouple}
-        details="It's always a good time to take care of your mental health. With
+      <ResponsiveWrapper>
+        <View>
+          <BaseText fontWeight="sofia_bold" size="h1" style={{ width: "70%" }}>
+            Welcome back, John
+          </BaseText>
+        </View>
+        <Divider size={60} />
+        <LargeCard
+          onPress={handleBoxClick}
+          tag="Mental Health"
+          image={images.happyCouple}
+          details="It's always a good time to take care of your mental health. With
         affordable online therapy and doctor-trusted medication, Hims can
         help you feel better than ever."
-        title="Be Kind to your mind in 2023"
-      />
-      <Divider size="xl" />
-      <HorizontalProductCard
-        title="Trending"
-        iconName="show-chart"
-        subtitle="Jul 15"
-        data={shuffleArray(allProducts)}
-      />
-      <Divider size="xl" />
-      <PopularReads />
-      <Divider size="xl" />
-      <AnnounceMentCard
-        title="Big News"
-        subtitle="Welcome Grank to the hims family"
-        image={images.announcement}
-        products={data}
-      />
+          title="Be Kind to your mind in 2023"
+        />
+        <Divider size="xl" />
+        <HorizontalProductCard
+          title="Trending"
+          iconName="show-chart"
+          subtitle="Jul 15"
+          data={shuffleArray(allProducts)}
+        />
+        <Divider size="xl" />
+        <PopularReads />
+        <Divider size="xl" />
+        <AnnounceMentCard
+          title="Big News"
+          subtitle="Welcome Grank to the hims family"
+          image={images.announcement}
+          products={shuffleArray(allProducts)}
+        />
+      </ResponsiveWrapper>
     </HeadingScreenWrapper>
   );
 };

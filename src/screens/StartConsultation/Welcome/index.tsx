@@ -1,10 +1,10 @@
 import { StyleSheet, Image, useWindowDimensions, View } from "react-native";
 import React, { useState } from "react";
 import ScreenWithHeading from "../../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
-import Button from "../../../components/Button";
-import BaseText from "../../../components/Text";
+import Button from "../../../components/button";
+import BaseText from "../../../components/text";
 import Color from "../../../constants/colors";
-import Divider from "../../../components/Dividers";
+import Divider from "../../../components/dividers";
 import { images } from "../../../constants/images";
 import { StartingVisitStackScreenProps } from "../../../types/Navigation";
 import LoadingAnimationScreen from "../components/LoadingAnimation";

@@ -5,7 +5,7 @@ import BaseText from "../index";
 const Comp = lazy(() =>
   Platform.OS === "web"
     ? import("./GradientText.web")
-    : import("./GradientText.default")
+    : import("./GradientText")
 );
 
 interface Props {

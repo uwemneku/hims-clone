@@ -13,9 +13,9 @@ import Animated, {
 } from "react-native-reanimated";
 import Color from "../../../../constants/colors";
 import { useNavigation } from "@react-navigation/native";
-import BaseText from "../../../Text";
+import BaseText from "../../../text";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import AnimatedHeaderIcon from "../../../AnimatedHeaderIcon/AnimatedHeaderIcon";
+import AnimatedHeaderIcon from "../../../animatedHeaderIcon/AnimatedHeaderIcon";
 interface Props extends ComponentProps<typeof View> {
   rightHeadingButton?: JSX.Element;
   screenTitle?: string;

@@ -1,11 +1,16 @@
 import { FC, PropsWithChildren } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
 import "react-native-gesture-handler";
 import Color from "../../../constants/colors";
+import { sizes } from "../../../constants/sizes";
 
-const ResponsiveWrapper: FC<PropsWithChildren<{}>> = ({ children }) => {
+const ResponsiveWrapper: FC<PropsWithChildren<ViewProps>> = ({
+  style,
+  children,
+  ...props
+}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]} {...props}>
       <View style={styles.screen}>{children}</View>
     </View>
   );
@@ -16,11 +21,11 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Color.white,
+    backgroundColor: Color.offWhite,
   },
   screen: {
     flex: 1,
-    maxWidth: 800,
+    maxWidth: sizes.maxScreen,
     width: "100%",
   },
 });

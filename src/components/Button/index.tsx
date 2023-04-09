@@ -6,7 +6,7 @@ import {
   TextStyle,
 } from "react-native";
 import React, { ComponentProps } from "react";
-import BaseText from "../Text";
+import BaseText from "../text";
 import Color from "../../constants/colors";
 import { getAccessibleColor } from "../../utils";
 

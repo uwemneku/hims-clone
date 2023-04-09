@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { ComponentProps } from "react";
 import MaterialTopScrollWrapper from "./components/MaterialTopScrollWrapper";
-import HorizontalProductCard from "../../../components/Cards/HorizontalProductCard";
+import HorizontalProductCard from "../../../components/Cards/horizontalProductCard";
 import { shuffleArray } from "../../../utils";
 import { allProducts } from "../../../constants/products";
 import Categories from "./components/Categories";
-import ChevronList from "../../../components/ChevronList";
+import ChevronList from "../../../components/chevronList";
 import Color from "../../../constants/colors";
-import BaseText from "../../../components/Text";
-import Divider from "../../../components/Dividers";
+import BaseText from "../../../components/text";
+import Divider from "../../../components/dividers";
 import { images } from "../../../constants/images";
 
 const Browse = () => {
@@ -48,12 +48,12 @@ const categories: ComponentProps<typeof Categories>[] = [
   },
   {
     title: "Hair",
-    categoryImage: images.doctor,
+    categoryImage: images.afro,
     data: shuffleArray(allProducts),
   },
   {
     title: "Skin",
-    categoryImage: images.doctor,
+    categoryImage: images.smileman,
     data: shuffleArray(allProducts),
   },
   {
@@ -63,7 +63,7 @@ const categories: ComponentProps<typeof Categories>[] = [
   },
   {
     title: "Supplements",
-    categoryImage: images.doctor,
+    categoryImage: images.announcement,
     data: shuffleArray(allProducts),
   },
 ];

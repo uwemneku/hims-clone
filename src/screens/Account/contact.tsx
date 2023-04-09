@@ -4,15 +4,16 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { AccountStackScreenParamsList } from "../../types/Navigation";
 import HeadingScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
 import withDefaultValue from "../../utils/withDefaultValue";
-import BaseText from "../../components/Text";
-import BaseTextInput from "../../components/TextInput/BaseTextInput";
-import Divider from "../../components/Dividers";
-import Button from "../../components/Button";
+import BaseText from "../../components/text";
+import BaseTextInput from "../../components/textInput/BaseTextInput";
+import Divider from "../../components/dividers";
+import Button from "../../components/button";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import BackIcon from "../../components/Icon/BackIcon";
-import DateInput from "../../components/TextInput/DateInput";
+import BackIcon from "../../components/icon/backIcon";
+import DateInput from "../../components/textInput/DateInput";
 import Color from "../../constants/colors";
+import ResponsiveWrapper from "../../components/layout/ResponsiveWrapper";
 
 const validationSchema = yup.object().shape({
   firstName: yup.string().required("This field is required"),
@@ -54,49 +55,51 @@ const Contact = ({ navigation }: Props) => {
   });
   return (
     <HeadingScreenWrapper title="Contacts" leftIcon={LeftIcon}>
-      <BaseText size="h1">Contact information</BaseText>
-      <Divider size="xl" />
-      <BaseTextInput
-        placeholder="Legal First Name"
-        textContentType="familyName"
-        {...getFormProps("firstName")}
-      />
-      <Divider />
-      <BaseTextInput
-        placeholder="Legal Last Name"
-        textContentType="givenName"
-        {...getFormProps("lastName")}
-      />
-      <Divider />
-      <BaseTextInput
-        placeholder="Phone Number"
-        keyboardType="number-pad"
-        textContentType="telephoneNumber"
-        {...getFormProps("phoneNumber")}
-      />
-      <Divider />
-      <BaseTextInput
-        placeholder="Email Address"
-        keyboardType="email-address"
-        textContentType="emailAddress"
-        {...getFormProps("email")}
-      />
-      <Divider />
-      <DateInput
-        maxAge={18}
-        placeholder="Date of Birth"
-        onChange={(e) => {
-          setFieldValue("dob", e);
-        }}
-        isError={Boolean(errors.dob)}
-        helperText={errors.dob}
-      />
-      <Divider size="xl" />
-      <Button
-        color={isValid && dirty ? Color.black : Color.lightGray}
-        label="Save"
-        onPressIn={submitForm}
-      />
+      <ResponsiveWrapper>
+        <BaseText size="h1">Contact information</BaseText>
+        <Divider size="xl" />
+        <BaseTextInput
+          placeholder="Legal First Name"
+          textContentType="familyName"
+          {...getFormProps("firstName")}
+        />
+        <Divider />
+        <BaseTextInput
+          placeholder="Legal Last Name"
+          textContentType="givenName"
+          {...getFormProps("lastName")}
+        />
+        <Divider />
+        <BaseTextInput
+          placeholder="Phone Number"
+          keyboardType="number-pad"
+          textContentType="telephoneNumber"
+          {...getFormProps("phoneNumber")}
+        />
+        <Divider />
+        <BaseTextInput
+          placeholder="Email Address"
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          {...getFormProps("email")}
+        />
+        <Divider />
+        <DateInput
+          maxAge={18}
+          placeholder="Date of Birth"
+          onChange={(e) => {
+            setFieldValue("dob", e);
+          }}
+          isError={Boolean(errors.dob)}
+          helperText={errors.dob}
+        />
+        <Divider size="xl" />
+        <Button
+          color={isValid && dirty ? Color.black : Color.lightGray}
+          label="Save"
+          onPressIn={submitForm}
+        />
+      </ResponsiveWrapper>
     </HeadingScreenWrapper>
   );
 };

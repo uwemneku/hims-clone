@@ -8,26 +8,29 @@ import {
   OrderHistoryDetailsScreen,
   OrderHistoryScreen,
   SubscriptionScreen,
-} from "../screens/Account/index";
+} from "../screens/account/index";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ResponsiveWrapper from "../components/layout/ResponsiveWrapper";
 
 const { Navigator, Screen } =
   createNativeStackNavigator<AccountStackScreenParamsList>();
 
 const AccountsNavigator = () => {
   return (
-    <Navigator
-      screenOptions={{ headerShown: false, animation: "slide_from_right" }}
-    >
-      <Screen name="account" component={AccountsScreen} />
-      <Screen name="contactInfo" component={ContactScreen} />
-      <Screen name="subscriptions" component={SubscriptionScreen} />
-      <Screen name="orderHistory" component={OrderHistoryScreen} />
-      <Screen
-        name="orderHistoryDetails"
-        component={OrderHistoryDetailsScreen}
-      />
-    </Navigator>
+    <ResponsiveWrapper>
+      <Navigator
+        screenOptions={{ headerShown: false, animation: "slide_from_right" }}
+      >
+        <Screen name="account" component={AccountsScreen} />
+        <Screen name="contactInfo" component={ContactScreen} />
+        <Screen name="subscriptions" component={SubscriptionScreen} />
+        <Screen name="orderHistory" component={OrderHistoryScreen} />
+        <Screen
+          name="orderHistoryDetails"
+          component={OrderHistoryDetailsScreen}
+        />
+      </Navigator>
+    </ResponsiveWrapper>
   );
 };
 

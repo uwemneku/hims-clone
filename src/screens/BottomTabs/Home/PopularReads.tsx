@@ -1,10 +1,10 @@
 import { StyleSheet, View, ImageSourcePropType } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
-import Divider from "../../../components/Dividers";
+import Divider from "../../../components/dividers";
 import { images } from "../../../constants/images";
 import BlogPost from "./BlogPost";
-import HorizontalCardWrapper from "../../../components/Cards/HorizontalProductCard/Wrapper";
+import HorizontalCardWrapper from "../../../components/Cards/horizontalProductCard/Wrapper";
 
 const data: { image: ImageSourcePropType; title: string }[] = [
   { image: images.blog3, title: "Skin Care" },

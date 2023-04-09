@@ -2,8 +2,8 @@ import { Image, StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
 import HorizontalCardWrapper from "./Wrapper";
 import { ScrollView } from "react-native-gesture-handler";
-import Divider from "../../Dividers";
-import ProductCard from "../ProductCard";
+import Divider from "../../dividers";
+import ProductCard from "../productCard";
 
 interface Props extends ComponentProps<typeof HorizontalCardWrapper> {
   additionalItems?: JSX.Element;

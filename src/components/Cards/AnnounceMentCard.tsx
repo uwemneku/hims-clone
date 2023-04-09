@@ -1,14 +1,14 @@
 import { Platform, StyleSheet, View, useWindowDimensions } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
-import Divider from "../Dividers";
-import ProductCard from "./ProductCard";
+import Divider from "../dividers";
+import ProductCard from "./productCard";
 import { images } from "../../constants/images";
-import BaseText from "../Text";
+import BaseText from "../text";
 import Color from "../../constants/colors";
 import { addOpacity } from "../../utils";
 import { LinearGradient as _LinearGradient } from "expo-linear-gradient";
-import ZoomImageCard from "./ZoomImageCard";
+import ZoomImageCard from "./zoomImageCard";
 
 const isWeb = Platform.OS === "web";
 const LinearGradient = isWeb ? View : _LinearGradient;
@@ -80,5 +80,6 @@ const styles = StyleSheet.create({
     backgroundColor: isWeb ? addOpacity(Color.black, 0.5) : undefined,
     position: isWeb ? "absolute" : "relative",
     bottom: isWeb ? 0 : undefined,
+    width: "100%",
   },
 });

@@ -1,12 +1,12 @@
 import { Image, ImageBackground, StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
-import HorizontalProductCard from "../../../../components/Cards/HorizontalProductCard";
+import HorizontalProductCard from "../../../../components/Cards/horizontalProductCard";
 import { addOpacity } from "../../../../utils";
-import BaseText from "../../../../components/Text";
+import BaseText from "../../../../components/text";
 import Color from "../../../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
-import { productCardSize } from "../../../../constants/sizes";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { sizes } from "../../../../constants/sizes";
 interface Props extends ComponentProps<typeof HorizontalProductCard> {
   categoryImage: ComponentProps<typeof Image>["source"];
   onCategoryClick?(): void;
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: addOpacity(Color.brown, 0.5),
   },
   all: {
-    height: productCardSize.height,
+    height: sizes.productCard.height,
     width: 250,
     borderRadius: 20,
     overflow: "hidden",

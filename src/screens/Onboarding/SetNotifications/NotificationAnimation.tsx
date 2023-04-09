@@ -2,8 +2,8 @@ import { StyleSheet, View } from "react-native";
 import React from "react";
 import Color from "../../../constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
-import BaseText from "../../../components/Text";
-import Divider from "../../../components/Dividers";
+import BaseText from "../../../components/text";
+import Divider from "../../../components/dividers";
 import Animated, {
   Easing,
   Extrapolate,

@@ -1,15 +1,12 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
-import Button from "../../components/Button";
+import Button from "../../components/button";
 import Color from "../../constants/colors";
-import Divider from "../../components/Dividers";
+import Divider from "../../components/dividers";
 import InfiniteScrollWrapper from "../../components/infiniteScroll/Wrapper";
-import BaseText from "../../components/Text";
+import BaseText from "../../components/text";
 import Animated, {
   FadeInDown,
-  FadeInUp,
-  interpolateColor,
-  useAnimatedStyle,
   useSharedValue,
   withDelay,
   withTiming,
@@ -24,7 +21,7 @@ type Props = OnboardingStackScreenProps<"GetStarted">;
 const GetStarted = ({ navigation }: Props) => {
   const opacity = useSharedValue(0);
 
-  opacity.value = withDelay(2000, withTiming(1, { duration: 2000 }));
+  opacity.value = withDelay(500, withTiming(1, { duration: 2000 }));
   const handleButtonPress =
     (screen: keyof AuthenticationStackParamList) => () =>
       opacity.value > 0.25 && navigation.navigate(screen); // only navigate when buttons are visible

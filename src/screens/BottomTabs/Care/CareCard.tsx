@@ -1,9 +1,9 @@
 import { ImageSourcePropType, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import BaseText from "../../../components/Text";
-import Divider from "../../../components/Dividers";
-import ZoomImageCard from "../../../components/Cards/ZoomImageCard";
+import BaseText from "../../../components/text";
+import Divider from "../../../components/dividers";
+import ZoomImageCard from "../../../components/Cards/zoomImageCard";
 import Color from "../../../constants/colors";
 import { addOpacity } from "../../../utils";
 

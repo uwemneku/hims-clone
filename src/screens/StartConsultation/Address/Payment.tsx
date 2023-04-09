@@ -1,11 +1,11 @@
 import { StyleSheet, Image, View } from "react-native";
 import React from "react";
 import QuestionnaireLayoutWithScrollView from "../components/QuestionLayoutWithScrollView";
-import BaseText from "../../../components/Text";
-import Button from "../../../components/Button";
-import BaseTextInput from "../../../components/TextInput/BaseTextInput";
+import BaseText from "../../../components/text";
+import Button from "../../../components/button";
+import BaseTextInput from "../../../components/textInput/BaseTextInput";
 import Color from "../../../constants/colors";
-import Divider from "../../../components/Dividers";
+import Divider from "../../../components/dividers";
 import { addOpacity } from "../../../utils";
 import withStyle from "../../../utils/withStyle";
 import { useFormik } from "formik";

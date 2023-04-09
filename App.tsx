@@ -2,7 +2,7 @@ import { useFonts } from "expo-font";
 import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import AppFonts from "./src/constants/fonts";
-import AppNavigator from "./src/Navigators/AppNavigator";
+import AppNavigator from "./src/navigators/appNavigator";
 import "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";

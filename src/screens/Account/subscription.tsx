@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import HeadingScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
-import BackIcon from "../../components/Icon/BackIcon";
+import BackIcon from "../../components/icon/backIcon";
 import withDefaultValue from "../../utils/withDefaultValue";
-import BaseText from "../../components/Text";
-import Divider from "../../components/Dividers";
+import BaseText from "../../components/text";
+import Divider from "../../components/dividers";
 import Color from "../../constants/colors";
 
 const Subscription = () => {

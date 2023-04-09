@@ -1,8 +1,8 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import BaseText from "../../../components/Text";
+import BaseText from "../../../components/text";
 import Color from "../../../constants/colors";
-import ChevronList from "../../../components/ChevronList";
+import ChevronList from "../../../components/chevronList";
 export type SectionList = {
   title: string;
   list: string[];

@@ -21,7 +21,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import BaseText from "../Text";
+import BaseText from "../text";
 
 const HEIGHT = 60;
 const BORDER_WIDTH = 1;

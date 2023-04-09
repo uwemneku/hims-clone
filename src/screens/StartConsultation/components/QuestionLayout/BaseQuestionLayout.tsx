@@ -1,8 +1,8 @@
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
-import BaseText from "../../../../components/Text";
+import BaseText from "../../../../components/text";
 import Color from "../../../../constants/colors";
-import Divider from "../../../../components/Dividers";
+import Divider from "../../../../components/dividers";
 import QuestionnaireLayoutWithScrollView from "../QuestionLayoutWithScrollView";
 import QuestionnaireGradientText from "../QuestionnaireGradientText";
 import { useRef } from "react";

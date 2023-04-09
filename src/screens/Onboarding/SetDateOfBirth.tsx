@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import BaseTextInput from "../../components/TextInput/BaseTextInput";
-import Button from "../../components/Button";
+import BaseTextInput from "../../components/textInput/BaseTextInput";
+import Button from "../../components/button";
 import Color from "../../constants/colors";
-import Divider from "../../components/Dividers";
-import BaseText from "../../components/Text";
+import Divider from "../../components/dividers";
+import BaseText from "../../components/text";
 import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
 import { OnboardingStackScreenProps } from "../../types/Navigation";
 import useDateInputFormat from "../../hooks/useDateInputFormat";
