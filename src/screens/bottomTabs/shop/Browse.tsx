@@ -43,7 +43,7 @@ const list = ["Shop RX", "Shop over the counter", "What's new"];
 const categories: ComponentProps<typeof Categories>[] = [
   {
     title: "Sexual Health",
-    categoryImage: images.doctor,
+    categoryImage: images.himsPack,
     data: shuffleArray(allProducts),
   },
   {
@@ -53,17 +53,17 @@ const categories: ComponentProps<typeof Categories>[] = [
   },
   {
     title: "Skin",
-    categoryImage: images.doctor,
-    data: shuffleArray(allProducts),
-  },
-  {
-    title: "Mental Health",
     categoryImage: images.pillsboy,
     data: shuffleArray(allProducts),
   },
   {
+    title: "Mental Health",
+    categoryImage: images.announcement,
+    data: shuffleArray(allProducts),
+  },
+  {
     title: "Supplements",
-    categoryImage: images.doctor,
+    categoryImage: images.smileman,
     data: shuffleArray(allProducts),
   },
 ];

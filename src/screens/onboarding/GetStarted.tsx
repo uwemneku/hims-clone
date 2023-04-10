@@ -24,7 +24,7 @@ type Props = OnboardingStackScreenProps<"GetStarted">;
 const GetStarted = ({ navigation }: Props) => {
   const opacity = useSharedValue(0);
 
-  opacity.value = withDelay(2000, withTiming(1, { duration: 2000 }));
+  opacity.value = withDelay(500, withTiming(1, { duration: 2000 }));
   const handleButtonPress =
     (screen: keyof AuthenticationStackParamList) => () =>
       opacity.value > 0.25 && navigation.navigate(screen); // only navigate when buttons are visible

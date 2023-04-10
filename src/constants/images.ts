@@ -1,5 +1,6 @@
 export const images = {
   himsPack: require("../../assets/himsPack.png"),
+  men: require("../../assets/sh.png"),
   smileman: require("../../assets/smileman.png"),
   _3dDoctor: require("../../assets/3dDoctor.png"),
   doctor: require("../../assets/doctor.png"),
