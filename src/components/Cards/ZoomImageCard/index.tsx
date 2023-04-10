@@ -10,7 +10,7 @@ import Animated, {
 interface Props
   extends ComponentProps<typeof View>,
     PickFromComponentProps<typeof Animated.Image, "source"> {
-  /**@default false */
+  /**@default `false` */
   enable?: boolean;
 }
 

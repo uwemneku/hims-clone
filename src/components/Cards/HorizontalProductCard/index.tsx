@@ -2,7 +2,7 @@ import { Image, StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
 import HorizontalCardWrapper from "./Wrapper";
 import { ScrollView } from "react-native-gesture-handler";
-import Divider from "../../Dividers";
+import Divider from "../../dividers";
 import ProductCard from "../ProductCard";
 
 interface Props extends ComponentProps<typeof HorizontalCardWrapper> {
@@ -21,9 +21,9 @@ const HorizontalProductCard = ({ data, additionalItems, ...props }: Props) => {
         contentContainerStyle={{ paddingHorizontal: 15 }}
       >
         {additionalItems}
-        {data.map((_, i) => (
+        {data.map((item, i) => (
           <View style={{ flexDirection: "row" }} key={i}>
-            <ProductCard source={_.image} />
+            <ProductCard source={item.image} />
             <Divider dir="horizontal" />
           </View>
         ))}

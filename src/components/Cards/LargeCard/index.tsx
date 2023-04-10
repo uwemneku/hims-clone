@@ -1,7 +1,7 @@
 import { ImageSourcePropType, StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
-import BaseText from "../../../components/Text";
-import Divider from "../../../components/Dividers";
+import BaseText from "../../../components/text";
+import Divider from "../../../components/dividers";
 import Color from "../../../constants/colors";
 import { addOpacity } from "../../../utils";
 import ZoomImageCard from "../../../components/Cards/ZoomImageCard";

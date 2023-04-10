@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { ComponentProps } from "react";
-import BaseText from "../../Text";
+import BaseText from "../../text";
 import { MaterialIcons } from "@expo/vector-icons";
 import Color from "../../../constants/colors";
-import Divider from "../../Dividers";
+import Divider from "../../dividers";
 
 interface Props extends ComponentProps<typeof View> {
   title?: string;
@@ -60,5 +60,6 @@ const styles = StyleSheet.create({
     padding: 15,
     flexDirection: "row",
     justifyContent: "space-between",
+    display: "flex",
   },
 });
