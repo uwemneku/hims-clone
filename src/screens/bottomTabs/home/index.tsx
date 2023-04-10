@@ -34,7 +34,7 @@ const Home = ({ navigation }: Prop) => {
       </View>
       <Divider size={60} />
       <LargeCard
-        onPressIn={handleBoxClick}
+        onPress={handleBoxClick}
         tag="Mental Health"
         image={images.happyCouple}
         details="It's always a good time to take care of your mental health. With

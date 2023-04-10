@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import React from "react";
+import React, { FC } from "react";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import Color from "../../../constants/colors";
 import { bottomTabData } from "./data";
@@ -7,7 +7,11 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import BaseText from "../../../components/text";
 import { Ionicons } from "@expo/vector-icons";
 import Divider from "../../../components/dividers";
-import Animated from "react-native-reanimated";
+import Animated, {
+  useAnimatedStyle,
+  withTiming,
+} from "react-native-reanimated";
+import { sizes } from "../../../constants/sizes";
 interface Props extends BottomTabBarProps {}
 const TabBar = ({ navigation, state }: Props) => {
   const currentRoute = state.routeNames[state.index];
@@ -18,25 +22,46 @@ const TabBar = ({ navigation, state }: Props) => {
     navigation.navigate(route);
   };
   return (
-    <Animated.View style={styles.container}>
-      {bottomTabData.map((data) => (
-        <TouchableOpacity
-          onPress={handleClick(data.routeName)}
-          key={data.title}
-          style={styles.item}
-        >
-          <Ionicons
-            name={data.iconName}
+    <View style={{ backgroundColor: Color.white }}>
+      <Animated.View style={styles.container}>
+        {bottomTabData.map((data) => (
+          <TabIcon
+            currentRoute={currentRoute}
+            onPress={handleClick(data.routeName)}
+            key={data.title}
             color={getColor(data.routeName)}
-            size={24}
+            title={data.title}
+            routeName={data.routeName}
+            iconName={data.iconName}
           />
+        ))}
+      </Animated.View>
+    </View>
+  );
+};
+
+const TabIcon: FC<
+  {
+    onPress(): void;
+    color: string;
+    currentRoute: string;
+  } & typeof bottomTabData[number]
+> = ({ onPress, color, iconName, title, currentRoute, routeName }) => {
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: withTiming(currentRoute === routeName ? 1 : 0.9) }],
+  }));
+  return (
+    <View>
+      <Animated.View style={animatedStyle}>
+        <TouchableOpacity onPress={onPress} style={styles.item}>
+          <Ionicons name={iconName} color={color} size={24} />
           <Divider size="xs" />
-          <BaseText size="small" color={getColor(data.routeName)}>
-            {data.title}
+          <BaseText size="small" color={color}>
+            {title}
           </BaseText>
         </TouchableOpacity>
-      ))}
-    </Animated.View>
+      </Animated.View>
+    </View>
   );
 };
 
@@ -48,6 +73,9 @@ const styles = StyleSheet.create({
     padding: 20,
     flexDirection: "row",
     justifyContent: "space-around",
+    alignSelf: "center",
+    width: "100%",
+    maxWidth: sizes.maxScreen,
   },
   item: {
     alignItems: "center",
