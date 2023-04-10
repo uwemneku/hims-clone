@@ -16,7 +16,9 @@ A clone of HIMS mobile application using [Mobbin](https://mobbin.com/apps/hims-i
 
    <image width="200" src="./screenshots/loading.gif" />
    <image width="200" src="./screenshots/zoom.gif" />
-   <image width="200" src="./screenshots/scroll.gif" />
+</div>
+<div>
+   <image width="100%" src="./screenshots/scroll.gif" />
 </div>
 
 # Set up
