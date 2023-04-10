@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import MultiStepQuestionScreen from "../components/QuestionLayout/MultiStepQuestionScreen";
 import QuestionWithOptions from "../components/QuestionLayout/QuestionWithOptions";
 import BaseQuestionLayout from "../components/QuestionLayout/BaseQuestionLayout";
-import BaseTextInput from "../../../components/TextInput/BaseTextInput";
+import BaseTextInput from "../../../components/textInput/BaseTextInput";
 import { TextInput } from "react-native-gesture-handler";
-import BaseText from "../../../components/Text";
+import BaseText from "../../../components/text";
 import Color from "../../../constants/colors";
 import AppFonts from "../../../constants/fonts";
 import Button from "../../../components/button";
-import Divider from "../../../components/Dividers";
+import Divider from "../../../components/dividers";
 import { StartingVisitStackScreenProps } from "../../../types/Navigation";
 
 type Props = StartingVisitStackScreenProps<"EmergencyContactDetailsScreen">;

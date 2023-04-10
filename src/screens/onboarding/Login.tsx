@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 import React from "react";
-import BaseText from "../../components/Text";
-import Divider from "../../components/Dividers";
-import PasswordInput from "../../components/TextInput/PasswordInput";
-import BaseTextInput from "../../components/TextInput/BaseTextInput";
+import BaseText from "../../components/text";
+import Divider from "../../components/dividers";
+import PasswordInput from "../../components/textInput/PasswordInput";
+import BaseTextInput from "../../components/textInput/BaseTextInput";
 import Button from "../../components/button";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -11,7 +11,7 @@ import Color from "../../constants/colors";
 import { OnboardingStackScreenProps } from "../../types/Navigation";
 import HeadingScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
 import withDefaultValue from "../../utils/withDefaultValue";
-import BackIcon from "../../components/Icon/BackIcon";
+import BackIcon from "../../components/icon/backIcon";
 
 const validationSchema = yup.object().shape({
   email: yup

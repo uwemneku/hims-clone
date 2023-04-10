@@ -2,7 +2,7 @@ import { Image, ImageBackground, StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
 import HorizontalProductCard from "../../../../components/Cards/HorizontalProductCard";
 import { addOpacity } from "../../../../utils";
-import BaseText from "../../../../components/Text";
+import BaseText from "../../../../components/text";
 import Color from "../../../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { productCardSize } from "../../../../constants/sizes";

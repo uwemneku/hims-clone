@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
-import BaseText from "../../../components/Text";
+import BaseText from "../../../components/text";
 import Color from "../../../constants/colors";
-import Divider from "../../../components/Dividers";
+import Divider from "../../../components/dividers";
 import QuestionnaireGradientText from "./QuestionnaireGradientText";
 import { LinearGradient } from "expo-linear-gradient";
 import Button from "../../../components/button";

@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Svg, LinearGradient, Defs, Circle, Stop } from "react-native-svg";
-import SpinningView from "../../../components/Animations/SpinningView";
-import BaseText from "../../../components/Text";
+import SpinningView from "../../../components/animations/SpinningView";
+import BaseText from "../../../components/text";
 import Color from "../../../constants/colors";
 interface Props {
   title: string;

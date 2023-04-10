@@ -1,16 +1,16 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import HeadingScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
-import BaseText from "../../components/Text";
-import ChevronList from "../../components/ChevronList";
+import BaseText from "../../components/text";
+import ChevronList from "../../components/chevronList";
 import Color from "../../constants/colors";
-import Divider from "../../components/Dividers";
+import Divider from "../../components/dividers";
 import Button from "../../components/button";
 import {
   AccountStackScreenParamsList,
   NestedStackScreenProps,
 } from "../../types/Navigation";
-import BackIcon from "../../components/Icon/BackIcon";
+import BackIcon from "../../components/icon/backIcon";
 
 type Props = NestedStackScreenProps<AccountStackScreenParamsList, "account">;
 type NavKeys = Exclude<

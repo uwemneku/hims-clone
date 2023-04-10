@@ -2,9 +2,9 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import Button from "../../components/button";
 import Color from "../../constants/colors";
-import BaseText from "../../components/Text";
-import DropDown from "../../components/Dropdown";
-import Divider from "../../components/Dividers";
+import BaseText from "../../components/text";
+import DropDown from "../../components/dropdown";
+import Divider from "../../components/dividers";
 import ScreenWithHeading from "../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
 import { OnboardingStackScreenProps } from "../../types/Navigation";
 

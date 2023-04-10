@@ -1,14 +1,14 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import HeadingScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
-import BaseText from "../../../components/Text";
-import Divider from "../../../components/Dividers";
+import BaseText from "../../../components/text";
+import Divider from "../../../components/dividers";
 import { images } from "../../../constants/images";
 import Color from "../../../constants/colors";
 import { addOpacity, shuffleArray } from "../../../utils";
 import PopularReads from "./PopularReads";
 import AnnounceMentCard from "../../../components/Cards/AnnounceMentCard";
-import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
+import AnimatedHeaderIcon from "../../../components/animatedHeaderIcon/AnimatedHeaderIcon";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import Animated from "react-native-reanimated";
 import {

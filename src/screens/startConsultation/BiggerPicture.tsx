@@ -2,10 +2,10 @@ import { StyleSheet } from "react-native";
 import React from "react";
 import IntroScreenLayout from "./components/IntroScreenLayout";
 import Button from "../../components/button";
-import BaseText from "../../components/Text";
+import BaseText from "../../components/text";
 import Color from "../../constants/colors";
 import { images } from "../../constants/images";
-import Divider from "../../components/Dividers";
+import Divider from "../../components/dividers";
 import { StartingVisitStackScreenProps } from "../../types/Navigation";
 
 type Props = StartingVisitStackScreenProps<"BiggerPicture">;

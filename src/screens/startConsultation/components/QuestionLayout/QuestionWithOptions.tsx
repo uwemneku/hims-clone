@@ -1,11 +1,11 @@
 import { StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import BaseText from "../../../../components/Text";
+import BaseText from "../../../../components/text";
 import Color from "../../../../constants/colors";
 import { useRef } from "react";
 import BaseQuestionLayout from "./BaseQuestionLayout";
-import BaseTextInput from "../../../../components/TextInput/BaseTextInput";
+import BaseTextInput from "../../../../components/textInput/BaseTextInput";
 import { OptionsVariant, TextVariant } from "./types";
 
 type Props = Omit<ComponentProps<typeof BaseQuestionLayout>, "children"> & {

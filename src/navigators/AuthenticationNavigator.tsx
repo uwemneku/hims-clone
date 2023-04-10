@@ -10,7 +10,7 @@ import {
   SetDateOfBirthScreen,
   SetStateScreen,
   SignUpScreen,
-} from "../screens/Onboarding";
+} from "../screens/onboarding";
 import Color from "../constants/colors";
 
 const { Navigator, Screen, Group } =

@@ -1,10 +1,10 @@
 import { Platform, StyleSheet, View, useWindowDimensions } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
-import Divider from "../Dividers";
+import Divider from "../dividers";
 import ProductCard from "./ProductCard";
 import { images } from "../../constants/images";
-import BaseText from "../Text";
+import BaseText from "../text";
 import Color from "../../constants/colors";
 import { addOpacity } from "../../utils";
 import { LinearGradient as _LinearGradient } from "expo-linear-gradient";

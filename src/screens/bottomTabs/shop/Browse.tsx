@@ -5,10 +5,10 @@ import HorizontalProductCard from "../../../components/Cards/HorizontalProductCa
 import { shuffleArray } from "../../../utils";
 import { allProducts } from "../../../constants/products";
 import Categories from "./components/Categories";
-import ChevronList from "../../../components/ChevronList";
+import ChevronList from "../../../components/chevronList";
 import Color from "../../../constants/colors";
-import BaseText from "../../../components/Text";
-import Divider from "../../../components/Dividers";
+import BaseText from "../../../components/text";
+import Divider from "../../../components/dividers";
 import { images } from "../../../constants/images";
 
 const Browse = () => {

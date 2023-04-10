@@ -3,7 +3,7 @@ import React, { FC, useRef } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Color from "../../../../constants/colors";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import BaseText from "../../../../components/Text";
+import BaseText from "../../../../components/text";
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
@@ -12,7 +12,7 @@ import Animated, {
   Extrapolate,
   useSharedValue,
 } from "react-native-reanimated";
-import AnimatedHeaderIcon from "../../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
+import AnimatedHeaderIcon from "../../../../components/animatedHeaderIcon/AnimatedHeaderIcon";
 import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
 import { useMaterialTopScrollContext } from "./ScrollContext";
 import AppFonts from "../../../../constants/fonts";

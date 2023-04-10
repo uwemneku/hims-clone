@@ -4,7 +4,7 @@ import MaterialTopScrollWrapper from "./components/MaterialTopScrollWrapper";
 import LargeCard from "../../../components/Cards/LargeCard";
 import { images } from "../../../constants/images";
 import HorizontalProductCard from "../../../components/Cards/HorizontalProductCard";
-import Divider from "../../../components/Dividers";
+import Divider from "../../../components/dividers";
 import AnnounceMentCard from "../../../components/Cards/AnnounceMentCard";
 import { shuffleArray } from "../../../utils";
 import Header from "./components/Header";

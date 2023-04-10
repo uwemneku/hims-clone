@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { ComponentProps } from "react";
-import AnimatedHeaderIcon from "../../AnimatedHeaderIcon/AnimatedHeaderIcon";
+import AnimatedHeaderIcon from "../../animatedHeaderIcon/AnimatedHeaderIcon";
 interface Props {
   scrollOffset: ComponentProps<typeof AnimatedHeaderIcon>["scrollOffset"];
   iconName?: ComponentProps<typeof AnimatedHeaderIcon>["iconName"];

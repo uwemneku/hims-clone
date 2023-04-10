@@ -7,7 +7,7 @@ import {
   ShopBrowseScreen,
   ShopFeaturesScreen,
   ShopNavigatorHeader,
-} from "../screens/BottomTabs/Shop";
+} from "../screens/bottomTabs/shop";
 
 const { Navigator, Screen } =
   createMaterialTopTabNavigator<ShopMaterialTopTabsParamList>();

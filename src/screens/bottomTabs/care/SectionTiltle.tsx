@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import BaseText from "../../../components/Text";
-import Divider from "../../../components/Dividers";
+import BaseText from "../../../components/text";
+import Divider from "../../../components/dividers";
 import Color from "../../../constants/colors";
 
 interface Props {

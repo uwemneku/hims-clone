@@ -2,8 +2,8 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import HeadingScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
 import withDefaultValue from "../../../utils/withDefaultValue";
-import BackIcon from "../../../components/Icon/BackIcon";
-import BaseText from "../../../components/Text";
+import BackIcon from "../../../components/icon/backIcon";
+import BaseText from "../../../components/text";
 import {
   AccountStackScreenParamsList,
   NestedStackScreenProps,
@@ -12,8 +12,8 @@ import { list } from "./data";
 import Color from "../../../constants/colors";
 import ProductItemLayout from "../../../components/Cards/ProductItemLayout";
 import { addOpacity } from "../../../utils";
-import Divider from "../../../components/Dividers";
-import TextList from "../../../components/List/TextList";
+import Divider from "../../../components/dividers";
+import TextList from "../../../components/list/TextList";
 type Props = NestedStackScreenProps<
   AccountStackScreenParamsList,
   "orderHistoryDetails"

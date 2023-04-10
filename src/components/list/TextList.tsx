@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, ViewStyle } from "react-native";
 import React, { ComponentProps, FC } from "react";
-import BaseText from "../Text";
-import Divider from "../Dividers";
+import BaseText from "../text";
+import Divider from "../dividers";
 
 interface Props extends Omit<ComponentProps<typeof BaseText>, "style"> {
   left: string;

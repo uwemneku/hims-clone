@@ -4,14 +4,14 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { AccountStackScreenParamsList } from "../../types/Navigation";
 import HeadingScreenWrapper from "../../components/layout/Wrappers/BottomTabScreenWrapper";
 import withDefaultValue from "../../utils/withDefaultValue";
-import BaseText from "../../components/Text";
-import BaseTextInput from "../../components/TextInput/BaseTextInput";
-import Divider from "../../components/Dividers";
+import BaseText from "../../components/text";
+import BaseTextInput from "../../components/textInput/BaseTextInput";
+import Divider from "../../components/dividers";
 import Button from "../../components/button";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import BackIcon from "../../components/Icon/BackIcon";
-import DateInput from "../../components/TextInput/DateInput";
+import BackIcon from "../../components/icon/backIcon";
+import DateInput from "../../components/textInput/DateInput";
 import Color from "../../constants/colors";
 
 const validationSchema = yup.object().shape({

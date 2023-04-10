@@ -1,16 +1,16 @@
 import { StyleSheet, View, Text } from "react-native";
 import React, { useState } from "react";
-import BaseTextInput from "../../../components/TextInput/BaseTextInput";
-import Divider from "../../../components/Dividers";
+import BaseTextInput from "../../../components/textInput/BaseTextInput";
+import Divider from "../../../components/dividers";
 import Button from "../../../components/button";
 import Color from "../../../constants/colors";
-import BaseText from "../../../components/Text";
+import BaseText from "../../../components/text";
 import ScreenWithHeading from "../../../components/layout/Wrappers/ScreenWithHeading/ScreenWithHeading";
 import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import PasswordInput from "../../../components/TextInput/PasswordInput";
+import PasswordInput from "../../../components/textInput/PasswordInput";
 import LoadingAnimation from "../../../components/LoadingAnimation";
 import { OnboardingStackScreenProps } from "../../../types/Navigation";
 

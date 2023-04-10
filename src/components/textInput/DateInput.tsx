@@ -1,5 +1,5 @@
 import React, { ComponentProps, useEffect, useRef } from "react";
-import BaseTextInput from "../../components/TextInput/BaseTextInput";
+import BaseTextInput from "../../components/textInput/BaseTextInput";
 import useDateInputFormat from "../../hooks/useDateInputFormat";
 
 interface Props

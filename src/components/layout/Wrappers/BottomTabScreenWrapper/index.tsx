@@ -16,7 +16,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Color from "../../../../constants/colors";
-import BaseText from "../../../Text";
+import BaseText from "../../../text";
 import ResponsiveWrapper from "../../ResponsiveWrapper";
 
 type IconProps = Object & {

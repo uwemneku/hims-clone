@@ -1,9 +1,9 @@
 import { StyleSheet, View, useWindowDimensions } from "react-native";
 import React, { FC } from "react";
 import HeadingScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
-import BackIcon from "../../../components/Icon/BackIcon";
+import BackIcon from "../../../components/icon/backIcon";
 import withDefaultValue from "../../../utils/withDefaultValue";
-import AnimatedHeaderIcon from "../../../components/AnimatedHeaderIcon/AnimatedHeaderIcon";
+import AnimatedHeaderIcon from "../../../components/animatedHeaderIcon/AnimatedHeaderIcon";
 import Animated from "react-native-reanimated";
 import { StartingVisitStackScreenProps } from "../../../types/Navigation";
 import Button from "../../../components/button";

@@ -2,7 +2,7 @@ import { Image, StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
 import HorizontalCardWrapper from "./Wrapper";
 import { ScrollView } from "react-native-gesture-handler";
-import Divider from "../../Dividers";
+import Divider from "../../dividers";
 import ProductCard from "../ProductCard";
 
 interface Props extends ComponentProps<typeof HorizontalCardWrapper> {

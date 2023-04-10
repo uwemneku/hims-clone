@@ -27,7 +27,7 @@ import {
   QuestionnaireScreenHeader,
   StartConsultationWelcomeScreen,
   TreatmentPlanIntroScreen,
-} from "../screens/StartConsultation";
+} from "../screens/startConsultation";
 
 const { Navigator, Screen, Group } =
   createStackNavigator<StartingConsultationStackParamList>();

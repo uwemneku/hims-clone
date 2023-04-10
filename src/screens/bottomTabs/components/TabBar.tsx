@@ -4,9 +4,9 @@ import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import Color from "../../../constants/colors";
 import { bottomTabData } from "./data";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import BaseText from "../../../components/Text";
+import BaseText from "../../../components/text";
 import { Ionicons } from "@expo/vector-icons";
-import Divider from "../../../components/Dividers";
+import Divider from "../../../components/dividers";
 import Animated from "react-native-reanimated";
 interface Props extends BottomTabBarProps {}
 const TabBar = ({ navigation, state }: Props) => {

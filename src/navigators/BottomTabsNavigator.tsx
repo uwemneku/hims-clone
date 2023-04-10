@@ -7,7 +7,7 @@ import {
   BottomTabs_HomeScreen,
   BottomTabs_ProgramsScreen,
   BottomTabs_TabBar,
-} from "../screens/BottomTabs";
+} from "../screens/bottomTabs";
 import Color from "../constants/colors";
 import ShopNavigator from "./ShopNavigator";
 

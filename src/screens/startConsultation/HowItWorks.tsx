@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
 import React from "react";
-import BaseText from "../../components/Text";
+import BaseText from "../../components/text";
 import Button from "../../components/button";
 import IntroScreenLayout from "./components/IntroScreenLayout";
 import Color from "../../constants/colors";
 import { StartingVisitStackScreenProps } from "../../types/Navigation";
 import { addOpacity } from "../../utils";
-import Divider from "../../components/Dividers";
+import Divider from "../../components/dividers";
 import QuestionnaireGradientText from "./components/QuestionnaireGradientText";
 
 type Props = StartingVisitStackScreenProps<"HowItWorks">;

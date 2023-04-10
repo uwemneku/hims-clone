@@ -8,7 +8,7 @@ import {
   OrderHistoryDetailsScreen,
   OrderHistoryScreen,
   SubscriptionScreen,
-} from "../screens/Account/index";
+} from "../screens/account/index";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const { Navigator, Screen } =

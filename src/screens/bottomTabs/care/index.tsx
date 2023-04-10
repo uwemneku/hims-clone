@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import React, { ComponentProps } from "react";
 import HeadingScreenWrapper from "../../../components/layout/Wrappers/BottomTabScreenWrapper";
-import Divider from "../../../components/Dividers";
+import Divider from "../../../components/dividers";
 import SectionTitle from "./SectionTiltle";
 import CareCard from "./CareCard";
 import Color from "../../../constants/colors";

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import Color from "../constants/colors";
-import SpinningView from "./Animations/SpinningView";
+import SpinningView from "./animations/SpinningView";
 
 interface Props {
   /**default 24 */

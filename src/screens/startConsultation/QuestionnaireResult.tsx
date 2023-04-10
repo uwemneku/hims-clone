@@ -1,11 +1,11 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
-import BaseText from "../../components/Text";
+import BaseText from "../../components/text";
 import Button from "../../components/button";
 import Color from "../../constants/colors";
 import QuestionnaireLayoutWithScrollView from "./components/QuestionLayoutWithScrollView";
 import QuestionnaireGradientText from "./components/QuestionnaireGradientText";
-import Divider from "../../components/Dividers";
+import Divider from "../../components/dividers";
 import { StartingVisitStackScreenProps } from "../../types/Navigation";
 
 type Props = StartingVisitStackScreenProps<"QuestionnaireResult">;

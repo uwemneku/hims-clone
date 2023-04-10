@@ -2,9 +2,9 @@ import { StyleSheet, View } from "react-native";
 import React from "react";
 import Button from "../../components/button";
 import Color from "../../constants/colors";
-import Divider from "../../components/Dividers";
+import Divider from "../../components/dividers";
 import InfiniteScrollWrapper from "../../components/infiniteScroll/Wrapper";
-import BaseText from "../../components/Text";
+import BaseText from "../../components/text";
 import Animated, {
   FadeInDown,
   FadeInUp,

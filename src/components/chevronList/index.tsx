@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
-import BaseText from "../Text";
+import BaseText from "../text";
 import Color from "../../constants/colors";
 
 interface Props {
