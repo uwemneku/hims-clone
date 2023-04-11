@@ -16,7 +16,6 @@ import Animated, {
   Extrapolate,
   interpolate,
   interpolateColor,
-  useAnimatedRef,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -25,78 +24,86 @@ import { addOpacity, debounce } from "../../../utils";
 import Color from "../../../constants/colors";
 import ResponsiveWrapper from "../../../components/layout/ResponsiveWrapper";
 import AppFonts from "../../../constants/fonts";
-import { images } from "../../../constants/images";
+import { heading } from "./components/data";
 
-const heading = [
-  { title: "Sexual Health", image: images.men },
-  { title: "Mental Health", image: images.smileman },
-  { title: "Hair", image: images.blog3 },
-  { title: "Skin", image: images.blog1 },
-  { title: "Extra", image: images.happyCouple },
-];
+type Layout = Record<number | string, { x: number; width: number }>;
 
 const Programs = () => {
-  const aref = useAnimatedRef<Animated.ScrollView>();
-  const aref1 = useAnimatedRef<Animated.ScrollView>();
-  const scrollOffset = useSharedValue(0);
-  const activeIndex = useSharedValue(0);
   const { top } = useSafeAreaInsets();
   const { height: _h, width } = useWindowDimensions();
-  const height = _h * 0.6;
-  const textLayout = useSharedValue<
-    Record<number | string, { x: number; width: number }>
-  >({});
-  const _textLayout = useRef<typeof textLayout.value>({});
-  const move = debounce((i: number) => {
-    const index = Math.floor((i + height * 0.3) / height);
-    scr(index);
-    activeIndex.value = index;
-  }, 50);
-  const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    scrollOffset.value = e?.nativeEvent?.contentOffset?.y;
-    move(scrollOffset.value);
-  };
+  const cardHeight = _h * 0.6;
 
-  const handleLayout = (i: number | string) => (e: LayoutChangeEvent) => {
-    _textLayout.current = {
-      ..._textLayout.current,
+  const contentScrollRef = useRef<Animated.ScrollView>(null);
+  const headingScrollRef = useRef<Animated.ScrollView>(null);
+
+  const contentScrollOffset = useSharedValue(0);
+  const activeIndex = useSharedValue(0);
+
+  const cachedLayout = useSharedValue<Layout>({});
+  const _cachedLayout = useRef<Layout>({}); // used to copy objects to a shared value
+
+  const cacheLayout = (i: number | string) => (e: LayoutChangeEvent) => {
+    //a ref is used to hold to value because reanimated worked does not yet support the spread operation
+    _cachedLayout.current = {
+      ..._cachedLayout.current,
       [i]: {
         x: e?.nativeEvent?.layout?.x || 0,
         width: e?.nativeEvent?.layout?.width || 0,
       },
     };
-    textLayout.value = _textLayout.current;
-  };
-  const scr = (i: number) => {
-    aref1.current?.scrollTo({ x: textLayout.value?.[i]?.x });
+    cachedLayout.value = _cachedLayout.current;
   };
 
-  const handleClick = (i: number) => () => {
-    aref.current?.scrollTo({ y: i * height, animated: true });
+  const moveIndicator = debounce((contentScrollOffset: number) => {
+    const index = Math.floor(
+      (contentScrollOffset + cardHeight * 0.3) / cardHeight
+    );
+    scrollHeading(index);
+    activeIndex.value = index;
+  }, 50);
+
+  const onContentScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    contentScrollOffset.value = e?.nativeEvent?.contentOffset?.y;
+    moveIndicator(contentScrollOffset.value);
   };
 
-  const animatedView = useAnimatedStyle(() => ({
-    width: withTiming(textLayout.value?.[activeIndex.value]?.width || 0),
-    left: withTiming(textLayout.value?.[activeIndex.value]?.x || 0),
+  const scrollHeading = (headingIndex: number) => {
+    headingScrollRef.current?.scrollTo({
+      x: cachedLayout.value?.[headingIndex]?.x,
+    });
+  };
+
+  const scrollContent = (headingIndex: number) => () => {
+    contentScrollRef.current?.scrollTo({
+      y: headingIndex * cardHeight,
+      animated: true,
+    });
+  };
+
+  const animatedIndicatorStyle = useAnimatedStyle(() => ({
+    width: withTiming(cachedLayout.value?.[activeIndex.value]?.width || 0),
+    left: withTiming(cachedLayout.value?.[activeIndex.value]?.x || 0),
   }));
-  const animatedBackground = useAnimatedStyle(() => ({
+  const animatedBackgroundStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
-      scrollOffset.value,
+      contentScrollOffset.value,
       [0, 100],
       [addOpacity(Color.brown, 0.005), addOpacity(Color.brown, 0.15)]
     ),
   }));
-  const animatedTitle = useAnimatedStyle(() => {
-    const textCenter =
-      (width - 40 - (textLayout.value?.["text"]?.width || 0)) / 2;
+  const animatedTitleStyle = useAnimatedStyle(() => {
     const _interpolate = (range: [number, number]) => {
       return interpolate(
-        scrollOffset.value,
+        contentScrollOffset.value,
         [0, 100],
         range,
         Extrapolate.CLAMP
       );
     };
+    const textCenter =
+      (width - sizes.padding * 2 - (cachedLayout.value?.["text"]?.width || 0)) /
+      2;
+
     return {
       fontSize: _interpolate([30, 20]),
       left: _interpolate([0, textCenter]),
@@ -107,17 +114,17 @@ const Programs = () => {
     <ResponsiveWrapper>
       <View style={{ flex: 1, backgroundColor: addOpacity(Color.brown, 0.15) }}>
         <Animated.View
-          style={[styles.top, { paddingTop: top }, animatedBackground]}
+          style={[styles.top, { paddingTop: top }, animatedBackgroundStyle]}
         >
           <Animated.Text
-            onLayout={handleLayout("text")}
-            style={[styles.animatedText, animatedTitle]}
+            onLayout={cacheLayout("text")}
+            style={[styles.animatedText, animatedTitleStyle]}
           >
             Programs
           </Animated.Text>
           <View style={{ backgroundColor: "transparent" }}>
             <Animated.ScrollView
-              ref={aref1}
+              ref={headingScrollRef}
               style={{ position: "relative", backgroundColor: "transparent" }}
               contentContainerStyle={{
                 paddingRight: 50,
@@ -127,15 +134,17 @@ const Programs = () => {
               scrollEventThrottle={16}
               showsHorizontalScrollIndicator={false}
             >
-              <Animated.View style={[styles.indicator, animatedView]} />
-              {heading.map((i, _i) => (
+              <Animated.View
+                style={[styles.indicator, animatedIndicatorStyle]}
+              />
+              {heading.map((item, index) => (
                 <Pressable
-                  onPress={handleClick(_i)}
-                  key={i.title}
-                  onLayout={handleLayout(_i)}
+                  onPress={scrollContent(index)}
+                  key={item.title}
+                  onLayout={cacheLayout(index)}
                 >
                   <BaseText size={"small"} style={styles.headingText}>
-                    {i.title}
+                    {item.title}
                   </BaseText>
                 </Pressable>
               ))}
@@ -143,18 +152,23 @@ const Programs = () => {
           </View>
         </Animated.View>
         <Animated.ScrollView
-          ref={aref}
-          onScroll={handleScroll}
+          ref={contentScrollRef}
+          onScroll={onContentScroll}
           scrollEventThrottle={16}
-          snapToInterval={height}
+          snapToInterval={cardHeight}
           snapToAlignment="center"
           decelerationRate={"fast"}
           style={styles.container}
-          contentContainerStyle={{ paddingBottom: height * 0.25 }}
+          contentContainerStyle={{ paddingBottom: cardHeight * 0.25 }} // extra padding to ensure the last indicator is highted
         >
-          {heading.map((i, _i) => {
+          {heading.map((item) => {
             return (
-              <ProgramCard image={i.image} title={i.title} key={i.title} />
+              <ProgramCard
+                height={cardHeight}
+                image={item.image}
+                title={item.title}
+                key={item.title}
+              />
             );
           })}
         </Animated.ScrollView>
@@ -175,7 +189,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   headingText: {
-    padding: 10,
+    padding: sizes.padding / 2,
   },
   indicator: {
     position: "absolute",
@@ -185,7 +199,7 @@ const styles = StyleSheet.create({
   },
   animatedText: {
     fontFamily: AppFonts.sofia_bold,
-    paddingVertical: 10,
+    paddingVertical: sizes.padding / 2,
     alignSelf: "flex-start",
   },
 });

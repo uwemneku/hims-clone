@@ -15,11 +15,10 @@ import { addOpacity } from "../../../../utils";
 interface Props {
   title: string;
   image: ComponentProps<typeof ImageBackground>["source"];
+  height: number;
 }
 
-const ProgramCard = ({ title, image }: Props) => {
-  const height = useWindowDimensions().height * 0.6;
-
+const ProgramCard = ({ title, image, height }: Props) => {
   return (
     <View style={{ height }}>
       <BaseText size={"h2"} fontWeight="sofia_bold">
