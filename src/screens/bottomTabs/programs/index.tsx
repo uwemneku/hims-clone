@@ -43,7 +43,7 @@ const Programs = () => {
   const _cachedLayout = useRef<Layout>({}); // used to copy objects to a shared value
 
   const cacheLayout = (i: number | string) => (e: LayoutChangeEvent) => {
-    //a ref is used to hold to value because reanimated worked does not yet support the spread operation
+    //a ref is used to copy object values because reanimated worklets do not support the spread operation
     _cachedLayout.current = {
       ..._cachedLayout.current,
       [i]: {
@@ -55,21 +55,21 @@ const Programs = () => {
   };
 
   const moveIndicator = debounce((contentScrollOffset: number) => {
-    const index = Math.floor(
+    const headingIndex = Math.floor(
       (contentScrollOffset + cardHeight * 0.3) / cardHeight
     );
-    scrollHeading(index);
-    activeIndex.value = index;
+    scrollHeading(headingIndex);
+    activeIndex.value = headingIndex;
   }, 50);
 
   const onContentScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    contentScrollOffset.value = e?.nativeEvent?.contentOffset?.y;
+    contentScrollOffset.value = e?.nativeEvent?.contentOffset?.y || 0;
     moveIndicator(contentScrollOffset.value);
   };
 
   const scrollHeading = (headingIndex: number) => {
     headingScrollRef.current?.scrollTo({
-      x: cachedLayout.value?.[headingIndex]?.x,
+      x: cachedLayout.value?.[headingIndex]?.x || 0,
     });
   };
 
